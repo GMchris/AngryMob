@@ -8,10 +8,21 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules" : ["cocos2d", "box2d"],
 
     "jsList" : [
+        "src/helpers/extensions.js",
+
         "src/resource.js",
-        "src/app.js"
+
+        "src/Sprites/Monster.js",
+        "src/Sprites/Obstacle.js",
+        "src/Sprites/Soul.js",
+        "src/Sprites/BackgroundSegment.js",
+
+        "src/Layers/GameObjectsLayer.js",
+        "src/Layers/BackgroundLayer.js",
+
+        "src/Scenes/GameScene.js"
     ]
 }
