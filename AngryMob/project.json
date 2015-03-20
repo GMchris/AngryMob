@@ -13,7 +13,9 @@
     "jsList" : [
         "src/helpers/extensions.js",
 
+        "src/constants.js",
         "src/resource.js",
+        "src/GameController.js",
 
         "src/Sprites/Monster.js",
         "src/Sprites/Obstacle.js",

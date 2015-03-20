@@ -3,7 +3,6 @@
 var BackgroundLayer = cc.Layer.extend({
   background_segment_one: null,
   background_segment_two: null,
-  speed: 0,
 
   ctor: function() {
     this._super.apply(this, arguments);
@@ -13,9 +12,7 @@ var BackgroundLayer = cc.Layer.extend({
   init: function() {
     this._super();
 
-    this.speed = 10;
-
-    this.winSize = cc.director.getWinSize();
+    this.winSize = Game.get('winSize');
     this.setAnchorPoint(0, 0);
 
     this.backgroundOne = new BackgroundSegment(res.world_01_background_01);
@@ -33,8 +30,8 @@ var BackgroundLayer = cc.Layer.extend({
   },
 
   update: function() {
-    this.backgroundOne.y -= this.speed;
-    this.backgroundTwo.y -= this.speed;
+    this.backgroundOne.y -= Game.get('speed');
+    this.backgroundTwo.y -= Game.get('speed');
 
     if (this.backgroundOne.y  <= -this.backgroundHeight) {
       this.backgroundOne.y = this.backgroundTwo.y + this.backgroundHeight;
