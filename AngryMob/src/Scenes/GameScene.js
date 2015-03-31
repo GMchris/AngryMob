@@ -29,8 +29,6 @@ var GameScene = cc.Scene.extend({
     this.instantiateSouls();
 
     cc.eventManager.addListener(this.createTouchHandler(), this.gameObjectsLayer);
-
-    this.scheduleUpdate();
   },
 
   onEnter: function() {
@@ -38,6 +36,8 @@ var GameScene = cc.Scene.extend({
 
     this.generateSegment(G.segment);
 
+
+    this.scheduleUpdate();
     this.pause();
   },
 
@@ -47,6 +47,7 @@ var GameScene = cc.Scene.extend({
   runGeneralSetup: function() {
     this.winSize = Game.set('winSize', cc.director.getWinSize());
     Game.set('speed', G.INITIAL_SPEED);
+    Game.set('lives', 3);
   },
 
   /**
@@ -211,5 +212,21 @@ var GameScene = cc.Scene.extend({
 
   update: function(dt) {
 
+    if (this.player.isVulnerable) {
+      for (var obstacleType = 0; obstacleType < G.OBSTACLE_COUNT ; obstacleType++ ) {
+        for (var poolIndex = 0; poolIndex < G.OBSTACLE_POOL_COUNT ; poolIndex++ ) {
+          var obstacle = this.obstacles[obstacleType][poolIndex];
+          if (obstacle.inUse) {
+            if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
+              this.player.recieveDamage();
+              if(Game.get('lives') > 0) {
+                Game.set('lives', Game.get('lives') - 1);
+                Game.set('speed', G.SPEEDS[Game.get('lives')]);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 });

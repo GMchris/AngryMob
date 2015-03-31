@@ -2,10 +2,11 @@
 
 var G = {
   //Game Scene
-  OBSTACLE_COUNT: 10,
+  OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
 
-  INITIAL_SPEED: 8,
+  INITIAL_SPEED: 11,
+  SPEEDS: [7, 9, 11],
 
   COMMON_SOUL_POOL_COUNT: 15,
   SPECIAL_SOUL_POOL_COUNT: 5,
@@ -44,12 +45,18 @@ G.segment = {
     },
     {
       type: 8,
+      x: 300,
+      y: 700,
+      flipped: false
+    },
+    {
+      type: 10,
       x: 100,
       y: 950,
       flipped: true
     },
     {
-      type: 8,
+      type: 10,
       x: 450,
       y: 950,
       flipped: false

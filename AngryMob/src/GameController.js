@@ -3,7 +3,8 @@
 var Game = (function(){
   var content = {
     speed : 0,
-    winSize: null
+    winSize: null,
+    lives: 0
   };
 
   function get(property){

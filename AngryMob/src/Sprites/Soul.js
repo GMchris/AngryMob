@@ -14,6 +14,7 @@ var Soul = cc.Sprite.extend({
     this.winSize = Game.get('winSize');
     this.setPosition(this.outOfUsePosition);
     this.setAnchorPoint(0, 0);
+    this.collider = cc.rect(0, 0, 60, 30);
 
     this.scheduleUpdate();
   },

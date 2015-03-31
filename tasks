@@ -1,0 +1,73 @@
+[ ] Game
+  [ ] Application
+    [ ] Inventory
+  [ ] Game Scene
+    [ ] Engine
+      [X] Player movement
+      [X] Obstacle, soul and background movement
+      [X] Collision detection with obstacles
+      [ ] Collision detection with souls
+      [ ] Soul collection
+      [ ] Speed scaling
+      [ ] Procedural levels
+      [ ] Added randomness
+      [ ] Loading/Unloading assets
+      [ ] Life/Speed system
+      [ ] Distance calculator
+      [ ] Monster capture
+      [ ] Angry mob
+      [ ] Werewolf special skill
+      [ ] Mummy special skill
+    [ ] UI
+      [ ] Soul counter
+      [ ] Distance counter
+      [ ] Speed/life bar
+      [ ] Pause screen
+    [ ] Graphics
+      [ ] Application
+        [ ] Icon
+        [ ] Splash
+      [ ] Main menu
+        [ ] Home screen background
+        [ ] Regular button
+        [ ]
+      [ ] Frankenstein's monster
+        [ ] Character running sprites
+        [ ] Obstacles
+        [ ] Background
+        [ ] Angry mob
+        [ ] Captured splash
+      [ ] Werewolf
+      [ ] Mummy
+  [ ] Main menu
+    [ ] UI
+      [ ] Play, Shop and Settings button
+      [ ] Dynamic background
+    [ ] Graphics
+      [ ] Common background
+      [ ] Werewolf background
+      [ ] Mummy background
+      [ ] Generic button
+      [ ] Settings button
+  [ ] Shop menu
+    [ ] Common
+      [ ] Tab functionality
+      [ ] Graphics
+        [ ] Background
+        [ ] Dialog background
+        [ ] Buy button
+        [ ] Cancel button
+    [ ] Monsters tab
+      [ ] UI
+        [ ] Monster icons
+        [ ] Buy monster dialog
+      [ ] Graphics
+        [ ] Frankenstein avatar
+        [ ] Werewolf avatar
+        [ ] Mummy avatar
+    [ ] Upgrades tab
+      [ ] UI
+        [ ] Upgrade icons
+        [ ] Buy upgrade dialog
+      [ ] Graphics
+        [ ] //TODO: Invent some upgrade
