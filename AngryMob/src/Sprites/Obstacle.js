@@ -12,7 +12,7 @@ var Obstacle = cc.Sprite.extend({
     this._super('#obstacle_' + type + '.png');
     this.gameScene = gameScene;
 
-    this.collider = ColliderGenerator.getCollider(type);
+    this.collider = ColliderGenerator.get(type);
     this.computedCollider = cc.rect(this.collider.x, 0, this.collider.width, this.collider.height);
 
     this.init();
@@ -23,12 +23,14 @@ var Obstacle = cc.Sprite.extend({
     this.setPosition(this.outOfUsePosition);
     this.setAnchorPoint(0, 0);
 
-    this.col = cc.Sprite.create();
-    this.col.setColor(cc.color.RED);
-    this.col.setTextureRect(this.collider);
-    this.col.setAnchorPoint(0, 0);
-    this.col.setPosition(this.collider.x, this.collider.y);
-    this.addChild(this.col);
+    if (G.COLLISION_BOXES) {
+      this.col = cc.Sprite.create();
+      this.col.setColor(cc.color.RED);
+      this.col.setTextureRect(this.collider);
+      this.col.setAnchorPoint(0, 0);
+      this.col.setPosition(this.collider.x, this.collider.y);
+      this.addChild(this.col);
+    }
 
     this.scheduleUpdate();
   },

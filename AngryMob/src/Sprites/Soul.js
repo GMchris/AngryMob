@@ -7,6 +7,9 @@ var Soul = cc.Sprite.extend({
   ctor: function(type) {
     this._super('#soul_'+ type + '.png');
 
+    this.collider = ColliderGenerator.get('soul');
+    this.computedCollider = cc.rect(0, 0, this.collider.width, this.collider.height);
+
     this.init();
   },
 
@@ -14,7 +17,15 @@ var Soul = cc.Sprite.extend({
     this.winSize = Game.get('winSize');
     this.setPosition(this.outOfUsePosition);
     this.setAnchorPoint(0, 0);
-    this.collider = cc.rect(0, 0, 60, 30);
+
+    if (G.COLLISION_BOXES) {
+      this.col = cc.Sprite.create();
+      this.col.setColor(cc.color.YELLOW);
+      this.col.setTextureRect(this.collider);
+      this.col.setAnchorPoint(0, 0);
+      this.col.setPosition(this.collider.x, this.collider.y);
+      this.addChild(this.col);
+    }
 
     this.scheduleUpdate();
   },
@@ -40,10 +51,16 @@ var Soul = cc.Sprite.extend({
     this.y -= Game.get('speed');
   },
 
+  computeCollider: function() {
+    this.computedCollider.y = this.y + this.collider.y;
+    this.computedCollider.x = this.x + this.collider.x;
+  },
+
   update: function() {
     if (this.inUse) {
 
       this.move();
+      this.computeCollider();
 
       if (this.y + this.height < 0) {
         this.deactivate();

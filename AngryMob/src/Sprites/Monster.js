@@ -14,17 +14,19 @@ var Monster = cc.Sprite.extend({
     this.setAnchorPoint(0.5, 0);
     this.setPosition(300, 200);
     this.winSize = Game.get('winSize');
-    this.collider = cc.rect(15, 0, 45, 35);
+    this.collider = ColliderGenerator.get('monster');
     this.computedCollider = cc.rect(0, 0, this.collider.width, this.collider.height);
 
     this.initiateActions();
 
-    this.col = cc.Sprite.create();
-    this.col.setColor(cc.color.GREEN);
-    this.col.setTextureRect(this.collider);
-    this.col.setAnchorPoint(0, 0);
-    this.col.setPosition(this.collider.x, this.collider.y);
-    this.addChild(this.col);
+    if (G.COLLISION_BOXES) {
+      this.col = cc.Sprite.create();
+      this.col.setColor(cc.color.GREEN);
+      this.col.setTextureRect(this.collider);
+      this.col.setAnchorPoint(0, 0);
+      this.col.setPosition(this.collider.x, this.collider.y);
+      this.addChild(this.col);
+    }
 
     this.scheduleUpdate();
   },

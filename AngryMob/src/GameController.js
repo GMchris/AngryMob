@@ -15,8 +15,25 @@ var Game = (function(){
     return content[property] = value;
   }
 
+  function increment(property) {
+    return content[property]++;
+  }
+
+  function decrement(property) {
+    return content[property]--;
+  }
+
+  function toggle(property) {
+    if (typeof content[property] === 'boolean') {
+      return content[property] = !content[property];
+    }
+  }
+
   return {
     set: set,
-    get: get
+    get: get,
+    increment: increment,
+    decrement: decrement,
+    toggle: toggle
   }
 })();

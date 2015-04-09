@@ -1,7 +1,10 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var G = {
-  //Game Scene
+  // Debug.
+  COLLISION_BOXES: false,
+
+  // Game Scene.
   OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
 

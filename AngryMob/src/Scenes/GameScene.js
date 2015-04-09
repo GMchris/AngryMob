@@ -31,6 +31,10 @@ var GameScene = cc.Scene.extend({
     cc.eventManager.addListener(this.createTouchHandler(), this.gameObjectsLayer);
   },
 
+  /**
+   * INITIALIZATION #################################################################
+   */
+
   onEnter: function() {
     this._super();
 
@@ -46,8 +50,8 @@ var GameScene = cc.Scene.extend({
    */
   runGeneralSetup: function() {
     this.winSize = Game.set('winSize', cc.director.getWinSize());
-    Game.set('speed', G.INITIAL_SPEED);
     Game.set('lives', 3);
+    this.setSpeed();
   },
 
   /**
@@ -110,6 +114,34 @@ var GameScene = cc.Scene.extend({
     //}
   },
 
+  /**
+   * BASIC GAME OPERATIONS #################################################################
+   */
+
+  gainLife: function() {
+    Game.increment('lives');
+    this.setSpeed();
+  },
+
+  loseLife: function() {
+    Game.decrement('lives');
+    this.setSpeed();
+
+    if (Game.get('lives') <= 0) {
+      console.log('dead');
+    }
+  },
+
+  setSpeed: function() {
+    Game.set('speed', G.SPEEDS[Game.get('lives') - 1]);
+    console.log(Game.get('speed'));
+  },
+
+  /**
+   * Fetches an available obstacle from the pool, with a given type.
+   * @param {Number} type
+   * @returns {Obstacle}
+   */
   getObstacle: function(type) {
     var pool = this.obstacles[type];
 
@@ -127,6 +159,11 @@ var GameScene = cc.Scene.extend({
     return obstacle;
   },
 
+  /**
+   * Fetches an available soul from the pool, with a given type.
+   * @param {Number} type
+   * @returns {Obstacle}
+   */
   getSoul: function(type) {
     var pool = this.souls[type];
 
@@ -144,6 +181,10 @@ var GameScene = cc.Scene.extend({
     return soul;
   },
 
+  /**
+   * Positions game objects from the pool to the screen based on a configuration object.
+   * @param segmentData
+   */
   generateSegment: function(segmentData) {
     var obstacles = segmentData.obstacles;
     var souls = segmentData.souls;
@@ -165,6 +206,14 @@ var GameScene = cc.Scene.extend({
         soul.activate(item.x, item.y);
       }
     }
+  },
+
+  pause: function() {
+    cc.director.pause();
+  },
+
+  resume: function() {
+    cc.director.resume();
   },
 
   /**
@@ -202,16 +251,9 @@ var GameScene = cc.Scene.extend({
     return true;
   },
 
-  pause: function() {
-    cc.director.pause();
-  },
+  // UPDATE METHODS #############################################################
 
-  resume: function() {
-    cc.director.resume();
-  },
-
-  update: function(dt) {
-
+  checkObstacleCollision: function() {
     if (this.player.isVulnerable) {
       for (var obstacleType = 0; obstacleType < G.OBSTACLE_COUNT ; obstacleType++ ) {
         for (var poolIndex = 0; poolIndex < G.OBSTACLE_POOL_COUNT ; poolIndex++ ) {
@@ -219,14 +261,32 @@ var GameScene = cc.Scene.extend({
           if (obstacle.inUse) {
             if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
               this.player.recieveDamage();
-              if(Game.get('lives') > 0) {
-                Game.set('lives', Game.get('lives') - 1);
-                Game.set('speed', G.SPEEDS[Game.get('lives')]);
-              }
+              this.loseLife();
+              return true;
             }
           }
         }
       }
     }
+  },
+
+  checkSoulCollision: function() {
+    for (var soulType = 0; soulType < this.souls.length; soulType++) {
+      for (var soulIdx = 0; soulIdx < this.souls[soulType].length ; soulIdx++) {
+        var soul = this.souls[soulType][soulIdx];
+        if (soul.inUse) {
+          if (cc.rectIntersectsRect(soul.computedCollider, this.player.computedCollider)) {
+            soul.deactivate();
+            return true;
+          }
+        }
+      }
+    }
+  },
+
+  update: function() {
+
+    this.checkObstacleCollision();
+    this.checkSoulCollision();
   }
 });
