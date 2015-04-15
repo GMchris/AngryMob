@@ -3,6 +3,7 @@
 App.SettingsController = Ember.Controller.extend({
   obstacles: [],
   souls: [],
+  json: '',
 
   actions: {
     addSoul: function() {
@@ -28,17 +29,28 @@ App.SettingsController = Ember.Controller.extend({
 
     removeObstacle: function(item) {
       this.obstacles.removeObject(item);
+    },
+
+    compile: function() {
+      var json = {
+          souls: this.get('souls'),
+          obstacles: this.get('obstacles')
+      };
+
+      this.set('json',JSON.stringify(json));
+    },
+
+    read: function() {
+        var json = '';
+        try {
+            json = JSON.parse(this.get('json'));
+        } catch(e) {
+            this.set('json', 'Invalid JSON');
+            return false;
+        }
+
+        this.set('souls', json.souls || []);
+        this.set('obstacles', json.obstacles || []);
     }
-  },
-
-  getJson: function() {
-    var json = {
-      souls: this.get('souls'),
-      obstacles: this.get('obstacles')
-    };
-
-    console.log(JSON.stringify(json));
-
-    return json;
-  }.observes('souls.@each', 'obstacles.@each')
+  }
 });

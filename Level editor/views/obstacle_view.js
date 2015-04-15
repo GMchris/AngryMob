@@ -12,6 +12,7 @@ App.ObstacleView = Ember.View.extend({
     this._super();
 
     this.changePosition();
+    this.changeType();
   },
 
   changePosition: function() {
@@ -23,6 +24,29 @@ App.ObstacleView = Ember.View.extend({
       });
     }
   }.observes('obstacle.x', 'obstacle.y'),
+
+  changeType: function() {
+
+    if(this.get('obstacle.type') < 0){
+      this.set('obstacle.type', 9);
+        return false;
+    } else if (this.get('obstacle.type') > 9) {
+      this.set('obstacle.type', 0);
+        return false;
+    }
+
+    if (this.get('elementInserted')) {
+      this.$().css({
+        backgroundImage: 'url("images/obstacle_' + this.get('obstacle.type') + '.png")'
+      });
+    }
+  }.observes('obstacle.type'),
+
+  getDimensions: function(type) {
+      switch(type) {
+          case 0:
+      }
+  },
 
   getThird: function(value) {
     return Math.round(value - value/3);
