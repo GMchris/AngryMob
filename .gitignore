@@ -49,3 +49,5 @@ AngryMob/.idea/
 # Cocos libraries
 AngryMob/frameworks/
 AngryMob/tools/
+*.apk
+*.apk
