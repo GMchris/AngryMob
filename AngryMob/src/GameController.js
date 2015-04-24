@@ -2,15 +2,33 @@
 
 var Game = (function(){
   var content = {
-    speed : 0,
     winSize: null,
-    lives: 0
+    maxLives: 0,
+    lives: 0,
+    speed : 0,
+    additionalSpeed: 0,
+
+    // Computed properties.
+    computedSpeed: function() {
+      return this.speed + this.additionalSpeed;
+    }
   };
 
+  /**
+   * Fetches a property. If said property is a function, fetches the result of the function.
+   * @param property
+   * @returns {*}
+   */
   function get(property){
-    return content[property];
+    return typeof content[property] === 'function' ? content[property]() : content[property];
   }
 
+  /**
+   * Sets a property. Don't use it on computed properties(functions).
+   * @param property
+   * @param value
+   * @returns {*}
+   */
   function set(property, value){
     return content[property] = value;
   }
@@ -23,6 +41,11 @@ var Game = (function(){
     return content[property]--;
   }
 
+  /**
+   * Flips the boolean value of a property. Only use on properties that are already booleans.
+   * @param property
+   * @returns {boolean}
+   */
   function toggle(property) {
     if (typeof content[property] === 'boolean') {
       return content[property] = !content[property];

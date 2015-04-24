@@ -48,7 +48,7 @@ var Soul = cc.Sprite.extend({
   },
 
   move: function() {
-    this.y -= Game.get('speed');
+    this.y -= Game.get('computedSpeed');
   },
 
   computeCollider: function() {

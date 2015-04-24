@@ -2,7 +2,6 @@
 
 var GameScene = cc.Scene.extend({
 
-
   // Game objects
   player: null,
   playerBoundary: null,
@@ -12,6 +11,7 @@ var GameScene = cc.Scene.extend({
   // Layers
   backgroundLayer: null,
   gameObjectsLayer: null,
+  uiLayer: null,
 
   ctor: function() {
     this._super.apply(this, arguments);
@@ -38,8 +38,7 @@ var GameScene = cc.Scene.extend({
   onEnter: function() {
     this._super();
 
-    this.generateSegment(G.segment);
-
+    this.generateSegment();
 
     this.scheduleUpdate();
     this.pause();
@@ -50,8 +49,22 @@ var GameScene = cc.Scene.extend({
    */
   runGeneralSetup: function() {
     this.winSize = Game.set('winSize', cc.director.getWinSize());
-    Game.set('lives', 3);
+    Game.set('maxLives', 3);
+    Game.set('lives', Game.get('maxLives'));
     this.setSpeed();
+  },
+
+  /**
+   * Gets an appropriate index for a segment.
+   * TODO: Make it so the same segment cant appear more than once every five segments.
+   */
+  getSegmentIndex: function() {
+    var index;
+    var max = G.SEGMENTS.length - 1;
+
+    index = Math.floor(Math.random()*(max+1));
+
+    return index;
   },
 
   /**
@@ -60,9 +73,11 @@ var GameScene = cc.Scene.extend({
   instantiateLayers: function() {
     this.backgroundLayer = new BackgroundLayer();
     this.gameObjectsLayer = new GameObjectsLayer();
+    this.uiLayer = new GameUILayer();
 
     this.addChild(this.backgroundLayer);
     this.addChild(this.gameObjectsLayer);
+    this.addChild(this.uiLayer);
   },
 
   /**
@@ -125,6 +140,7 @@ var GameScene = cc.Scene.extend({
 
   loseLife: function() {
     Game.decrement('lives');
+    this.uiLayer.speedBar.loseLife();
     this.setSpeed();
 
     if (Game.get('lives') <= 0) {
@@ -133,8 +149,8 @@ var GameScene = cc.Scene.extend({
   },
 
   setSpeed: function() {
-    Game.set('speed', G.SPEEDS[Game.get('lives') - 1]);
-    console.log(Game.get('speed'));
+    Game.set('speed', G.SPEEDS[Game.get('lives')]);
+    console.log(Game.get('computedSpeed'));
   },
 
   /**
@@ -185,7 +201,8 @@ var GameScene = cc.Scene.extend({
    * Positions game objects from the pool to the screen based on a configuration object.
    * @param segmentData
    */
-  generateSegment: function(segmentData) {
+  generateSegment: function() {
+    var segmentData = G.SEGMENTS[this.getSegmentIndex()];
     var obstacles = segmentData.obstacles;
     var souls = segmentData.souls;
 
@@ -215,6 +232,8 @@ var GameScene = cc.Scene.extend({
   resume: function() {
     cc.director.resume();
   },
+
+  // EVENTS ##################################################################
 
   /**
    * Returns a touch event.
@@ -260,7 +279,7 @@ var GameScene = cc.Scene.extend({
           var obstacle = this.obstacles[obstacleType][poolIndex];
           if (obstacle.inUse) {
             if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
-              this.player.recieveDamage();
+              this.player.receiveDamage();
               this.loseLife();
               return true;
             }

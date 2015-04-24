@@ -2,7 +2,7 @@
 
 var Monster = cc.Sprite.extend({
   isVulnerable: false,
-  recieveDamageAction: null,
+  receiveDamageAction: null,
 
   ctor: function() {
     this._super.apply(this, arguments);
@@ -48,20 +48,20 @@ var Monster = cc.Sprite.extend({
       cc.fadeTo(0.4, 255),
       cc.fadeTo(0.4, 50),
       cc.fadeTo(0.4, 255),
-      cc.callFunc(this.recieveDamageCallback, this)
+      cc.callFunc(this.receiveDamageCallback, this)
     ];
 
-    this.recieveDamageAction = cc.sequence(actions);
-    this.recieveDamageAction.retain();
+    this.receiveDamageAction = cc.sequence(actions);
+    this.receiveDamageAction.retain();
   },
 
-  recieveDamageCallback: function() {
+  receiveDamageCallback: function() {
     this.isVulnerable = true;
   },
 
-  recieveDamage: function() {
+  receiveDamage: function() {
     this.isVulnerable = false;
-    this.runAction(this.recieveDamageAction);
+    this.runAction(this.receiveDamageAction);
   },
 
   computeCollider: function() {

@@ -54,7 +54,7 @@ var Obstacle = cc.Sprite.extend({
   },
 
   move: function() {
-    this.y -= Game.get('speed');
+    this.y -= Game.get('computedSpeed');
   },
 
   computeCollider: function() {
@@ -72,7 +72,7 @@ var Obstacle = cc.Sprite.extend({
       if (this.y + this.height < 0) {
         this.deactivate();
         if (this.first) {
-          this.gameScene.generateSegment(G.segment);
+          this.gameScene.generateSegment();
         }
       }
     }

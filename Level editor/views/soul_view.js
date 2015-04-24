@@ -14,6 +14,9 @@ App.SoulView = Ember.View.extend({
   changePosition: function() {
     if (this.get('elementInserted')) {
 
+      this.set('soul.x', parseInt(this.get('soul.x')));
+      this.set('soul.y', parseInt(this.get('soul.y')));
+
       this.$().css({
         bottom: this.getThird(this.get('soul.y')),
         left: this.getThird(this.get('soul.x'))

@@ -18,14 +18,20 @@
         "src/resource.js",
         "src/GameController.js",
 
-        "src/Sprites/Monster.js",
-        "src/Sprites/Obstacle.js",
-        "src/Sprites/Soul.js",
+        "src/Sprites/GameObjects/Monster.js",
+        "src/Sprites/GameObjects/Obstacle.js",
+        "src/Sprites/GameObjects/Soul.js",
         "src/Sprites/BackgroundSegment.js",
+
+        "src/UI/SpeedBar.js",
 
         "src/Layers/GameObjectsLayer.js",
         "src/Layers/BackgroundLayer.js",
+        "src/Layers/GameUILayer.js",
 
-        "src/Scenes/GameScene.js"
+        "src/Scenes/GameScene.js",
+
+        "src/segments/segment_01.js",
+        "src/segments/segment_02.js"
     ]
 }

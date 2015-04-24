@@ -43,9 +43,7 @@ html {
 
 .obstacle {
     position: absolute;
-    width: 170px;
-    height: 115px;
-    background: url('images/obstacle_0.png') no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
 }
 

@@ -6,10 +6,10 @@
       [X] Player movement
       [X] Obstacle, soul and background movement
       [X] Collision detection with obstacles
-      [ ] Collision detection with souls
+      [X] Collision detection with souls
       [ ] Soul collection
       [ ] Speed scaling
-      [ ] Procedural levels
+      [X] Procedural levels
       [ ] Added randomness
       [ ] Loading/Unloading assets
       [ ] Life/Speed system
@@ -30,10 +30,10 @@
       [ ] Main menu
         [ ] Home screen background
         [ ] Regular button
-        [ ]
+        [ ] Buy button
       [ ] Frankenstein's monster
-        [ ] Character running sprites
-        [ ] Obstacles
+        [X] Character running sprites
+        [X] Obstacles
         [ ] Background
         [ ] Angry mob
         [ ] Captured splash

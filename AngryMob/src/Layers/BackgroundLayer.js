@@ -30,8 +30,8 @@ var BackgroundLayer = cc.Layer.extend({
   },
 
   update: function() {
-    this.backgroundOne.y -= Game.get('speed');
-    this.backgroundTwo.y -= Game.get('speed');
+    this.backgroundOne.y -= Game.get('computedSpeed');
+    this.backgroundTwo.y -= Game.get('computedSpeed');
 
     if (this.backgroundOne.y  <= -this.backgroundHeight) {
       this.backgroundOne.y = this.backgroundTwo.y + this.backgroundHeight;
