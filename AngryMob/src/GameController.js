@@ -11,6 +11,10 @@ var Game = (function(){
     // Computed properties.
     computedSpeed: function() {
       return this.speed + this.additionalSpeed;
+    },
+
+    atMaxLives: function() {
+      return this.lives >= this.maxLives;
     }
   };
 

@@ -73,7 +73,7 @@ var GameScene = cc.Scene.extend({
   instantiateLayers: function() {
     this.backgroundLayer = new BackgroundLayer();
     this.gameObjectsLayer = new GameObjectsLayer();
-    this.uiLayer = new GameUILayer();
+    this.uiLayer = new GameUILayer(this);
 
     this.addChild(this.backgroundLayer);
     this.addChild(this.gameObjectsLayer);

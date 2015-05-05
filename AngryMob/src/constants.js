@@ -4,6 +4,9 @@ var G = {
   // Debug.
   COLLISION_BOXES: true,
 
+  // Common constants.
+  HUNDRED_PERCENT: 100,
+
   // Game Scene.
   OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
