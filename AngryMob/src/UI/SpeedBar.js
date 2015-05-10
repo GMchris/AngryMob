@@ -18,7 +18,7 @@ var SpeedBar = cc.Sprite.extend({
   },
 
   init: function() {
-    this.setPosition(550, Game.get('winSize').height / 2);
+    this.setPosition(580, Game.get('winSize').height / 2);
     this.setContentSize(15, 150);
 
     this.generateDynamicBar();
@@ -30,9 +30,9 @@ var SpeedBar = cc.Sprite.extend({
    * Creates the dynamic portion of the bar.
    */
   generateDynamicBar: function() {
-    this.currentSpeedBar = new cc.Sprite(res.speed_bar);
+    this.currentSpeedBar = new cc.Sprite('#speed_bar.png');
     this.currentSpeedBar.setAnchorPoint(0, 0);
-    var backgroundSprite = new cc.Sprite(res.speed_bar_emp);
+    var backgroundSprite = new cc.Sprite('#speed_bar_empty.png');
 
     backgroundSprite.addChild(this.currentSpeedBar);
 
@@ -67,7 +67,7 @@ var SpeedBar = cc.Sprite.extend({
   startAcceleration: function() {
     var nextPercentage = Game.get('lives') + 1 >= Game.get('maxLives') ? 1 : (Game.get('lives') + 1) * this.percentileSegment / 100;
 
-    var accAction = cc.scaleTo(5, 1, nextPercentage);
+    var accAction = cc.scaleTo(G.REGAIN_SPEED_TIMEOUT, 1, nextPercentage);
 
     this.currentSpeedBar.runAction(cc.sequence(accAction, this.gainLifeCB));
   },

@@ -2,13 +2,16 @@
 
 var GameScene = cc.Scene.extend({
 
-  // Game objects
+  // Own properties.
+  worldType: 0, //TODO: Set this dynamically.
+
+  // Game objects.
   player: null,
   playerBoundary: null,
   obstacles: null,
   souls: null,
 
-  // Layers
+  // Layers.
   backgroundLayer: null,
   gameObjectsLayer: null,
   uiLayer: null,
@@ -24,9 +27,6 @@ var GameScene = cc.Scene.extend({
     // The order of the methods being called here is important. Some use properties set by others.
     this.runGeneralSetup();
     this.instantiateLayers();
-    this.instantiatePlayer();
-    this.instantiateObstacles();
-    this.instantiateSouls();
 
     cc.eventManager.addListener(this.createTouchHandler(), this.gameObjectsLayer);
   },
@@ -38,7 +38,8 @@ var GameScene = cc.Scene.extend({
   onEnter: function() {
     this._super();
 
-    this.generateSegment();
+    this.gameObjectsLayer.generateSegment();
+    this.runAction(this.upscaleSpeedAction);
 
     this.scheduleUpdate();
     this.pause();
@@ -52,19 +53,7 @@ var GameScene = cc.Scene.extend({
     Game.set('maxLives', 3);
     Game.set('lives', Game.get('maxLives'));
     this.setSpeed();
-  },
-
-  /**
-   * Gets an appropriate index for a segment.
-   * TODO: Make it so the same segment cant appear more than once every five segments.
-   */
-  getSegmentIndex: function() {
-    var index;
-    var max = G.SEGMENTS.length - 1;
-
-    index = Math.floor(Math.random()*(max+1));
-
-    return index;
+    this.upscaleSpeedAction = cc.sequence([cc.delayTime(G.SPEEDUP_TIMEOUT), cc.callFunc(this.upscaleSpeed, this)]);
   },
 
   /**
@@ -73,60 +62,12 @@ var GameScene = cc.Scene.extend({
   instantiateLayers: function() {
     this.backgroundLayer = new BackgroundLayer();
     this.gameObjectsLayer = new GameObjectsLayer();
+    this.gameObjectsLayer.init(this);
     this.uiLayer = new GameUILayer(this);
 
     this.addChild(this.backgroundLayer);
     this.addChild(this.gameObjectsLayer);
     this.addChild(this.uiLayer);
-  },
-
-  /**
-   * Creates and adds the player sprite and all properties relating to it.
-   */
-  instantiatePlayer: function() {
-    this.player = new Monster('#frankie.png');
-    this.gameObjectsLayer.addChild(this.player);
-
-    this.playerBoundary = {
-      top: 900,
-      right: 540,
-      bottom: 100,
-      left: 40
-    }
-  },
-
-  instantiateObstacles: function() {
-    this.obstacles = [];
-
-    for (var typeIndex = 0; typeIndex < G.OBSTACLE_COUNT ; typeIndex++ ) {
-      this.obstacles[typeIndex] = [];
-      for (var poolIndex = 0; poolIndex < G.OBSTACLE_POOL_COUNT ; poolIndex++ ) {
-        this.obstacles[typeIndex][poolIndex] = new Obstacle(typeIndex, this);
-        this.gameObjectsLayer.addChild(this.obstacles[typeIndex][poolIndex]);
-      }
-    }
-  },
-
-  instantiateSouls: function() {
-    this.souls = [];
-    this.souls[G.COMMON_SOUL_TYPE] = [];
-    this.souls[G.SPECIAL_SOUL_TYPE] = [];
-    this.souls[G.LEGENDARY_SOUL_TYPE] = [];
-
-    for (var commonSoulIdx = 0; commonSoulIdx < G.COMMON_SOUL_POOL_COUNT ; commonSoulIdx++) {
-      this.souls[G.COMMON_SOUL_TYPE][commonSoulIdx] = new Soul(G.COMMON_SOUL_TYPE);
-      this.gameObjectsLayer.addChild(this.souls[G.COMMON_SOUL_TYPE][commonSoulIdx]);
-    }
-
-    //for (var specialSoulIdx = 0; specialSoulIdx < G.SPECIAL_SOUL_POOL_COUNT ; specialSoulIdx++) {
-    //  this.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx] = new Soul(G.SPECIAL_SOUL_TYPE);
-    //  this.gameObjectsLayer.addChild(this.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx]);
-    //}
-//
-    //for (var legendarySoulIndex = 0; legendarySoulIndex < G.LEGENDARY_SOUL_POOL_COUNT ; legendarySoulIndex++) {
-    //  this.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex] = new Soul(G.LEGENDARY_SOUL_TYPE);
-    //  this.gameObjectsLayer.addChild(this.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex]);
-    //}
   },
 
   /**
@@ -144,7 +85,24 @@ var GameScene = cc.Scene.extend({
     this.setSpeed();
 
     if (Game.get('lives') <= 0) {
-      console.log('dead');
+      this.endGame();
+    }
+  },
+
+  endGame: function() {
+    this.player.die();
+    this.gameObjectsLayer.fadeInOverlay();
+    Game.set('additionalSpeed', 0);
+    Game.set('state', G.STATE.ENDING);
+  },
+
+  /**
+   * Periodically called to raise the speed by one.
+   */
+  upscaleSpeed: function() {
+    if (Game.get('state') === G.STATE.PLAYING) {
+        Game.increment('additionalSpeed');
+        this.runAction(this.upscaleSpeedAction);
     }
   },
 
@@ -153,83 +111,13 @@ var GameScene = cc.Scene.extend({
     console.log(Game.get('computedSpeed'));
   },
 
-  /**
-   * Fetches an available obstacle from the pool, with a given type.
-   * @param {Number} type
-   * @returns {Obstacle}
-   */
-  getObstacle: function(type) {
-    var pool = this.obstacles[type];
-
-    for (var i = 0; i< pool.length ; i++) {
-      if (!pool[i].inUse) {
-        return pool[i];
-      }
-    }
-    // If no items from that pool are free, creata a new one.
-    var obstacle = new Obstacle(type);
-
-    pool.push(obstacle);
-    this.gameObjectsLayer.addChild(obstacle);
-
-    return obstacle;
-  },
-
-  /**
-   * Fetches an available soul from the pool, with a given type.
-   * @param {Number} type
-   * @returns {Obstacle}
-   */
-  getSoul: function(type) {
-    var pool = this.souls[type];
-
-    for (var i = 0; i< pool.length ; i++) {
-      if (!pool[i].inUse) {
-        return pool[i];
-      }
-    }
-    // If no items from that pool are free, creata a new one.
-    var soul = new Soul(type);
-
-    pool.push(soul);
-    this.gameObjectsLayer.addChild(soul);
-
-    return soul;
-  },
-
-  /**
-   * Positions game objects from the pool to the screen based on a configuration object.
-   * @param segmentData
-   */
-  generateSegment: function() {
-    var segmentData = G.SEGMENTS[this.getSegmentIndex()];
-    var obstacles = segmentData.obstacles;
-    var souls = segmentData.souls;
-
-    if (obstacles) {
-      for (var i = 0; i < obstacles.length; i++) {
-        var item = obstacles[i];
-        var obstacle = this.getObstacle(item.type);
-        obstacle.activate(item.x, item.y);
-        obstacle.flippedX = item.flipped;
-        obstacle.first = item.first || false;
-      }
-    }
-
-    if (souls) {
-      for (var i = 0; i < souls.length; i++) {
-        var item = souls[i];
-        var soul = this.getSoul(item.type);
-        soul.activate(item.x, item.y);
-      }
-    }
-  },
-
   pause: function() {
+    Game.set('state', G.STATE.PAUSED);
     cc.director.pause();
   },
 
   resume: function() {
+    Game.set('state', G.STATE.PLAYING);
     cc.director.resume();
   },
 
@@ -249,7 +137,7 @@ var GameScene = cc.Scene.extend({
 
   onTouchBegan: function(e) {
     var location = e.getLocation();
-    if (cc.rectContainsPoint(this.player.getBoundingBox(), location)) {
+    if (Game.get('state') === G.STATE.PAUSED && cc.rectContainsPoint(this.player.getBoundingBox(), location)) {
       this.resume();
       this.player.animateTo(location.x, location.y, 0.05);
       return true;
@@ -258,15 +146,19 @@ var GameScene = cc.Scene.extend({
   },
 
   onTouchMoved: function(e) {
-    var location = e.getLocation();
-    location.x = location.x.clamp(this.playerBoundary.left, this.playerBoundary.right);
-    location.y = location.y.clamp(this.playerBoundary.bottom, this.playerBoundary.top);
-    this.player.setPosition(location);
+    if (Game.get('state') === G.STATE.PLAYING) {
+      var location = e.getLocation();
+      location.x = location.x.clamp(this.playerBoundary.left, this.playerBoundary.right);
+      location.y = location.y.clamp(this.playerBoundary.bottom, this.playerBoundary.top);
+      this.player.setPosition(location);
+    }
     return true;
   },
 
   onTouchEnded: function(e) {
-    this.pause();
+    if (Game.get('state') === G.STATE.PLAYING) {
+        this.pause();
+    }
     return true;
   },
 
@@ -304,8 +196,9 @@ var GameScene = cc.Scene.extend({
   },
 
   update: function() {
-
-    this.checkObstacleCollision();
-    this.checkSoulCollision();
+    if (Game.get('state') === G.STATE.PLAYING) {
+      this.checkObstacleCollision();
+      this.checkSoulCollision();
+    }
   }
 });

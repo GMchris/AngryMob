@@ -62,6 +62,8 @@ var Soul = cc.Sprite.extend({
       this.move();
       this.computeCollider();
 
+      this.zIndex = this.winSize.height - this.y;
+
       if (this.y + this.height < 0) {
         this.deactivate();
       }

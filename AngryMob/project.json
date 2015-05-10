@@ -12,7 +12,9 @@
 
     "jsList" : [
         "src/helpers/extensions.js",
+        "src/helpers/Memory.js",
         "src/helpers/colliders.js",
+        "src/helpers/visual.js",
 
         "src/constants.js",
         "src/resource.js",

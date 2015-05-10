@@ -6,13 +6,16 @@ cc.game.onStart = function(){
     cc.view.resizeWithBrowserSize(true);
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        preload();
+        pregame();
         cc.director.runScene(new GameScene());
     }, this);
 };
 cc.game.run();
 
-// TODO: Delete this method later and replace it's functionality before each level starts
-function preload() {
-    cc.spriteFrameCache.addSpriteFrames(res.world_01_objects_plist, res.world_01_objects_png);
+function pregame() {
+    Memory.load();
+
+    // TODO: Delete this functionality later and replace it's functionality before each level starts
+    cc.spriteFrameCache.addSpriteFrames(res.common_object_plist, res.common_objects_png);
+    cc.spriteFrameCache.addSpriteFrames(res.world_0_plist, res.world_0_png);
 }

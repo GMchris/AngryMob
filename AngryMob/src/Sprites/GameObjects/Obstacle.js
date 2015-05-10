@@ -19,7 +19,7 @@ var Obstacle = cc.Sprite.extend({
   },
 
   init: function() {
-    this.winSize = cc.director.getWinSize();
+    this.winSize = Game.get('winSize');
     this.setPosition(this.outOfUsePosition);
     this.setAnchorPoint(0, 0);
 
@@ -51,6 +51,10 @@ var Obstacle = cc.Sprite.extend({
   deactivate: function() {
     this.setPosition(this.outOfUsePosition);
     this.inUse = false;
+
+    if (this.first) {
+        this.gameScene.gameObjectsLayer.generateSegment();
+    }
   },
 
   move: function() {
@@ -71,9 +75,6 @@ var Obstacle = cc.Sprite.extend({
 
       if (this.y + this.height < 0) {
         this.deactivate();
-        if (this.first) {
-          this.gameScene.generateSegment();
-        }
       }
     }
   }

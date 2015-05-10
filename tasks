@@ -7,12 +7,12 @@
       [X] Obstacle, soul and background movement
       [X] Collision detection with obstacles
       [X] Collision detection with souls
-      [ ] Soul collection
+      [X] Soul collection
       [ ] Speed scaling
       [X] Procedural levels
       [ ] Added randomness
       [ ] Loading/Unloading assets
-      [ ] Life/Speed system
+      [X] Life/Speed system
       [ ] Distance calculator
       [ ] Monster capture
       [ ] Angry mob
@@ -34,7 +34,7 @@
       [ ] Frankenstein's monster
         [X] Character running sprites
         [X] Obstacles
-        [ ] Background
+        [X] Background
         [ ] Angry mob
         [ ] Captured splash
       [ ] Werewolf
@@ -70,4 +70,6 @@
         [ ] Upgrade icons
         [ ] Buy upgrade dialog
       [ ] Graphics
+        [ ] Three lower speed icons
+        [ ] Three soul multiplier icons
         [ ] //TODO: Invent some upgrade

@@ -2,17 +2,24 @@
 
 var G = {
   // Debug.
-  COLLISION_BOXES: true,
+  COLLISION_BOXES: false,
 
   // Common constants.
   HUNDRED_PERCENT: 100,
+
+  // Monster constants.
+  FRANKENSTEIN: 0,
+  WEREWOLF: 1,
+  MUMMY: 2,
 
   // Game Scene.
   OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
 
   INITIAL_SPEED: 11,
-  SPEEDS: [0, 7, 9, 11, 11],
+  SPEEDS: [3, 7, 9, 11, 11],
+  REGAIN_SPEED_TIMEOUT: 5,
+  SPEEDUP_TIMEOUT: 20,
 
   COMMON_SOUL_POOL_COUNT: 15,
   SPECIAL_SOUL_POOL_COUNT: 5,
@@ -21,7 +28,14 @@ var G = {
   SPECIAL_SOUL_TYPE: 1,
   LEGENDARY_SOUL_TYPE: 2,
 
-  SEGMENTS: []
+  SEGMENTS: [],
+
+  // State.
+  STATE: {
+      PLAYING: 0,
+      PAUSED: 1,
+      ENDING: 2
+  }
 };
 
 

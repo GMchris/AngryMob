@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.6.0</string>
+        <string>3.7.1</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/World_01.tps</string>
+        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/world_0/world_0.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>world_01_objects.png</filename>
+        <filename>world_0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -145,7 +145,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>world_01_objects.plist</filename>
+                <filename>world_0.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -188,7 +188,17 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>frankie.png</filename>
+            <filename>obstacle_10.png</filename>
+            <filename>background_0.png</filename>
+            <filename>background_1.png</filename>
+            <filename>monster_running_0.png</filename>
+            <filename>monster_running_1.png</filename>
+            <filename>monster_running_2.png</filename>
+            <filename>monster_running_3.png</filename>
+            <filename>monster_running_4.png</filename>
+            <filename>monster_running_5.png</filename>
+            <filename>monster_running_6.png</filename>
+            <filename>monster_running_7.png</filename>
             <filename>obstacle_0.png</filename>
             <filename>obstacle_1.png</filename>
             <filename>obstacle_2.png</filename>
@@ -211,5 +221,15 @@
         <uint>1</uint>
         <key>commonDivisorY</key>
         <uint>1</uint>
+        <key>packNormalMaps</key>
+        <false/>
+        <key>autodetectNormalMaps</key>
+        <true/>
+        <key>normalMapFilter</key>
+        <string></string>
+        <key>normalMapSuffix</key>
+        <string></string>
+        <key>normalMapSheetFileName</key>
+        <filename></filename>
     </struct>
 </data>

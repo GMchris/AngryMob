@@ -3,6 +3,7 @@
 var Monster = cc.Sprite.extend({
   isVulnerable: false,
   receiveDamageAction: null,
+  runAnimation: null,
 
   ctor: function() {
     this._super.apply(this, arguments);
@@ -41,7 +42,7 @@ var Monster = cc.Sprite.extend({
   },
 
   initiateActions: function() {
-    var actions = [
+    var damageActions = [
       cc.fadeTo(0.4, 50),
       cc.fadeTo(0.4, 255),
       cc.fadeTo(0.4, 50),
@@ -51,8 +52,17 @@ var Monster = cc.Sprite.extend({
       cc.callFunc(this.receiveDamageCallback, this)
     ];
 
-    this.receiveDamageAction = cc.sequence(actions);
+    this.receiveDamageAction = cc.sequence(damageActions);
     this.receiveDamageAction.retain();
+
+    this.runAnimation = Visual.createSpriteAnimation('monster_running_', 8, 0.04);
+    this.runAction(this.runAnimation);
+  },
+
+  die: function() {
+    var duration = this.y / 200;
+
+    this.animateTo(this.x, 0, duration);
   },
 
   receiveDamageCallback: function() {

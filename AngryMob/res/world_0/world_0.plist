@@ -4,10 +4,127 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>frankie.png</key>
+            <key>background_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{75,150}}</string>
+                <string>{{2,2},{600,1136}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{600,1136}}</string>
+                <key>sourceSize</key>
+                <string>{600,1136}</string>
+            </dict>
+            <key>background_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{604,2},{600,1136}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{600,1136}}</string>
+                <key>sourceSize</key>
+                <string>{600,1136}</string>
+            </dict>
+            <key>monster_running_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1206,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1283,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1360,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1437,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1514,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1591,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1360,2},{75,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{75,150}}</string>
+                <key>sourceSize</key>
+                <string>{75,150}</string>
+            </dict>
+            <key>monster_running_7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1283,2},{75,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +137,7 @@
             <key>obstacle_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{79,2},{250,175}}</string>
+                <string>{{1668,2},{250,175}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +150,7 @@
             <key>obstacle_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{331,2},{300,100}}</string>
+                <string>{{2,1140},{300,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +163,7 @@
             <key>obstacle_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{633,2},{75,185}}</string>
+                <string>{{304,1140},{75,185}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +176,7 @@
             <key>obstacle_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,189},{325,125}}</string>
+                <string>{{381,1140},{325,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +189,7 @@
             <key>obstacle_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{329,189},{240,100}}</string>
+                <string>{{708,1140},{240,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +202,7 @@
             <key>obstacle_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{571,189},{300,85}}</string>
+                <string>{{950,1140},{300,85}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +215,7 @@
             <key>obstacle_5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,316},{325,120}}</string>
+                <string>{{1252,1140},{325,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +228,7 @@
             <key>obstacle_6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{329,316},{530,150}}</string>
+                <string>{{2,1327},{530,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +241,7 @@
             <key>obstacle_7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,468},{300,200}}</string>
+                <string>{{534,1327},{300,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +254,7 @@
             <key>obstacle_8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,468},{300,200}}</string>
+                <string>{{836,1327},{300,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +267,7 @@
             <key>obstacle_9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{606,468},{95,140}}</string>
+                <string>{{1138,1327},{95,140}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,15 +280,15 @@
             <key>soul_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{703,468},{60,60}}</string>
+                <string>{{1235,1327},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{60,60}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{60,60}</string>
+                <string>{70,100}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -179,13 +296,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>world_01_objects.png</string>
+            <string>world_0.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:07d89af9902272837d88b4a2dbd3a2bb:962293da76ed48eaf58609b5695dd368:f785908107b84d9803be73c043d85075$</string>
+            <string>$TexturePacker:SmartUpdate:52fae08541bceeda7386d014c74ed249:446393c5f07d7b845fb2e91b6cbc2057:d4b9aa1647877a4021211d68cd955404$</string>
             <key>textureFileName</key>
-            <string>world_01_objects.png</string>
+            <string>world_0.png</string>
         </dict>
     </dict>
 </plist>
