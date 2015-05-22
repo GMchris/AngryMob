@@ -2,7 +2,7 @@
     "project_type": "javascript",
 
     "debugMode" : 1,
-    "showFPS" : true,
+    "showFPS" : false,
     "frameRate" : 60,
     "id" : "gameCanvas",
     "renderMode" : 0,
@@ -11,6 +11,7 @@
     "modules" : ["cocos2d", "box2d"],
 
     "jsList" : [
+        "src/helpers/helpers.js",
         "src/helpers/extensions.js",
         "src/helpers/Memory.js",
         "src/helpers/colliders.js",
@@ -24,13 +25,21 @@
         "src/Sprites/GameObjects/Obstacle.js",
         "src/Sprites/GameObjects/Soul.js",
         "src/Sprites/BackgroundSegment.js",
+        "src/Sprites/Mob.js",
 
         "src/UI/SpeedBar.js",
+        "src/UI/Button.js",
+        "src/UI/SoulCounter.js",
+        "src/UI/DistanceCounter.js",
 
-        "src/Layers/GameObjectsLayer.js",
-        "src/Layers/BackgroundLayer.js",
-        "src/Layers/GameUILayer.js",
+        "src/Layers/Game/GameObjectsLayer.js",
+        "src/Layers/Game/BackgroundLayer.js",
+        "src/Layers/Game/GameUILayer.js",
+        "src/Layers/Menu/MenuBackgroundLayer.js",
+        "src/Layers/Menu/MenuUILayer.js",
 
+        "src/Scenes/MainMenuScene.js",
+        "src/Scenes/LabScene.js",
         "src/Scenes/GameScene.js",
 
         "src/segments/segment_01.js",

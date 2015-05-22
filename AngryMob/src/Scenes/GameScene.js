@@ -3,7 +3,7 @@
 var GameScene = cc.Scene.extend({
 
   // Own properties.
-  worldType: 0, //TODO: Set this dynamically.
+  worldType: null, //TODO: Set this dynamically.
 
   // Game objects.
   player: null,
@@ -11,13 +11,19 @@ var GameScene = cc.Scene.extend({
   obstacles: null,
   souls: null,
 
+  // Stats.
+  currentDistanceTravelled: null,
+  currentSoulCount: null,
+
   // Layers.
   backgroundLayer: null,
   gameObjectsLayer: null,
   uiLayer: null,
 
-  ctor: function() {
-    this._super.apply(this, arguments);
+  ctor: function(worldType) {
+    this._super();
+
+    this.worldType = worldType;
 
     this.init();
   },
@@ -26,6 +32,7 @@ var GameScene = cc.Scene.extend({
 
     // The order of the methods being called here is important. Some use properties set by others.
     this.runGeneralSetup();
+    this.initializeActions();
     this.instantiateLayers();
 
     cc.eventManager.addListener(this.createTouchHandler(), this.gameObjectsLayer);
@@ -38,8 +45,8 @@ var GameScene = cc.Scene.extend({
   onEnter: function() {
     this._super();
 
-    this.gameObjectsLayer.generateSegment();
-    this.runAction(this.upscaleSpeedAction);
+    this.runAction(cc.sequence(cc.delayTime(G.INITIAL_LAUNCH_DELAY), cc.callFunc(this.launch, this)));
+    this.runAction(this.calculateDistanceAction);
 
     this.scheduleUpdate();
     this.pause();
@@ -53,7 +60,23 @@ var GameScene = cc.Scene.extend({
     Game.set('maxLives', 3);
     Game.set('lives', Game.get('maxLives'));
     this.setSpeed();
-    this.upscaleSpeedAction = cc.sequence([cc.delayTime(G.SPEEDUP_TIMEOUT), cc.callFunc(this.upscaleSpeed, this)]);
+    this.currentDistanceTravelled = 0;
+    this.currentSoulCount = 0;
+  },
+
+  /**
+   * Creates, but doesn't start GameScene actions.
+   */
+  initializeActions: function() {
+    // Repeating action that raises the movement speed.
+    this.upscaleSpeedAction = cc.sequence(cc.delayTime(G.SPEEDUP_TIMEOUT), cc.callFunc(this.upscaleSpeed, this));
+    this.upscaleSpeedAction.repeatForever();
+    this.upscaleSpeedAction.retain();
+
+    // Repeating action that increments and updates the distance travelled.
+    this.calculateDistanceAction = cc.sequence(cc.delayTime(0.2), cc.callFunc(this.calculateDistance, this));
+    this.calculateDistanceAction.repeatForever();
+    this.calculateDistanceAction.retain();
   },
 
   /**
@@ -70,6 +93,11 @@ var GameScene = cc.Scene.extend({
     this.addChild(this.uiLayer);
   },
 
+  launch: function() {
+    this.gameObjectsLayer.generateSegment();
+    this.runAction(this.upscaleSpeedAction);
+  },
+
   /**
    * BASIC GAME OPERATIONS #################################################################
    */
@@ -77,10 +105,13 @@ var GameScene = cc.Scene.extend({
   gainLife: function() {
     Game.increment('lives');
     this.setSpeed();
+    this.gameObjectsLayer.moveMob();
   },
 
   loseLife: function() {
     Game.decrement('lives');
+    this.player.receiveDamage();
+    this.gameObjectsLayer.moveMob();
     this.uiLayer.speedBar.loseLife();
     this.setSpeed();
 
@@ -90,10 +121,18 @@ var GameScene = cc.Scene.extend({
   },
 
   endGame: function() {
+    this.stopAllActions();
     this.player.die();
     this.gameObjectsLayer.fadeInOverlay();
     Game.set('additionalSpeed', 0);
     Game.set('state', G.STATE.ENDING);
+
+    // Memory operations.
+    Memory.add('souls', this.currentSoulCount);
+
+    if (Memory.get('highScore') < this.currentDistanceTravelled) {
+      Memory.set('highScore', this.currentDistanceTravelled);
+    }
   },
 
   /**
@@ -101,22 +140,31 @@ var GameScene = cc.Scene.extend({
    */
   upscaleSpeed: function() {
     if (Game.get('state') === G.STATE.PLAYING) {
-        Game.increment('additionalSpeed');
-        this.runAction(this.upscaleSpeedAction);
+      Game.increment('additionalSpeed');
     }
+  },
+
+  /**
+   * Periodically called to update the distance travelled
+   */
+  calculateDistance: function() {
+    var additionalDistance = Math.round(Game.get('speed') / 4);
+    this.currentDistanceTravelled += additionalDistance;
+    this.uiLayer.distanceCounter.setLabelText(this.currentDistanceTravelled);
   },
 
   setSpeed: function() {
     Game.set('speed', G.SPEEDS[Game.get('lives')]);
-    console.log(Game.get('computedSpeed'));
   },
 
   pause: function() {
+    this.gameObjectsLayer.showOverlay(this.player.getPosition());
     Game.set('state', G.STATE.PAUSED);
     cc.director.pause();
   },
 
   resume: function() {
+    this.gameObjectsLayer.hideOverlay();
     Game.set('state', G.STATE.PLAYING);
     cc.director.resume();
   },
@@ -137,7 +185,7 @@ var GameScene = cc.Scene.extend({
 
   onTouchBegan: function(e) {
     var location = e.getLocation();
-    if (Game.get('state') === G.STATE.PAUSED && cc.rectContainsPoint(this.player.getBoundingBox(), location)) {
+    if (Game.get('state') === G.STATE.PAUSED && this.player.pointInMoveArea(location)) {
       this.resume();
       this.player.animateTo(location.x, location.y, 0.05);
       return true;
@@ -162,6 +210,12 @@ var GameScene = cc.Scene.extend({
     return true;
   },
 
+  onSoulCollected: function(soul) {
+    this.currentSoulCount += G.SOUL_VALUES[soul.type];
+    this.uiLayer.soulCounter.setLabelText(this.currentSoulCount);
+    soul.deactivate();
+  },
+
   // UPDATE METHODS #############################################################
 
   checkObstacleCollision: function() {
@@ -171,7 +225,6 @@ var GameScene = cc.Scene.extend({
           var obstacle = this.obstacles[obstacleType][poolIndex];
           if (obstacle.inUse) {
             if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
-              this.player.receiveDamage();
               this.loseLife();
               return true;
             }
@@ -187,7 +240,7 @@ var GameScene = cc.Scene.extend({
         var soul = this.souls[soulType][soulIdx];
         if (soul.inUse) {
           if (cc.rectIntersectsRect(soul.computedCollider, this.player.computedCollider)) {
-            soul.deactivate();
+            this.onSoulCollected(soul);
             return true;
           }
         }

@@ -7,7 +7,7 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         pregame();
-        cc.director.runScene(new GameScene());
+        cc.director.runScene(new MainMenuScene());
     }, this);
 };
 cc.game.run();
@@ -16,6 +16,6 @@ function pregame() {
     Memory.load();
 
     // TODO: Delete this functionality later and replace it's functionality before each level starts
-    cc.spriteFrameCache.addSpriteFrames(res.common_object_plist, res.common_objects_png);
+    cc.spriteFrameCache.addSpriteFrames(res.ui_plist, res.ui_png);
     cc.spriteFrameCache.addSpriteFrames(res.world_0_plist, res.world_0_png);
 }

@@ -8,13 +8,15 @@
       [X] Collision detection with obstacles
       [X] Collision detection with souls
       [X] Soul collection
-      [ ] Speed scaling
+      [X] Speed scaling
       [X] Procedural levels
       [ ] Added randomness
       [ ] Loading/Unloading assets
       [X] Life/Speed system
+      [ ] Angry mob
       [ ] Distance calculator
-      [ ] Monster capture
+      [X] Monster capture
+	  [ ] Post game
       [ ] Angry mob
       [ ] Werewolf special skill
       [ ] Mummy special skill

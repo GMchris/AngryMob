@@ -71,7 +71,7 @@ var Obstacle = cc.Sprite.extend({
 
       this.move();
       this.computeCollider();
-      this.zIndex = this.winSize.height - this.y;
+      this.parent.reorderChild(this, this.winSize.height - this.y);
 
       if (this.y + this.height < 0) {
         this.deactivate();

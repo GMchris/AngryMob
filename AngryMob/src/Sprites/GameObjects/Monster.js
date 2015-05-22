@@ -59,6 +59,18 @@ var Monster = cc.Sprite.extend({
     this.runAction(this.runAnimation);
   },
 
+  /**
+   * Check if the click was in a small box under the player character.
+   * @param {Object} location
+   * @returns {Boolean} isPointInMoveArea
+   */
+  pointInMoveArea: function(location) {
+    // An area just under the monster.
+    var moveArea = cc.rect(this.x - this.width/2, this.y - 40, this.width, 60);
+
+    return cc.rectContainsPoint(moveArea, location);
+  },
+
   die: function() {
     var duration = this.y / 200;
 
@@ -80,7 +92,7 @@ var Monster = cc.Sprite.extend({
   },
 
   update: function() {
-    this.zIndex = this.winSize.height - this.y;
+    this.parent.reorderChild(this, this.winSize.height - this.y);
     this.computeCollider();
   }
 });

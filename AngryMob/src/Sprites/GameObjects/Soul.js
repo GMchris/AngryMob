@@ -5,7 +5,8 @@ var Soul = cc.Sprite.extend({
   outOfUsePosition: cc.p(-999, -999),
 
   ctor: function(type) {
-    this._super('#soul_'+ type + '.png');
+    this.type = type;
+    this._super('#soul_'+ this.type + '.png');
 
     this.collider = ColliderGenerator.get('soul');
     this.computedCollider = cc.rect(0, 0, this.collider.width, this.collider.height);
@@ -62,7 +63,7 @@ var Soul = cc.Sprite.extend({
       this.move();
       this.computeCollider();
 
-      this.zIndex = this.winSize.height - this.y;
+      this.parent.reorderChild(this, this.winSize.height - this.y);
 
       if (this.y + this.height < 0) {
         this.deactivate();

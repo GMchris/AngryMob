@@ -7,8 +7,9 @@ var Memory = (function() {
   var  memory = {
     souls: 0,
     monsters: [],
-    initialSpeed: -1,
-    soulMultiplier: -1
+    initialSpeed: 0,
+    soulMultiplier: 0,
+    highScore: 0
   };
 
   /**
@@ -43,6 +44,40 @@ var Memory = (function() {
   }
 
   /**
+   * Adds to a property.
+   * @param property
+   * @param amount
+   */
+  function add(property, amount) {
+    cc.assert(cc.isString(property), 'Memory.set: Property name must be a string, not ' + property);
+    cc.assert(!cc.isUndefined(amount), 'Memory.set: Value must not be undefined');
+
+    if (property && memory.hasOwnProperty(property)) {
+      memory[property] += amount;
+      save();
+    } else {
+      cc.assert(false, 'Memory.set: Memory has no property named "' + property + '" .')
+    }
+  }
+
+  /**
+   * Subtracts from a property.
+   * @param property
+   * @param amount
+   */
+  function subtract(property, amount) {
+    cc.assert(cc.isString(property), 'Memory.set: Property name must be a string, not ' + property);
+    cc.assert(!cc.isUndefined(amount), 'Memory.set: Value must not be undefined');
+
+    if (property && memory.hasOwnProperty(property)) {
+      memory[property] -= amount;
+      save();
+    } else {
+      cc.assert(false, 'Memory.set: Memory has no property named "' + property + '" .')
+    }
+  }
+
+  /**
    * Saves the memory object in it's current state.
    */
   function save() {
@@ -66,18 +101,26 @@ var Memory = (function() {
    * Sets default values to all memory items.
    */
   function cleanMemory() {
-      memory.souls = 0;
-      memory.monsers = [];
-      memory.initialSpeed = -1;
-      memory.soulMultiplier = -1;
+    memory.souls = 0;
+    memory.monsers = [];
+    memory.initialSpeed = -1;
+    memory.soulMultiplier = -1;
+    memory.highScore = 0;
 
-      save();
+    save();
+  }
+
+  function clear() {
+    localStorage.removeItem(STORAGE_KEY);
   }
 
   return {
     get: get,
     set: set,
     save: save,
-    load: load
+    load: load,
+    add: add,
+    subtract: subtract,
+    clear: clear
   }
 })();

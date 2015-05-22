@@ -13,12 +13,13 @@ var SpeedBar = cc.Sprite.extend({
     this.speedPercent = G.HUNDRED_PERCENT;
     this.percentileSegment = Math.floor(this.speedPercent / Game.get('maxLives'));
     this.gainLifeCB = cc.callFunc(this.gainLife, this);
+    this.gainLifeCB.retain();
 
     this.init();
   },
 
   init: function() {
-    this.setPosition(580, Game.get('winSize').height / 2);
+    this.setPosition(580, 700);
     this.setContentSize(15, 150);
 
     this.generateDynamicBar();
