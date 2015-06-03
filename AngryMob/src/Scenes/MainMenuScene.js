@@ -6,6 +6,7 @@ var MainMenuScene = cc.Scene.extend({
 
   ctor: function() {
     this._super.apply(this, arguments);
+    this.winSize = Game.set('winSize', cc.director.getWinSize());
 
     this.init();
   },

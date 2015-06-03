@@ -6,6 +6,7 @@ var GameObjectsLayer = cc.Layer.extend({
   particleSystems: null,
   overlay: null,
   clickIndicator: null,
+  clickIndicatorScaleAction: null,
 
   init: function(gameScene) {
     this.winSize = Game.get('winSize');
@@ -93,7 +94,10 @@ var GameObjectsLayer = cc.Layer.extend({
     this.addChild(this.overlay);
 
     this.clickIndicator = cc.Sprite.create('#click_indicator.png');
-    this.overlay.addChild(this.clickIndicator);
+    this.addChild(this.clickIndicator);
+
+    this.overlayFadeInAction = cc.fadeTo(0.1, 120);
+    this.clickIndicatorScaleAction = cc.scaleTo(0.1, 1);
   },
 
   /**
@@ -101,14 +105,17 @@ var GameObjectsLayer = cc.Layer.extend({
    * @param {cc.Point} playerPos
    */
   showOverlay: function(playerPos) {
-    this.overlay.opacity = 100;
+    this.overlay.runAction(this.overlayFadeInAction);
     this.clickIndicator.setPosition(playerPos);
-    this.clickIndicator.opacity = 255;
+    this.clickIndicator.setScale(1.5);
+    this.clickIndicator.runAction(this.clickIndicatorScaleAction);
   },
 
   hideOverlay: function() {
+    this.overlay.stopAllActions();
     this.overlay.opacity = 0;
-    this.clickIndicator.opacity = 0;
+    this.clickIndicator.stopAllActions();
+    this.clickIndicator.setPosition(G.OFFSCREEN_POSITION);
   },
 
   fadeInOverlay: function() {

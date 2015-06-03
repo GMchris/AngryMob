@@ -49,14 +49,13 @@ var GameScene = cc.Scene.extend({
     this.runAction(this.calculateDistanceAction);
 
     this.scheduleUpdate();
-    this.pause();
+    this.pauseGame();
   },
 
   /**
    * Sets general properties in the scene.
    */
   runGeneralSetup: function() {
-    this.winSize = Game.set('winSize', cc.director.getWinSize());
     Game.set('maxLives', 3);
     Game.set('lives', Game.get('maxLives'));
     this.setSpeed();
@@ -157,16 +156,20 @@ var GameScene = cc.Scene.extend({
     Game.set('speed', G.SPEEDS[Game.get('lives')]);
   },
 
-  pause: function() {
+  pauseGame: function() {
     this.gameObjectsLayer.showOverlay(this.player.getPosition());
     Game.set('state', G.STATE.PAUSED);
-    cc.director.pause();
+    this.player.pause();
+    this.pause();
+    this.uiLayer.speedBar.currentSpeedBar.pause();
   },
 
-  resume: function() {
+  resumeGame: function() {
     this.gameObjectsLayer.hideOverlay();
     Game.set('state', G.STATE.PLAYING);
-    cc.director.resume();
+    this.player.resume();
+    this.resume();
+    this.uiLayer.speedBar.currentSpeedBar.resume();
   },
 
   // EVENTS ##################################################################
@@ -186,7 +189,7 @@ var GameScene = cc.Scene.extend({
   onTouchBegan: function(e) {
     var location = e.getLocation();
     if (Game.get('state') === G.STATE.PAUSED && this.player.pointInMoveArea(location)) {
-      this.resume();
+      this.resumeGame();
       this.player.animateTo(location.x, location.y, 0.05);
       return true;
     }
@@ -205,7 +208,7 @@ var GameScene = cc.Scene.extend({
 
   onTouchEnded: function(e) {
     if (Game.get('state') === G.STATE.PLAYING) {
-        this.pause();
+        this.pauseGame();
     }
     return true;
   },

@@ -7,8 +7,9 @@ var Memory = (function() {
   var  memory = {
     souls: 0,
     monsters: [],
-    initialSpeed: 0,
-    soulMultiplier: 0,
+    initialSpeed: -1,
+    soulMultiplier: -1,
+    healthRecovery: -1,
     highScore: 0
   };
 
@@ -21,7 +22,6 @@ var Memory = (function() {
       if (property && memory.hasOwnProperty(property)) {
           return memory[property];
       }
-
       return memory;
   }
 
@@ -102,9 +102,10 @@ var Memory = (function() {
    */
   function cleanMemory() {
     memory.souls = 0;
-    memory.monsers = [];
+    memory.monsters = [];
     memory.initialSpeed = -1;
     memory.soulMultiplier = -1;
+    memory.healthRecovery = -1;
     memory.highScore = 0;
 
     save();

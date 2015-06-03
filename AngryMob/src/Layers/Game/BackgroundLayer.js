@@ -24,6 +24,9 @@ var BackgroundLayer = cc.Layer.extend({
     this.backgroundOne.setPosition(0, 0);
     this.backgroundTwo.setPosition(0, this.backgroundHeight);
 
+    this.backgroundOne.setScale(1, 1.01);
+    this.backgroundTwo.setScale(1, 1.01);
+
     this.addChild(this.backgroundOne);
     this.addChild(this.backgroundTwo);
 
@@ -31,15 +34,17 @@ var BackgroundLayer = cc.Layer.extend({
   },
 
   update: function() {
-    this.backgroundOne.y -= Game.get('computedSpeed');
-    this.backgroundTwo.y -= Game.get('computedSpeed');
+    if (Game.get('state') === G.STATE.PLAYING) {
+      this.backgroundOne.y -= Game.get('computedSpeed');
+      this.backgroundTwo.y -= Game.get('computedSpeed');
 
-    if (this.backgroundOne.y  <= -this.backgroundHeight) {
-      this.backgroundOne.y = this.backgroundTwo.y + this.backgroundHeight;
-    }
+      if (this.backgroundOne.y <= -this.backgroundHeight) {
+        this.backgroundOne.y = this.backgroundTwo.y + this.backgroundHeight;
+      }
 
-    if (this.backgroundTwo.y <= -this.backgroundHeight) {
-      this.backgroundTwo.y = this.backgroundOne.y + this.backgroundHeight;
+      if (this.backgroundTwo.y <= -this.backgroundHeight) {
+        this.backgroundTwo.y = this.backgroundOne.y + this.backgroundHeight;
+      }
     }
   }
 });

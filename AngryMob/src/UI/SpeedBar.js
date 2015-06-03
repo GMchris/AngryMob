@@ -5,6 +5,7 @@ var SpeedBar = cc.Sprite.extend({
   speedPercent: 0,
   // One 'life' equals this much of the bar
   percentileSegment: 0,
+  particleSystem: null,
 
   ctor: function(gameScene) {
     this._super();
@@ -23,6 +24,7 @@ var SpeedBar = cc.Sprite.extend({
     this.setContentSize(15, 150);
 
     this.generateDynamicBar();
+    this.generateParticleSystem();
 
     this.scheduleUpdate();
   },
@@ -38,6 +40,13 @@ var SpeedBar = cc.Sprite.extend({
     backgroundSprite.addChild(this.currentSpeedBar);
 
     this.addChild(backgroundSprite);
+  },
+
+  generateParticleSystem: function() {
+    this.particleSystem = cc.ParticleSystem.create(res.particles);
+    this.particleSystem.setPosition(0, 150);
+
+    this.addChild(this.particleSystem);
   },
 
   /**

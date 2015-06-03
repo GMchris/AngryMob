@@ -15,3 +15,7 @@ Number.prototype.clamp = function(min, max) {
   if (max < this) return max;
   return this.valueOf();
 };
+
+Math.randomBetween = function(min, max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
+};

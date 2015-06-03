@@ -21,6 +21,7 @@
         "src/resource.js",
         "src/GameController.js",
 
+        "src/Sprites/GameObjects/MovingObject.js",
         "src/Sprites/GameObjects/Monster.js",
         "src/Sprites/GameObjects/Obstacle.js",
         "src/Sprites/GameObjects/Soul.js",
@@ -31,6 +32,9 @@
         "src/UI/Button.js",
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
+        "src/UI/Tabs/Tab.js",
+        "src/UI/Tabs/MonsterTab.js",
+        "src/UI/Tabs/UpgradeTab.js",
 
         "src/Layers/Game/GameObjectsLayer.js",
         "src/Layers/Game/BackgroundLayer.js",
@@ -38,6 +42,7 @@
         "src/Layers/Menu/MenuBackgroundLayer.js",
         "src/Layers/Menu/MenuUILayer.js",
 
+        "src/UI/Tabs/TabScene.js",
         "src/Scenes/MainMenuScene.js",
         "src/Scenes/LabScene.js",
         "src/Scenes/GameScene.js",

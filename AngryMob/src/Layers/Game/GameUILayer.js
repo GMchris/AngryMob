@@ -9,7 +9,6 @@ var GameUILayer = cc.Layer.extend({
     this.init();
   },
   init: function() {
-    this.winSize = Game.get('winSize');
 
     this.speedBar = new SpeedBar(this.gameScene);
     this.distanceCounter = new DistanceCounter();

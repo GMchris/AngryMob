@@ -7,6 +7,7 @@ var G = {
   // Common constants.
   HUNDRED_PERCENT: 100,
   DEFAULT_FONT: 'Cartwheel',
+  OFFSCREEN_POSITION: cc.p(9999, 9999),
 
   // Monster constants.
   FRANKENSTEIN: 0,
@@ -32,7 +33,6 @@ var G = {
   SOUL_VALUES: [5, 10, 25],
 
   SEGMENTS: [],
-
   // State.
   STATE: {
       PLAYING: 0,

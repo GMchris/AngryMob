@@ -5,7 +5,9 @@ var res = {
     ui_png: "res/ui/ui.png",
 
     world_0_plist: "res/world_0/world_0.plist",
-    world_0_png: "res/world_0/world_0.png"
+    world_0_png: "res/world_0/world_0.png",
+
+    particles: "res/common/soul_particles.plist"
 };
 
 var g_resources = [];
