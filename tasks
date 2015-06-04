@@ -13,25 +13,24 @@
       [ ] Added randomness
       [ ] Loading/Unloading assets
       [X] Life/Speed system
-      [ ] Angry mob
-      [ ] Distance calculator
+      [X] Angry mob
+      [X] Distance calculator
       [X] Monster capture
 	  [ ] Post game
-      [ ] Angry mob
       [ ] Werewolf special skill
       [ ] Mummy special skill
-    [ ] UI
-      [ ] Soul counter
-      [ ] Distance counter
-      [ ] Speed/life bar
-      [ ] Pause screen
+    [X] UI
+      [X] Soul counter
+      [X] Distance counter
+      [X] Speed/life bar
+      [X] Pause screen
     [ ] Graphics
       [ ] Application
         [ ] Icon
         [ ] Splash
       [ ] Main menu
         [ ] Home screen background
-        [ ] Regular button
+        [X] Regular button
         [ ] Buy button
       [ ] Frankenstein's monster
         [X] Character running sprites
@@ -43,13 +42,12 @@
       [ ] Mummy
   [ ] Main menu
     [ ] UI
-      [ ] Play, Shop and Settings button
       [ ] Dynamic background
     [ ] Graphics
       [ ] Common background
       [ ] Werewolf background
       [ ] Mummy background
-      [ ] Generic button
+      [X] Generic button
       [ ] Settings button
   [ ] Shop menu
     [ ] Common
@@ -68,6 +66,7 @@
         [ ] Werewolf avatar
         [ ] Mummy avatar
     [ ] Upgrades tab
+      [ ] Buy upgrade functionality
       [ ] UI
         [ ] Upgrade icons
         [ ] Buy upgrade dialog
