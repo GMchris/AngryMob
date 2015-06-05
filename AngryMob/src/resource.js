@@ -7,7 +7,8 @@ var res = {
     world_0_plist: "res/world_0/world_0.plist",
     world_0_png: "res/world_0/world_0.png",
 
-    particles: "res/common/soul_particles.plist"
+    soul_fire_particles: "res/common/soul_particles.plist",
+    canister_particles: "res/common/canister_particles.plist"
 };
 
 var g_resources = [];

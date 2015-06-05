@@ -50,7 +50,7 @@ var MovingObject = cc.Sprite.extend({
   },
 
   update: function() {
-    if (this.inUse && Game.get('state') === G.STATE.PLAYING) {
+    if (this.inUse && Game.get('state') !== G.STATE.PAUSED) {
 
       this.move();
       this.computeCollider();

@@ -11,7 +11,7 @@
  * @returns {*}
  */
 function switchCase(operand, cases) {
-  if (cc.isArray(cases)) {
+  if (cases.length) {
     for (var index = 0; index < cases.length; index++) {
       if (index == operand) {
         return cases[index];

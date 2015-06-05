@@ -34,7 +34,7 @@ var BackgroundLayer = cc.Layer.extend({
   },
 
   update: function() {
-    if (Game.get('state') === G.STATE.PLAYING) {
+    if (Game.get('state') !== G.STATE.PAUSED) {
       this.backgroundOne.y -= Game.get('computedSpeed');
       this.backgroundTwo.y -= Game.get('computedSpeed');
 

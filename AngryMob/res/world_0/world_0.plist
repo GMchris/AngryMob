@@ -290,6 +290,32 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
+            <key>soul_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1307,1327},{70,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{70,100}}</string>
+                <key>sourceSize</key>
+                <string>{70,100}</string>
+            </dict>
+            <key>soul_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1379,1327},{70,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{70,100}}</string>
+                <key>sourceSize</key>
+                <string>{70,100}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -300,7 +326,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:52fae08541bceeda7386d014c74ed249:446393c5f07d7b845fb2e91b6cbc2057:d4b9aa1647877a4021211d68cd955404$</string>
+            <string>$TexturePacker:SmartUpdate:ae21584f9604339cebcdc8a7b112edca:1fb6bf52c9799601a07480521eb859ae:d4b9aa1647877a4021211d68cd955404$</string>
             <key>textureFileName</key>
             <string>world_0.png</string>
         </dict>

@@ -48,6 +48,8 @@ var GameScene = cc.Scene.extend({
     this.runAction(cc.sequence(cc.delayTime(G.INITIAL_LAUNCH_DELAY), cc.callFunc(this.launch, this)));
     this.runAction(this.calculateDistanceAction);
 
+    this.uiLayer.run();
+
     this.scheduleUpdate();
     this.pauseGame();
   },
@@ -123,6 +125,7 @@ var GameScene = cc.Scene.extend({
     this.stopAllActions();
     this.player.die();
     this.gameObjectsLayer.fadeInOverlay();
+    this.uiLayer.onGameEnd(this.currentSoulCount);
     Game.set('additionalSpeed', 0);
     Game.set('state', G.STATE.ENDING);
 
@@ -161,7 +164,7 @@ var GameScene = cc.Scene.extend({
     Game.set('state', G.STATE.PAUSED);
     this.player.pause();
     this.pause();
-    this.uiLayer.speedBar.currentSpeedBar.pause();
+    this.uiLayer.onPause();
   },
 
   resumeGame: function() {
@@ -169,7 +172,7 @@ var GameScene = cc.Scene.extend({
     Game.set('state', G.STATE.PLAYING);
     this.player.resume();
     this.resume();
-    this.uiLayer.speedBar.currentSpeedBar.resume();
+    this.uiLayer.onResume();
   },
 
   // EVENTS ##################################################################

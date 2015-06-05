@@ -32,9 +32,6 @@
         "src/UI/Button.js",
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
-        "src/UI/Tabs/Tab.js",
-        "src/UI/Tabs/MonsterTab.js",
-        "src/UI/Tabs/UpgradeTab.js",
 
         "src/Layers/Game/GameObjectsLayer.js",
         "src/Layers/Game/BackgroundLayer.js",

@@ -58,19 +58,19 @@ var GameObjectsLayer = cc.Layer.extend({
      this.gameScene.souls[G.LEGENDARY_SOUL_TYPE] = [];
 
      for (var commonSoulIdx = 0; commonSoulIdx < G.COMMON_SOUL_POOL_COUNT ; commonSoulIdx++) {
-         this.gameScene.souls[G.COMMON_SOUL_TYPE][commonSoulIdx] = new Soul(G.COMMON_SOUL_TYPE);
+         this.gameScene.souls[G.COMMON_SOUL_TYPE][commonSoulIdx] = new Soul(G.COMMON_SOUL_TYPE, this.gameScene);
          this.batch.addChild(this.gameScene.souls[G.COMMON_SOUL_TYPE][commonSoulIdx]);
      }
 
-     //for (var specialSoulIdx = 0; specialSoulIdx < G.SPECIAL_SOUL_POOL_COUNT ; specialSoulIdx++) {
-     //  this.gameScene.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx] = new Soul(G.SPECIAL_SOUL_TYPE);
-     //  this.batch.addChild(this.gameScene.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx]);
-     //}
-     //
-     //for (var legendarySoulIndex = 0; legendarySoulIndex < G.LEGENDARY_SOUL_POOL_COUNT ; legendarySoulIndex++) {
-     //  this.gameScene.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex] = new Soul(G.LEGENDARY_SOUL_TYPE);
-     //  this.batch.addChild(this.gameScene.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex]);
-     //}
+     for (var specialSoulIdx = 0; specialSoulIdx < G.SPECIAL_SOUL_POOL_COUNT ; specialSoulIdx++) {
+       this.gameScene.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx] = new Soul(G.SPECIAL_SOUL_TYPE, this.gameScene);
+       this.batch.addChild(this.gameScene.souls[G.SPECIAL_SOUL_TYPE][specialSoulIdx]);
+     }
+
+     for (var legendarySoulIndex = 0; legendarySoulIndex < G.LEGENDARY_SOUL_POOL_COUNT ; legendarySoulIndex++) {
+       this.gameScene.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex] = new Soul(G.LEGENDARY_SOUL_TYPE, this.gameScene);
+       this.batch.addChild(this.gameScene.souls[G.LEGENDARY_SOUL_TYPE][legendarySoulIndex]);
+     }
    },
 
   instantiateMob: function() {
@@ -96,8 +96,10 @@ var GameObjectsLayer = cc.Layer.extend({
     this.clickIndicator = cc.Sprite.create('#click_indicator.png');
     this.addChild(this.clickIndicator);
 
-    this.overlayFadeInAction = cc.fadeTo(0.1, 120);
+    this.overlayFadeInAction = cc.fadeTo(0.2, 120);
     this.clickIndicatorScaleAction = cc.scaleTo(0.1, 1);
+    this.overlayFadeInAction.retain();
+    this.clickIndicatorScaleAction.retain();
   },
 
   /**
@@ -158,7 +160,7 @@ var GameObjectsLayer = cc.Layer.extend({
             }
         }
         // If no items from that pool are free, creata a new one.
-        var soul = new Soul(type);
+        var soul = new Soul(type, this.gameScene);
 
         pool.push(soul);
         this.batch.addChild(soul);

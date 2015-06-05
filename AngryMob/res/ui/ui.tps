@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.7.1</string>
+        <string>3.8.0</string>
         <key>fileName</key>
         <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/ui/ui.tps</string>
         <key>autoSDSettings</key>
@@ -194,6 +194,9 @@
             <filename>common_button.png</filename>
             <filename>distance_counter.png</filename>
             <filename>soul_counter.png</filename>
+            <filename>speed_bar_container.png</filename>
+            <filename>common_button_active.png</filename>
+            <filename>soul_canister.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

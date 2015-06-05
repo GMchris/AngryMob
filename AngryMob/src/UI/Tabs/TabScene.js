@@ -19,6 +19,7 @@ var TabScene = cc.Scene.extend({
 
       // The tabs fits the entire screen except for some room for the buttons.
       tab.setContentSize(this.winSize.width, this.winSize.height - this.TAB_HEIGHT);
+      tab.retain();
       this.addChild(tab);
 
       // Only the first tab is initially visible.

@@ -81,14 +81,14 @@ var Memory = (function() {
    * Saves the memory object in it's current state.
    */
   function save() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(memory));
+    cc.sys.localStorage.setItem(STORAGE_KEY, JSON.stringify(memory));
   }
 
   /**
    * Loads memory from storage or creates a clean copy of it if unavailable.
    */
   function load() {
-    var fetchedMemory = localStorage.getItem(STORAGE_KEY);
+    var fetchedMemory = cc.sys.localStorage.getItem(STORAGE_KEY);
 
     if (fetchedMemory) {
         memory = JSON.parse(fetchedMemory);
@@ -112,7 +112,7 @@ var Memory = (function() {
   }
 
   function clear() {
-    localStorage.removeItem(STORAGE_KEY);
+    cc.sys.localStorage.removeItem(STORAGE_KEY);
   }
 
   return {

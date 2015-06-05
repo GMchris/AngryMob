@@ -10,7 +10,7 @@ var SoulCounter = cc.Sprite.extend({
     this.setAnchorPoint(0, 1);
     this.setPosition(15, 1115);
 
-    this.label = new cc.LabelTTF('0', G.DEFAULT_FONT, 50);
+    this.label = new cc.LabelTTF('0', G.DEFAULT_FONT, 45);
     this.label.setAnchorPoint(0, 1);
     this.label.setPosition(75, 65);
     this.addChild(this.label);
