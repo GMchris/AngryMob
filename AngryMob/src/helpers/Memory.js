@@ -32,7 +32,7 @@ var Memory = (function() {
    */
   function set(property, value) {
 
-    cc.assert(cc.isString(property), 'Memory.set: Property name must be a string, not ' + property);
+    cc.assert(isString(property), 'Memory.set: Property name must be a string, not ' + property);
     cc.assert(!cc.isUndefined(value), 'Memory.set: Value must not be undefined');
 
     if (property && memory.hasOwnProperty(property)) {
@@ -49,7 +49,7 @@ var Memory = (function() {
    * @param amount
    */
   function add(property, amount) {
-    cc.assert(cc.isString(property), 'Memory.set: Property name must be a string, not ' + property);
+    cc.assert(isString(property), 'Memory.set: Property name must be a string, not ' + property);
     cc.assert(!cc.isUndefined(amount), 'Memory.set: Value must not be undefined');
 
     if (property && memory.hasOwnProperty(property)) {
@@ -66,7 +66,7 @@ var Memory = (function() {
    * @param amount
    */
   function subtract(property, amount) {
-    cc.assert(cc.isString(property), 'Memory.set: Property name must be a string, not ' + property);
+    cc.assert(isString(property), 'Memory.set: Property name must be a string, not ' + property);
     cc.assert(!cc.isUndefined(amount), 'Memory.set: Value must not be undefined');
 
     if (property && memory.hasOwnProperty(property)) {

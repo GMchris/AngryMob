@@ -1,6 +1,8 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var GameUILayer = cc.Layer.extend({
+  CANISTER_SOUL_FRAGMENTS: 50,
+
   speedBar: null,
   distanceCounter: null,
   soulCounter: null,
@@ -23,6 +25,7 @@ var GameUILayer = cc.Layer.extend({
     this.speedBar = new SpeedBar(this.gameScene);
     this.distanceCounter = new DistanceCounter();
     this.soulCounter = new SoulCounter();
+
     this.quitButton = new Button('Quit', cc.p(15, 15), this.transitionToMainMenu);
     this.menu = new cc.Menu(this.quitButton);
     this.menu.setPosition(0, 0);
@@ -37,7 +40,6 @@ var GameUILayer = cc.Layer.extend({
   run: function() {
     this.speedBar.showSpeedBar();
     this.particleSystem.stopSystem();
-    this.onGameEnd(2000);
   },
 
   /**
@@ -68,34 +70,48 @@ var GameUILayer = cc.Layer.extend({
 
   initiateAftermath: function() {
     this.soulCanister.runAction(cc.sequence(
-      cc.scaleTo(0.2, 0.5),
-      cc.scaleTo(0.1, 0.4),
+      cc.scaleTo(0.2, 0.6),
+      cc.scaleTo(0.1, 0.5),
       cc.delayTime(0.4),
       cc.callFunc(this.startParticleSystem, this))
     );
   },
 
   startParticleSystem: function() {
+    var emissionRate = this.soulsCollectedTemp / 15;
+    emissionRate = emissionRate > 50 ? 50 : emissionRate;
+    this.particleSystem.setEmissionRate(emissionRate);
     this.particleSystem.resetSystem();
-    this.iterateCollectedSouls();
+    this.runAction(cc.sequence(cc.delayTime(0.4), cc.callFunc(this.iterateCollectedSouls, this)));
   },
 
   iterateCollectedSouls: function() {
-    var collectedSoulsStep = this.soulsCollectedTemp / 20;
+    var collectedSoulsStep = this.soulsCollectedTemp / this.CANISTER_SOUL_FRAGMENTS;
     var soulCount = 0;
 
-    var scaleCanisterAction = cc.sequence(cc.delayTime(0.1), cc.callFunc(
+    var scaleCanisterAction = cc.sequence(cc.delayTime(0.05), cc.callFunc(
         function() {
           soulCount += collectedSoulsStep;
-          var souls = soulCount.clamp(0, 2000) / 2000;
-          this.soulCanister.setScale(Math.lerp(0.4, 1.3, souls));
+          var souls = soulCount.clamp(0, 1000) / 1000;
+          this.soulCanister.rotation -= 0.1;
+          this.soulCanister.setScale(Math.lerp(0.5, 1, souls));
+          this.soulCounter.setLabelText(Math.round(this.soulsCollectedTemp - soulCount));
+          this.endingSoulsLabel.setScale(Math.lerp(0.5, 1, souls));
+          this.endingSoulsLabel.setString(Math.round(soulCount));
         },
         this
     ));
 
-    scaleCanisterAction.repeat(20);
-    this.runAction(cc.sequence(scaleCanisterAction
-    ));
+    scaleCanisterAction.repeat(this.CANISTER_SOUL_FRAGMENTS);
+    this.runAction(scaleCanisterAction);
+    this.runAction(cc.sequence(cc.delayTime(0.05 * (this.CANISTER_SOUL_FRAGMENTS - 1)),
+        cc.callFunc(this.finishSoulIteration, this)));
+  },
+
+  finishSoulIteration: function() {
+    this.particleSystem.stopSystem();
+
+    this.endGameMenu.runAction(this.scaleUpButtonAction);
   },
 
   generateGameEndContent: function() {
@@ -107,8 +123,28 @@ var GameUILayer = cc.Layer.extend({
     this.soulCanister.setRotation(20);
     this.soulCanister.setScale(0);
 
+    this.endingSoulsLabel = new cc.LabelTTF('0', G.DEFAULT_FONT, 90);
+    this.endingSoulsLabel.setPosition(300, 460);
+    this.endingSoulsLabel.verticalAlign = 1;
+    this.endingSoulsLabel.strokeStyle = cc.color.BLACK;
+    this.endingSoulsLabel.lineWidth = 6;
+    this.endingSoulsLabel.setScale(0);
+
+
+    this.retryButton = new Button('Retry', cc.p(175, 125), this.transitionToMainMenu);
+    this.menuButton = new Button('Menu', cc.p(175, 225), this.transitionToMainMenu);
+
+    this.endGameMenu = new cc.Menu(this.retryButton, this.menuButton);
+    this.endGameMenu.setPosition(0, 0);
+    this.endGameMenu.setScale(0);
+
+    this.scaleUpButtonAction = cc.sequence(cc.scaleTo(0.2, 1.1), cc.scaleTo(0.1, 1));
+    this.scaleUpButtonAction.retain();
+
     this.addChild(this.soulCanister);
     this.addChild(this.particleSystem);
+    this.addChild(this.endingSoulsLabel);
+    this.addChild(this.endGameMenu);
   },
 
   transitionToMainMenu: function() {

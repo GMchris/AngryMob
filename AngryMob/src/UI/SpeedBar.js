@@ -65,7 +65,7 @@ var SpeedBar = cc.Sprite.extend({
   generateParticleSystem: function() {
     this.particleSystem = cc.ParticleSystem.create(res.soul_fire_particles);
     this.particleSystem.setPosition(0, 150);
-    this.particleSystemPulseAction = cc.sequence(cc.scaleTo(0.15, 1.5), cc.scaleTo(0.2, 1));
+    this.particleSystemPulseAction = cc.sequence(cc.scaleTo(0.15, 1.1), cc.scaleTo(0.2, 1));
     this.particleSystemPulseAction.retain();
 
     this.addChild(this.particleSystem);

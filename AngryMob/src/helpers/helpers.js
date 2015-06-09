@@ -29,3 +29,7 @@ function switchCase(operand, cases) {
   cc.assert(true, 'switchCase: no case matches the given operand');
   return null;
 }
+
+function isString(value) {
+  return typeof value === 'string';
+}
