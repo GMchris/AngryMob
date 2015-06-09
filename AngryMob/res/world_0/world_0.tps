@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.8.0</string>
+        <string>3.7.1</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/world_0/world_0.tps</string>
+        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/world_0/world_0.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -212,6 +212,8 @@
             <filename>soul_0.png</filename>
             <filename>soul_1.png</filename>
             <filename>soul_2.png</filename>
+            <filename>mob_front.png</filename>
+            <filename>mob_back.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

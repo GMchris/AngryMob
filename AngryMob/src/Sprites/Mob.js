@@ -1,6 +1,9 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var Mob = cc.Sprite.extend({
+  RUN_ANIMATION_SPEED: 0.2,
+  frontSprite: null,
+  backSprite: null,
   ctor: function() {
     this._super();
     this.init();
@@ -10,11 +13,23 @@ var Mob = cc.Sprite.extend({
 
     this.setPosition(0, -80);
 
-    this.tempImage = cc.Sprite.create();
-    this.tempImage.setColor(cc.color.BLACK);
-    this.tempImage.setTextureRect(cc.rect(0, 0, this.winSize.width, 150));
-    this.tempImage.setAnchorPoint(0, 0);
-    this.tempImage.setPosition(0, 0);
-    this.addChild(this.tempImage);
+    this.frontSprite = new cc.Sprite('#mob_front.png');
+    this.frontSprite.setAnchorPoint(0, 0);
+    this.frontSprite.setPosition(0, 0);
+
+    this.backSprite = new cc.Sprite('#mob_back.png');
+    this.backSprite.setAnchorPoint(0, 0);
+    this.backSprite.setPosition(0, -10);
+
+    this.frontSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 5), cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 0));
+    this.frontSpriteAnimation.repeatForever();
+    this.backSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 0, -5), cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 0));
+    this.backSpriteAnimation.repeatForever();
+
+    this.addChild(this.frontSprite);
+    this.addChild(this.backSprite);
+
+    this.frontSprite.runAction(this.frontSpriteAnimation);
+      this.backSprite.runAction(this.backSpriteAnimation);
   }
 });

@@ -86,10 +86,7 @@ var GameObjectsLayer = cc.Layer.extend({
   },
 
   instantiatePauseOverlay: function() {
-    this.overlay = cc.Sprite.create();
-    this.overlay.setColor(cc.color.BLACK);
-    this.overlay.setTextureRect(cc.rect(0, 0, this.winSize.width, this.winSize.height));
-    this.overlay.setAnchorPoint(0, 0);
+    this.overlay = new cc.LayerGradient(cc.color(0,0,0,255), cc.color(20, 64, 96, 255));
     this.overlay.opacity = 0;
     this.addChild(this.overlay);
 

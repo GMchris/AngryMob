@@ -97,7 +97,7 @@ var GameUILayer = cc.Layer.extend({
           this.soulCanister.setScale(Math.lerp(0.5, 1, souls));
           this.soulCounter.setLabelText(Math.round(this.soulsCollectedTemp - soulCount));
           this.endingSoulsLabel.setScale(Math.lerp(0.5, 1, souls));
-          this.endingSoulsLabel.setString(Math.round(soulCount));
+          this.endingSoulsLabel.setString(Math.round(soulCount) + Memory.get('souls'));
         },
         this
     ));
@@ -123,13 +123,12 @@ var GameUILayer = cc.Layer.extend({
     this.soulCanister.setRotation(20);
     this.soulCanister.setScale(0);
 
-    this.endingSoulsLabel = new cc.LabelTTF('0', G.DEFAULT_FONT, 90);
+    this.endingSoulsLabel = new cc.LabelTTF(Memory.get('souls').toString(), G.DEFAULT_FONT, 90);
     this.endingSoulsLabel.setPosition(300, 460);
     this.endingSoulsLabel.verticalAlign = 1;
     this.endingSoulsLabel.strokeStyle = cc.color.BLACK;
     this.endingSoulsLabel.lineWidth = 6;
     this.endingSoulsLabel.setScale(0);
-
 
     this.retryButton = new Button('Retry', cc.p(175, 125), this.transitionToMainMenu);
     this.menuButton = new Button('Menu', cc.p(175, 225), this.transitionToMainMenu);
