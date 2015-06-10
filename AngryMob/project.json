@@ -25,13 +25,15 @@
         "src/Sprites/GameObjects/Monster.js",
         "src/Sprites/GameObjects/Obstacle.js",
         "src/Sprites/GameObjects/Soul.js",
+        "src/Sprites/GameObjects/Mob.js",
+        "src/Sprites/Effects/SoulShard.js",
         "src/Sprites/BackgroundSegment.js",
-        "src/Sprites/Mob.js",
 
         "src/UI/SpeedBar.js",
         "src/UI/Button.js",
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
+        "src/UI/Dialog.js",
 
         "src/Layers/Game/GameObjectsLayer.js",
         "src/Layers/Game/BackgroundLayer.js",

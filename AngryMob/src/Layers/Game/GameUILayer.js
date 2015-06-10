@@ -26,7 +26,7 @@ var GameUILayer = cc.Layer.extend({
     this.distanceCounter = new DistanceCounter();
     this.soulCounter = new SoulCounter();
 
-    this.quitButton = new Button('Quit', cc.p(15, 15), this.transitionToMainMenu);
+    this.quitButton = new Button('Quit', cc.p(15, 15), this.confirmTransitionToMainMenu.bind(this));
     this.menu = new cc.Menu(this.quitButton);
     this.menu.setPosition(0, 0);
 
@@ -35,6 +35,38 @@ var GameUILayer = cc.Layer.extend({
     this.addChild(this.distanceCounter);
     this.addChild(this.soulCounter);
     this.addChild(this.menu);
+  },
+
+  generateGameEndContent: function() {
+    this.particleSystem = cc.ParticleSystem.create(res.canister_particles);
+    this.particleSystem.setPosition(45, 1080);
+
+    this.soulCanister = new cc.Sprite('#soul_canister.png');
+    this.soulCanister.setPosition(300, 650);
+    this.soulCanister.setRotation(20);
+    this.soulCanister.setScale(0);
+
+    this.endingSoulsLabel = new cc.LabelTTF(Memory.get('souls').toString(), G.DEFAULT_FONT, 90);
+    this.endingSoulsLabel.setPosition(300, 460);
+    this.endingSoulsLabel.verticalAlign = 1;
+    this.endingSoulsLabel.strokeStyle = cc.color.BLACK;
+    this.endingSoulsLabel.lineWidth = 6;
+    this.endingSoulsLabel.setScale(0);
+
+    this.retryButton = new Button('Retry', cc.p(175, 125), this.transitionToMainMenu);
+    this.menuButton = new Button('Menu', cc.p(175, 225), this.transitionToMainMenu);
+
+    this.endGameMenu = new cc.Menu(this.retryButton, this.menuButton);
+    this.endGameMenu.setPosition(0, 0);
+    this.endGameMenu.setScale(0);
+
+    this.scaleUpButtonAction = cc.sequence(cc.scaleTo(0.2, 1.1), cc.scaleTo(0.1, 1));
+    this.scaleUpButtonAction.retain();
+
+    this.addChild(this.soulCanister);
+    this.addChild(this.particleSystem);
+    this.addChild(this.endingSoulsLabel);
+    this.addChild(this.endGameMenu);
   },
 
   run: function() {
@@ -114,36 +146,9 @@ var GameUILayer = cc.Layer.extend({
     this.endGameMenu.runAction(this.scaleUpButtonAction);
   },
 
-  generateGameEndContent: function() {
-    this.particleSystem = cc.ParticleSystem.create(res.canister_particles);
-    this.particleSystem.setPosition(45, 1080);
-
-    this.soulCanister = new cc.Sprite('#soul_canister.png');
-    this.soulCanister.setPosition(300, 650);
-    this.soulCanister.setRotation(20);
-    this.soulCanister.setScale(0);
-
-    this.endingSoulsLabel = new cc.LabelTTF(Memory.get('souls').toString(), G.DEFAULT_FONT, 90);
-    this.endingSoulsLabel.setPosition(300, 460);
-    this.endingSoulsLabel.verticalAlign = 1;
-    this.endingSoulsLabel.strokeStyle = cc.color.BLACK;
-    this.endingSoulsLabel.lineWidth = 6;
-    this.endingSoulsLabel.setScale(0);
-
-    this.retryButton = new Button('Retry', cc.p(175, 125), this.transitionToMainMenu);
-    this.menuButton = new Button('Menu', cc.p(175, 225), this.transitionToMainMenu);
-
-    this.endGameMenu = new cc.Menu(this.retryButton, this.menuButton);
-    this.endGameMenu.setPosition(0, 0);
-    this.endGameMenu.setScale(0);
-
-    this.scaleUpButtonAction = cc.sequence(cc.scaleTo(0.2, 1.1), cc.scaleTo(0.1, 1));
-    this.scaleUpButtonAction.retain();
-
-    this.addChild(this.soulCanister);
-    this.addChild(this.particleSystem);
-    this.addChild(this.endingSoulsLabel);
-    this.addChild(this.endGameMenu);
+  confirmTransitionToMainMenu: function() {
+    var dialog = new Dialog('Are you sure you want to quit? All unsaved progress will be lost.',  this.transitionToMainMenu);
+    this.addChild(dialog);
   },
 
   transitionToMainMenu: function() {

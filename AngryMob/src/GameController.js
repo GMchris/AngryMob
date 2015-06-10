@@ -2,6 +2,7 @@
 
 var Game = (function(){
   var content = {
+    monster: -1,
     winSize: null,
     maxLives: 0,
     lives: 0,
@@ -10,7 +11,10 @@ var Game = (function(){
 
     // Computed properties.
     computedSpeed: function() {
-      return this.speed + this.additionalSpeed;
+      var bonus = 0;
+      if (this.monsterType === G.FRANKENSTEIN)
+        bonus -= 2;
+      return this.speed + this.additionalSpeed + bonus;
     },
 
     atMaxLives: function() {

@@ -33,7 +33,7 @@
             <key>common_button_active.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,79},{250,75}}</string>
+                <string>{{331,2},{250,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +43,23 @@
                 <key>sourceSize</key>
                 <string>{250,75}</string>
             </dict>
+            <key>dialog.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{583,2},{570,525}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{570,525}}</string>
+                <key>sourceSize</key>
+                <string>{570,525}</string>
+            </dict>
             <key>distance_counter.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{254,79},{255,72}}</string>
+                <string>{{1155,2},{255,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,10 +69,23 @@
                 <key>sourceSize</key>
                 <string>{255,72}</string>
             </dict>
+            <key>fullscreen_clear.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1412,2},{600,1136}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{600,1136}}</string>
+                <key>sourceSize</key>
+                <string>{600,1136}</string>
+            </dict>
             <key>soul_canister.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,156},{200,390}}</string>
+                <string>{{2,1140},{200,390}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +98,7 @@
             <key>soul_counter.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{204,156},{255,72}}</string>
+                <string>{{204,1140},{255,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>speed_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{461,156},{30,300}}</string>
+                <string>{{461,1140},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +124,7 @@
             <key>speed_bar_container.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,548},{56,360}}</string>
+                <string>{{493,1140},{56,360}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>speed_bar_empty.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{60,548},{30,300}}</string>
+                <string>{{551,1140},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -129,9 +155,9 @@
             <key>realTextureFileName</key>
             <string>ui.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:dc4054c95ceed1786e7887fa91895aff:a26ff88ac2a01a0b75e491ef54e1ce93:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
+            <string>$TexturePacker:SmartUpdate:3516ef745352d190fe0153d7c569ff21:30fbc60cd147d1bb4f17ced8e047d7c2:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

@@ -16,9 +16,10 @@
       [X] Angry mob
       [X] Distance calculator
       [X] Monster capture
-	  [ ] Post game
+      [ ] Frankenstein's monster special skill
       [ ] Werewolf special skill
       [ ] Mummy special skill
+	  [ ] Post game
     [X] UI
       [X] Soul counter
       [X] Distance counter
@@ -32,12 +33,11 @@
         [ ] Home screen background
         [X] Regular button
         [ ] Buy button
-      [ ] Frankenstein's monster
+      [X] Frankenstein's monster
         [X] Character running sprites
         [X] Obstacles
         [X] Background
-        [ ] Angry mob
-        [ ] Captured splash
+        [X] Angry mob
       [ ] Werewolf
       [ ] Mummy
   [ ] Main menu

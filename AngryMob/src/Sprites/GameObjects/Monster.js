@@ -6,7 +6,7 @@ var Monster = cc.Sprite.extend({
   runAnimation: null,
 
   ctor: function() {
-    this._super.apply(this, arguments);
+    this._super('#monster_running_0.png');
     this.isVulnerable = true;
 
     this.init();

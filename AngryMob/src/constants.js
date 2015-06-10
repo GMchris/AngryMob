@@ -8,6 +8,7 @@ var G = {
   HUNDRED_PERCENT: 100,
   DEFAULT_FONT: 'Cartwheel',
   OFFSCREEN_POSITION: cc.p(9999, 9999),
+  SOUL_COUNTER_POSITION: cc.p(40, 1100),
 
   // Monster constants.
   FRANKENSTEIN: 0,
@@ -31,6 +32,7 @@ var G = {
   SPECIAL_SOUL_TYPE: 1,
   LEGENDARY_SOUL_TYPE: 2,
   SOUL_VALUES: [5, 10, 25],
+  SOUL_SHARD_COUNT: 15,
 
   SEGMENTS: [],
   // State.

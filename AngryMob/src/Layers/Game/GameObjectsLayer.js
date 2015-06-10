@@ -21,6 +21,7 @@ var GameObjectsLayer = cc.Layer.extend({
     this.instantiateObstacles();
     this.instantiateSouls();
     this.instantiateMob();
+    this.instantiateEffects();
     this.instantiatePauseOverlay();
   },
 
@@ -28,7 +29,7 @@ var GameObjectsLayer = cc.Layer.extend({
     * Creates and adds the player sprite and all properties relating to it.
     */
    instantiatePlayer: function() {
-     this.gameScene.player = new Monster('#monster_running_0.png');
+     this.gameScene.player = new Monster();
      this.batch.addChild(this.gameScene.player);
 
      this.gameScene.playerBoundary = {
@@ -38,7 +39,9 @@ var GameObjectsLayer = cc.Layer.extend({
          left: 40
      }
    },
-
+  /**
+   * Creates and adds a pool of obstacles.
+   */
    instantiateObstacles: function() {
      this.gameScene.obstacles = [];
 
@@ -51,6 +54,9 @@ var GameObjectsLayer = cc.Layer.extend({
      }
    },
 
+  /**
+   * Creates and adds a pool of souls.
+   */
    instantiateSouls: function() {
      this.gameScene.souls = [];
      this.gameScene.souls[G.COMMON_SOUL_TYPE] = [];
@@ -73,6 +79,17 @@ var GameObjectsLayer = cc.Layer.extend({
      }
    },
 
+  /**
+   * Creates and adds effects.
+   */
+  instantiateEffects: function() {
+    this.gameScene.soulShards = [];
+    for (var soulShardIdx = 0; soulShardIdx < G.SOUL_SHARD_COUNT; soulShardIdx++) {
+      this.gameScene.soulShards[soulShardIdx] = new SoulShard();
+      this.addChild(this.gameScene.soulShards[soulShardIdx]);
+    }
+  },
+
   instantiateMob: function() {
     this.mob = new Mob();
 
@@ -86,7 +103,7 @@ var GameObjectsLayer = cc.Layer.extend({
   },
 
   instantiatePauseOverlay: function() {
-    this.overlay = new cc.LayerGradient(cc.color(0,0,0,255), cc.color(20, 64, 96, 255));
+    this.overlay = new cc.LayerGradient(cc.color(0, 0, 0, 255), cc.color(27, 46, 60, 255));
     this.overlay.opacity = 0;
     this.addChild(this.overlay);
 
@@ -97,6 +114,18 @@ var GameObjectsLayer = cc.Layer.extend({
     this.clickIndicatorScaleAction = cc.scaleTo(0.1, 1);
     this.overlayFadeInAction.retain();
     this.clickIndicatorScaleAction.retain();
+  },
+
+  onPause: function() {
+    this.showOverlay(this.gameScene.player.getPosition());
+    this.gameScene.player.pause();
+    this.mob.pause();
+  },
+
+  onResume: function() {
+    this.hideOverlay();
+    this.gameScene.player.resume();
+    this.mob.resume();
   },
 
   /**
@@ -148,61 +177,79 @@ var GameObjectsLayer = cc.Layer.extend({
      * @param {Number} type
      * @returns {Obstacle}
      */
-    getSoul: function(type) {
-        var pool = this.gameScene.souls[type];
+  getSoul: function(type) {
+      var pool = this.gameScene.souls[type];
 
-        for (var i = 0; i< pool.length ; i++) {
-            if (!pool[i].inUse) {
-                return pool[i];
-            }
-        }
-        // If no items from that pool are free, creata a new one.
-        var soul = new Soul(type, this.gameScene);
+      for (var i = 0; i< pool.length ; i++) {
+          if (!pool[i].inUse) {
+              return pool[i];
+          }
+      }
+      // If no items from that pool are free, creata a new one.
+      var soul = new Soul(type, this.gameScene);
 
-        pool.push(soul);
-        this.batch.addChild(soul);
+      pool.push(soul);
+      this.batch.addChild(soul);
 
-        return soul;
-    },
+      return soul;
+  },
 
-    /**
-     * Positions game objects from the pool to the screen based on a configuration object.
-     * @param segmentData
-     */
-    generateSegment: function() {
-        var segmentData = G.SEGMENTS[this.getSegmentIndex()];
-        var obstacles = segmentData.obstacles;
-        var souls = segmentData.souls;
+  getSoulShard: function() {
+    var pool = this.gameScene.soulShards;
 
-        if (obstacles) {
-            for (var i = 0; i < obstacles.length; i++) {
-                var oItem = obstacles[i];
-                var obstacle = this.getObstacle(oItem.type);
-                obstacle.activate(oItem.x, oItem.y);
-                obstacle.flippedX = oItem.flipped;
-                obstacle.first = oItem.first || false;
-            }
-        }
-
-        if (souls) {
-            for (var i = 0; i < souls.length; i++) {
-                var sItem = souls[i];
-                var soul = this.getSoul(sItem.type);
-                soul.activate(sItem.x, sItem.y);
-            }
-        }
-    },
-
-    /**
-     * Gets an appropriate index for a segment.
-     * TODO: Make it so the same segment cant appear more than once every five segments.
-     */
-    getSegmentIndex: function() {
-        var index;
-        var max = G.SEGMENTS.length - 1;
-
-        index = Math.floor(Math.random()*(max+1));
-
-        return index;
+    for (var i = 0; i< pool.length; i++) {
+      if (!pool[i].inUse) {
+        return pool[i];
+      }
     }
+
+    // If no items from that pool are free, creata a new one.
+    var soulShard = new SoulShard();
+
+    pool.push(soulShard);
+    this.batch.addChild(soulShard);
+
+    return soulShard;
+  },
+
+  /**
+   * Positions game objects from the pool to the screen based on a configuration object.
+   * @param segmentData
+   */
+  generateSegment: function() {
+      var segmentData = G.SEGMENTS[this.getSegmentIndex()];
+      var obstacles = segmentData.obstacles;
+      var souls = segmentData.souls;
+
+      if (obstacles) {
+          for (var i = 0; i < obstacles.length; i++) {
+              var oItem = obstacles[i];
+              var obstacle = this.getObstacle(oItem.type);
+              obstacle.activate(oItem.x, oItem.y);
+              obstacle.flippedX = oItem.flipped;
+              obstacle.first = oItem.first || false;
+          }
+      }
+
+      if (souls) {
+          for (var i = 0; i < souls.length; i++) {
+              var sItem = souls[i];
+              var soul = this.getSoul(sItem.type);
+              soul.activate(sItem.x, sItem.y);
+          }
+      }
+  },
+
+  /**
+   * Gets an appropriate index for a segment.
+   * TODO: Make it so the same segment cant appear more than once every five segments.
+   */
+  getSegmentIndex: function() {
+      var index;
+      var max = G.SEGMENTS.length - 1;
+
+      index = Math.floor(Math.random()*(max+1));
+
+      return index;
+  }
 });

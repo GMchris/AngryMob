@@ -197,6 +197,8 @@
             <filename>speed_bar_container.png</filename>
             <filename>common_button_active.png</filename>
             <filename>soul_canister.png</filename>
+            <filename>dialog.png</filename>
+            <filename>fullscreen_clear.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

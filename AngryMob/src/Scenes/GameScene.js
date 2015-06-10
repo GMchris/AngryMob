@@ -160,19 +160,17 @@ var GameScene = cc.Scene.extend({
   },
 
   pauseGame: function() {
-    this.gameObjectsLayer.showOverlay(this.player.getPosition());
     Game.set('state', G.STATE.PAUSED);
-    this.player.pause();
     this.pause();
     this.uiLayer.onPause();
+    this.gameObjectsLayer.onPause();
   },
 
   resumeGame: function() {
-    this.gameObjectsLayer.hideOverlay();
     Game.set('state', G.STATE.PLAYING);
-    this.player.resume();
     this.resume();
     this.uiLayer.onResume();
+    this.gameObjectsLayer.onResume();
   },
 
   // EVENTS ##################################################################
@@ -219,6 +217,8 @@ var GameScene = cc.Scene.extend({
   onSoulCollected: function(soul) {
     this.currentSoulCount += G.SOUL_VALUES[soul.type];
     this.uiLayer.soulCounter.setLabelText(this.currentSoulCount);
+    var soulShard = this.gameObjectsLayer.getSoulShard();
+    soulShard.activate(soul.getPosition());
     soul.deactivate();
   },
 
