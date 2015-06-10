@@ -53,10 +53,10 @@ var GameUILayer = cc.Layer.extend({
     this.endingSoulsLabel.lineWidth = 6;
     this.endingSoulsLabel.setScale(0);
 
-    this.retryButton = new Button('Retry', cc.p(175, 125), this.transitionToMainMenu);
+    this.replayButton = new Button('Replay', cc.p(175, 125), this.gameScene.replay);
     this.menuButton = new Button('Menu', cc.p(175, 225), this.transitionToMainMenu);
 
-    this.endGameMenu = new cc.Menu(this.retryButton, this.menuButton);
+    this.endGameMenu = new cc.Menu(this.replayButton, this.menuButton);
     this.endGameMenu.setPosition(0, 0);
     this.endGameMenu.setScale(0);
 

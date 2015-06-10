@@ -121,6 +121,13 @@ var GameScene = cc.Scene.extend({
     }
   },
 
+  /**
+   * Starts the game scene over using the same monster.
+   */
+  replay: function() {
+    cc.director.runScene(new GameScene(this.worldType));
+  },
+
   endGame: function() {
     this.stopAllActions();
     this.player.die();

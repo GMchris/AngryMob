@@ -42,11 +42,11 @@ var Dialog = cc.Layer.extend({
     this.dialogLabel.strokeStyle = cc.color.BLACK;
     this.dialogLabel.lineWidth = 3;
 
-    this.confirmButton = new Button('Yup', cc.p(25, 0), this.confirmCallback);
+    this.confirmButton = new Button('Yup', cc.p(35, 0), this.confirmCallback);
     this.cancelButton = new Button('Cancel', cc.p(295, 0), this.close.bind(this));
 
     this.dialogMenu = new cc.Menu(this.confirmButton, this.cancelButton);
-    this.dialogMenu.setPosition(0, 20);
+    this.dialogMenu.setPosition(0, 35);
 
     this.addChild(this.clickBlocker);
     this.addChild(this.dialogWindow);
