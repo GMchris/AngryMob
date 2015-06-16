@@ -27,6 +27,7 @@ var GameUILayer = cc.Layer.extend({
     this.soulCounter = new SoulCounter();
 
     this.quitButton = new Button('Quit', cc.p(15, 15), this.confirmTransitionToMainMenu.bind(this));
+
     this.menu = new cc.Menu(this.quitButton);
     this.menu.setPosition(0, 0);
 
@@ -79,6 +80,7 @@ var GameUILayer = cc.Layer.extend({
    */
   onPause: function() {
     this.speedBar.currentSpeedBar.pause();
+    this.speedBar.particleSystem.pause();
     this.menu.setVisible(true);
   },
 
@@ -87,6 +89,8 @@ var GameUILayer = cc.Layer.extend({
    */
   onResume: function() {
     this.speedBar.currentSpeedBar.resume();
+    this.speedBar.particleSystem.resume();
+
     this.menu.setVisible(false);
   },
 

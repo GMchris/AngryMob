@@ -19,11 +19,11 @@ var Mob = cc.Sprite.extend({
 
     this.backSprite = new cc.Sprite('#mob_back.png');
     this.backSprite.setAnchorPoint(0, 0);
-    this.backSprite.setPosition(0, -10);
+    this.backSprite.setPosition(2, -10);
 
-    this.frontSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 5), cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 0));
+    this.frontSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 2, 5), cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 0));
     this.frontSpriteAnimation.repeatForever();
-    this.backSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 0, -5), cc.moveTo(this.RUN_ANIMATION_SPEED, 0, 0));
+    this.backSpriteAnimation = cc.sequence(cc.moveTo(this.RUN_ANIMATION_SPEED, 0, -5), cc.moveTo(this.RUN_ANIMATION_SPEED, -2, 0));
     this.backSpriteAnimation.repeatForever();
 
     this.addChild(this.frontSprite);

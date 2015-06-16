@@ -12,16 +12,5 @@ var Obstacle = MovingObject.extend({
     this.computedCollider = cc.rect(this.collider.x, 0, this.collider.width, this.collider.height);
 
     this.init();
-  },
-
-  /**
-   * Makes the sprite inactive and positions it out of the game screen.
-   */
-  deactivate: function() {
-    this._super();
-
-    if (this.first) {
-        this.gameScene.gameObjectsLayer.generateSegment();
-    }
   }
 });

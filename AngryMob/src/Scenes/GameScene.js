@@ -10,10 +10,12 @@ var GameScene = cc.Scene.extend({
   playerBoundary: null,
   obstacles: null,
   souls: null,
+  started: false,
 
   // Stats.
-  currentDistanceTravelled: null,
-  currentSoulCount: null,
+  currentDistanceTravelled: 0,
+  currentSoulCount: 0,
+  currentSegmentDistanceTravelled: 0,
 
   // Layers.
   backgroundLayer: null,
@@ -60,8 +62,11 @@ var GameScene = cc.Scene.extend({
   runGeneralSetup: function() {
     Game.set('maxLives', 3);
     Game.set('lives', Game.get('maxLives'));
+    Game.set('worldType', this.worldType);
     this.setSpeed();
+    this.started = false;
     this.currentDistanceTravelled = 0;
+    this.currentSegmentDistanceTravelled = 0;
     this.currentSoulCount = 0;
   },
 
@@ -97,6 +102,8 @@ var GameScene = cc.Scene.extend({
   launch: function() {
     this.gameObjectsLayer.generateSegment();
     this.runAction(this.upscaleSpeedAction);
+    this.started = true;
+    Game.set('state', G.STATE.PLAYING);
   },
 
   /**
@@ -154,11 +161,22 @@ var GameScene = cc.Scene.extend({
   },
 
   /**
+   * Adds the current speed and spawns a new segment when a certain distance is reached.
+   */
+
+  iterateDistance: function() {
+    this.currentSegmentDistanceTravelled += Game.get('computedSpeed');
+    if (this.currentSegmentDistanceTravelled >= G.SEGMENT_LENGTH) {
+      this.currentSegmentDistanceTravelled = 0;
+      this.gameObjectsLayer.generateSegment();
+    }
+  },
+
+  /**
    * Periodically called to update the distance travelled
    */
   calculateDistance: function() {
-    var additionalDistance = Math.round(Game.get('speed') / 4);
-    this.currentDistanceTravelled += additionalDistance;
+    this.currentDistanceTravelled += Math.round(Game.get('speed') / 4);
     this.uiLayer.distanceCounter.setLabelText(this.currentDistanceTravelled);
   },
 
@@ -174,7 +192,7 @@ var GameScene = cc.Scene.extend({
   },
 
   resumeGame: function() {
-    Game.set('state', G.STATE.PLAYING);
+    Game.set('state', this.started ? G.STATE.PLAYING : G.STATE.STARTING);
     this.resume();
     this.uiLayer.onResume();
     this.gameObjectsLayer.onResume();
@@ -205,7 +223,8 @@ var GameScene = cc.Scene.extend({
   },
 
   onTouchMoved: function(e) {
-    if (Game.get('state') === G.STATE.PLAYING) {
+    var state = Game.get('state');
+    if (state === G.STATE.PLAYING || state === G.STATE.STARTING) {
       var location = e.getLocation();
       location.x = location.x.clamp(this.playerBoundary.left, this.playerBoundary.right);
       location.y = location.y.clamp(this.playerBoundary.bottom, this.playerBoundary.top);
@@ -215,7 +234,8 @@ var GameScene = cc.Scene.extend({
   },
 
   onTouchEnded: function(e) {
-    if (Game.get('state') === G.STATE.PLAYING) {
+    var state = Game.get('state');
+    if (state === G.STATE.PLAYING || state === G.STATE.STARTING) {
         this.pauseGame();
     }
     return true;
@@ -238,6 +258,7 @@ var GameScene = cc.Scene.extend({
           var obstacle = this.obstacles[obstacleType][poolIndex];
           if (obstacle.inUse) {
             if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
+              this.gameObjectsLayer.onObstacleCollision(obstacle);
               this.loseLife();
               return true;
             }
@@ -262,9 +283,14 @@ var GameScene = cc.Scene.extend({
   },
 
   update: function() {
-    if (Game.get('state') === G.STATE.PLAYING) {
+    var state = Game.get('state');
+    if (state === G.STATE.PLAYING || state === G.STATE.STARTING) {
       this.checkObstacleCollision();
       this.checkSoulCollision();
+    }
+
+    if (state === G.STATE.PLAYING) {
+      this.iterateDistance();
     }
   }
 });

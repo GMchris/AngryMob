@@ -20,9 +20,11 @@ var GameObjectsLayer = cc.Layer.extend({
     this.instantiatePlayer();
     this.instantiateObstacles();
     this.instantiateSouls();
-    this.instantiateMob();
     this.instantiateEffects();
+    this.instantiateMob();
     this.instantiatePauseOverlay();
+
+    this.scheduleUpdate();
   },
 
    /**
@@ -88,6 +90,13 @@ var GameObjectsLayer = cc.Layer.extend({
       this.gameScene.soulShards[soulShardIdx] = new SoulShard();
       this.addChild(this.gameScene.soulShards[soulShardIdx]);
     }
+
+    this.terrainParticleSystem = new cc.ParticleSystem(res.terrain_particles);
+    this.terrainParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    this.addChild(this.terrainParticleSystem);
+
+    this.dustParticleSystem = new cc.ParticleSystem(res.dust_particles);
+    this.addChild(this.dustParticleSystem);
   },
 
   instantiateMob: function() {
@@ -119,13 +128,22 @@ var GameObjectsLayer = cc.Layer.extend({
   onPause: function() {
     this.showOverlay(this.gameScene.player.getPosition());
     this.gameScene.player.pause();
+    this.dustParticleSystem.pause();
     this.mob.pause();
   },
 
   onResume: function() {
     this.hideOverlay();
     this.gameScene.player.resume();
+    this.dustParticleSystem.resume();
     this.mob.resume();
+  },
+
+  onObstacleCollision: function(obstacle) {
+    this.terrainParticleSystem.x = obstacle.x + (obstacle.width / 2);
+    this.terrainParticleSystem.y = obstacle.y + (obstacle.height / 2);
+    this.terrainParticleSystem.resetSystem();
+    obstacle.deactivate();
   },
 
   /**
@@ -227,7 +245,6 @@ var GameObjectsLayer = cc.Layer.extend({
               var obstacle = this.getObstacle(oItem.type);
               obstacle.activate(oItem.x, oItem.y);
               obstacle.flippedX = oItem.flipped;
-              obstacle.first = oItem.first || false;
           }
       }
 
@@ -251,5 +268,9 @@ var GameObjectsLayer = cc.Layer.extend({
       index = Math.floor(Math.random()*(max+1));
 
       return index;
+  },
+
+  update: function() {
+    this.dustParticleSystem.setPosition(this.gameScene.player.getPosition());
   }
 });

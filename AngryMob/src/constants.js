@@ -8,7 +8,6 @@ var G = {
   HUNDRED_PERCENT: 100,
   DEFAULT_FONT: 'Cartwheel',
   OFFSCREEN_POSITION: cc.p(9999, 9999),
-  SOUL_COUNTER_POSITION: cc.p(40, 1100),
 
   // Monster constants.
   FRANKENSTEIN: 0,
@@ -16,6 +15,9 @@ var G = {
   MUMMY: 2,
 
   // Game Scene.
+  END_LEVEL_DISTANCE: 2000,
+  SEGMENT_LENGTH: 1200,
+
   OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
 
@@ -34,15 +36,22 @@ var G = {
   SOUL_VALUES: [5, 10, 25],
   SOUL_SHARD_COUNT: 15,
 
+  SOUL_COUNTER_POSITION: cc.p(40, 1100),
+
+  // Level data,
   SEGMENTS: [],
   // State.
   STATE: {
-      PLAYING: 0,
-      PAUSED: 1,
-      ENDING: 2
+      STARTING: 0,
+      PLAYING: 1,
+      PAUSED: 2,
+      ENDING: 3
   }
 };
 
+if (cc.sys.platform === cc.sys.ANDROID) {
+  G.DEFAULT_FONT = res.default_font;
+}
 
 //var pointsInstances = 0;
 //

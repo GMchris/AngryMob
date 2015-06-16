@@ -35,3 +35,17 @@ Math.randomBetween = function(min, max) {
 Math.lerp = function(min, max, t) {
   return min + t * (max - min);
 };
+
+/**
+ * Various Node extensions.
+ */
+/*
+cc.Node.implement({
+  retained: [],
+  onExit: function() {
+    while (this.retained.length) {
+      this.retained[0].release();
+      console.log(this.retained.shift());
+    }
+  }
+});*/

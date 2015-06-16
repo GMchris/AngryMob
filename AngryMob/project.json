@@ -8,7 +8,7 @@
     "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d", "box2d"],
+    "modules" : ["cocos2d"],
 
     "jsList" : [
         "src/helpers/helpers.js",
@@ -17,8 +17,8 @@
         "src/helpers/colliders.js",
         "src/helpers/visual.js",
 
-        "src/constants.js",
         "src/resource.js",
+        "src/constants.js",
         "src/GameController.js",
 
         "src/Sprites/GameObjects/MovingObject.js",

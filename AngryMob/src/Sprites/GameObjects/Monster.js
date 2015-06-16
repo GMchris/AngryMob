@@ -4,6 +4,7 @@ var Monster = cc.Sprite.extend({
   isVulnerable: false,
   receiveDamageAction: null,
   runAnimation: null,
+  dustParticleSystem: null,
 
   ctor: function() {
     this._super('#monster_running_0.png');
@@ -73,7 +74,6 @@ var Monster = cc.Sprite.extend({
 
   die: function() {
     var duration = this.y / 200;
-
     this.animateTo(this.x, 0, duration);
   },
 
