@@ -37,6 +37,8 @@ App.SettingsController = Ember.Controller.extend({
           obstacles: this.get('obstacles')
       };
 
+      json = Ember.copy(json, true);
+
       this.set('json',JSON.stringify(json));
     },
 

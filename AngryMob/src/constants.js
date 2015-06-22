@@ -2,7 +2,7 @@
 
 var G = {
   // Debug.
-  COLLISION_BOXES: false,
+  COLLISION_BOXES: true,
 
   // Common constants.
   HUNDRED_PERCENT: 100,

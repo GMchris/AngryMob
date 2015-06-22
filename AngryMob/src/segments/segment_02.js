@@ -6,8 +6,7 @@ G.SEGMENTS.push({
     type: 1,
     x: 0,
     y: 50,
-    flipped: false,
-    first: true
+    flipped: false
   },
   {
     type: 6,

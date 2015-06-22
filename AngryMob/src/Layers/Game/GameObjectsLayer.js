@@ -13,7 +13,7 @@ var GameObjectsLayer = cc.Layer.extend({
     this.particleSystems = [];
     this.gameScene = gameScene;
 
-    this.batch = new cc.SpriteBatchNode(res['world_' + gameScene.worldType + '_png'], 100);
+    this.batch = new cc.SpriteBatchNode(res['world_' + gameScene.worldType + '_png'], 200);
 
     this.addChild(this.batch);
 
@@ -232,7 +232,6 @@ var GameObjectsLayer = cc.Layer.extend({
 
   /**
    * Positions game objects from the pool to the screen based on a configuration object.
-   * @param segmentData
    */
   generateSegment: function() {
       var segmentData = G.SEGMENTS[this.getSegmentIndex()];

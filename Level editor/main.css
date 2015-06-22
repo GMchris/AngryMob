@@ -36,8 +36,8 @@ html {
 .soul {
     position: absolute;
     width: 40px;
-    height: 40px;
-    background: url('images/soul_0.png') no-repeat;
+    height: 60px;
+    background-repeat: no-repeat;
     background-size: 100%;
 }
 

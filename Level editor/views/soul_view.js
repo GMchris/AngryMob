@@ -7,7 +7,7 @@ App.SoulView = Ember.View.extend({
 
   didInsertElement: function() {
     this._super();
-
+    this.$().css('backgroundImage', 'url("images/soul_' + this.get('soul.type') + '.png")');
     this.changePosition();
   },
 
@@ -23,6 +23,22 @@ App.SoulView = Ember.View.extend({
       });
     }
   }.observes('soul.x', 'soul.y'),
+
+  changeType: function() {
+    this.set('soul.type', parseInt(this.get('soul.type')));
+    var type = this.get('soul.type');
+
+    if(type < 0){
+      this.set('soul.type', 2);
+      return false;
+    } else if (type > 2) {
+      this.set('soul.type', 0);
+      return false;
+    }
+
+    this.$().css('backgroundImage', 'url("images/soul_' + type + '.png")')
+
+  }.observes('soul.type'),
 
   getThird: function(value) {
     return Math.round(value - value/3);

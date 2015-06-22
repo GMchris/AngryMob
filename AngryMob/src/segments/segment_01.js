@@ -3,42 +3,100 @@
 G.SEGMENTS.push({
   "souls":[
     {
-      "x":84,
-      "y":400,
-      "type":"0"
+      "x":270,
+      "y":50,
+      "type":0
+    },
+    {
+      "x":400,
+      "y":250,
+      "type":0
+    },
+    {
+      "x":450,
+      "y":520,
+      "type":1
+    },
+    {
+      "x":260,
+      "y":460,
+      "type":0
+    },
+    {
+      "x":50,
+      "y":500,
+      "type":0
+    },
+    {
+      "x":100,
+      "y":720,
+      "type":0
+    },
+    {
+      "x":280,
+      "y":800,
+      "type":0
+    },
+    {
+      "x":120,
+      "y":980,
+      "type":0
     }
   ],
   "obstacles":[
     {
-      "first":"true",
-      "x":-17,
-      "y":10,
-      "type":0,
-      "flipped":true
+      "x":0,
+      "y":50,
+      "type":7,
+      "flipped":false
     },
     {
       "x":300,
-      "y":400,
-      "type":4,
+      "y":50,
+      "type":8,
       "flipped":false
     },
     {
-      "x":-21,
-      "y":550,
-      "type":1,
+      "x":30,
+      "y":250,
+      "type":2,
       "flipped":false
     },
     {
-      "x":200,
-      "y":800,
+      "x":300,
+      "y":620,
+      "type":2,
+      "flipped":true
+    },
+    {
+      "x":150,
+      "y":610,
       "type":3,
       "flipped":false
     },
     {
-      "x":300,
-      "y":1000,
-      "type":2,
+      "x":-49,
+      "y":340,
+      "type":1,
       "flipped":false
+    },
+    {
+      "x":300,
+      "y":900,
+      "type":3,
+      "flipped":true
+    },
+    {
+      "x":490,
+      "y":330,
+      "type":3,
+      "flipped":true
+    },
+    {
+      "x":-210,
+      "y":840,
+      "type":2,
+      "flipped":true
     }
   ]
 });

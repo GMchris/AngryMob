@@ -47,6 +47,12 @@
         "src/Scenes/GameScene.js",
 
         "src/segments/segment_01.js",
-        "src/segments/segment_02.js"
+        "src/segments/segment_02.js",
+        "src/segments/segment_03.js",
+        "src/segments/segment_04.js",
+        "src/segments/segment_05.js",
+        "src/segments/segment_06.js",
+        "src/segments/segment_07.js",
+        "src/segments/segment_08.js"
     ]
 }
