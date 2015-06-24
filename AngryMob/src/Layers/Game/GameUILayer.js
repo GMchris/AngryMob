@@ -151,7 +151,7 @@ var GameUILayer = cc.Layer.extend({
   },
 
   confirmTransitionToMainMenu: function() {
-    var dialog = new Dialog('Are you sure you want to quit? All unsaved progress will be lost.',  this.transitionToMainMenu);
+    var dialog = new TextDialog(this.transitionToMainMenu, 'Are you sure you want to quit? All unsaved progress will be lost.');
     this.addChild(dialog);
   },
 

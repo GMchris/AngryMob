@@ -6,6 +6,9 @@ var res = {
     ui_plist: "res/ui/ui.plist",
     ui_png: "res/ui/ui.png",
 
+    menu_plist: "res/menu/menu.plist",
+    menu_png: "res/menu/menu.png",
+
     world_0_plist: "res/world_0/world_0.plist",
     world_0_png: "res/world_0/world_0.png",
 

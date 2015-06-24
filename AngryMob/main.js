@@ -17,5 +17,6 @@ function pregame() {
 
     // TODO: Delete this functionality later and replace it's functionality before each level starts
     cc.spriteFrameCache.addSpriteFrames(res.ui_plist, res.ui_png);
+    cc.spriteFrameCache.addSpriteFrames(res.menu_plist, res.menu_png);
     cc.spriteFrameCache.addSpriteFrames(res.world_0_plist, res.world_0_png);
 }

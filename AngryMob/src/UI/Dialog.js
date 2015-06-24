@@ -1,21 +1,24 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov.
 
 var Dialog = cc.Layer.extend({
+  CONFIRM_STRING: 'Accept',
+  CANCEL_STRING: 'Cancel',
   text: null,
   confirmCallback: null,
   dialogWindow: null,
-  dialogLabel: null,
   dialogMenu: null,
   clickBlocker: null,
   showAnimation: null,
   hideAnimation: null,
   confirmButton: null,
   cancelButton: null,
-  ctor: function(text, confirmCallback) {
+  ctor: function(confirmCallback) {
     this._super();
 
-    this.text = text;
-    this.confirmCallback = confirmCallback;
+    this.confirmCallback = function() {
+      this.close();
+      confirmCallback();
+    }.bind(this);
 
     this.init();
   },
@@ -36,21 +39,14 @@ var Dialog = cc.Layer.extend({
     this.dialogWindow.setPosition(this.winSize.width/2, this.winSize.height/2);
     this.dialogWindow.scale = 0;
 
-    this.dialogLabel = new cc.LabelTTF(this.text, G.DEFAULT_FONT, 45, cc.size(500, 400));
-    this.dialogLabel.setPosition(280, 270);
-    this.dialogLabel.textAlign = 1;
-    this.dialogLabel.strokeStyle = cc.color.BLACK;
-    this.dialogLabel.lineWidth = 3;
-
-    this.confirmButton = new Button('Yup', cc.p(35, 0), this.confirmCallback);
-    this.cancelButton = new Button('Cancel', cc.p(295, 0), this.close.bind(this));
+    this.confirmButton = new Button(this.CONFIRM_STRING, cc.p(35, 0), this.confirmCallback);
+    this.cancelButton = new Button(this.CANCEL_STRING, cc.p(295, 0), this.close.bind(this));
 
     this.dialogMenu = new cc.Menu(this.confirmButton, this.cancelButton);
     this.dialogMenu.setPosition(0, 35);
 
     this.addChild(this.clickBlocker);
     this.addChild(this.dialogWindow);
-    this.dialogWindow.addChild(this.dialogLabel);
     this.dialogWindow.addChild(this.dialogMenu);
 
     this.showAnimation = cc.sequence(cc.scaleTo(0.25, 1.1), cc.scaleTo(0.15, 0.9));

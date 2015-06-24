@@ -12,7 +12,7 @@ var Game = (function(){
     // Computed properties.
     computedSpeed: function() {
       var bonus = 0;
-      if (this.worldType === G.FRANKENSTEIN) {
+      if (this.worldType === G.MONSTERS.FRANKENSTEIN) {
         bonus -= 2;
       }
       return this.speed + this.additionalSpeed + bonus;

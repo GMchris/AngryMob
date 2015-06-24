@@ -10,9 +10,28 @@ var G = {
   OFFSCREEN_POSITION: cc.p(9999, 9999),
 
   // Monster constants.
-  FRANKENSTEIN: 0,
-  WEREWOLF: 1,
-  MUMMY: 2,
+  MONSTERS: {
+    FRANKENSTEIN: 0,
+    WEREWOLF: 1,
+    MUMMY: 2
+  },
+
+  // Upgrade constants.
+  UPGRADES: {
+    CHILLGULP: 0,
+    LIQUID_SOUL: 1,
+    CUORE: 2
+  },
+
+  // Lab.
+  MONSTER: 0,
+  UPGRADE: 1,
+
+  NOT_OWNED: 0,
+  OWNED: 1,
+  LEVEL_ONE: 1,
+  LEVEL_TWO: 2,
+  LEVEL_THREE: 3,
 
   // Game Scene.
   END_LEVEL_DISTANCE: 2000,

@@ -13,12 +13,13 @@
     "jsList" : [
         "src/helpers/helpers.js",
         "src/helpers/extensions.js",
-        "src/helpers/Memory.js",
         "src/helpers/colliders.js",
         "src/helpers/visual.js",
 
         "src/resource.js",
         "src/constants.js",
+        "src/helpers/Memory.js",
+        "src/helpers/labData.js",
         "src/GameController.js",
 
         "src/Sprites/GameObjects/MovingObject.js",
@@ -34,14 +35,19 @@
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
         "src/UI/Dialog.js",
+        "src/UI/TextDialog.js",
+        "src/UI/PurchaseDialog.js",
 
         "src/Layers/Game/GameObjectsLayer.js",
         "src/Layers/Game/BackgroundLayer.js",
         "src/Layers/Game/GameUILayer.js",
         "src/Layers/Menu/MenuBackgroundLayer.js",
         "src/Layers/Menu/MenuUILayer.js",
+        "src/Layers/Lab/LabLayer.js",
+        "src/Layers/Lab/LabBackgroundLayer.js",
+        "src/Layers/Lab/LabUILayer.js",
+        "src/Layers/Lab/LabForegroundLayer.js",
 
-        "src/UI/Tabs/TabScene.js",
         "src/Scenes/MainMenuScene.js",
         "src/Scenes/LabScene.js",
         "src/Scenes/GameScene.js",

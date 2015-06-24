@@ -1,12 +1,12 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var Button = cc.MenuItemSprite.extend({
-  ctor: function(labelString, position, callback) {
+  ctor: function(labelString, position, callback, image, downImage) {
 
     this._super(
-      new cc.Sprite('#common_button.png'),
-      new cc.Sprite('#common_button_active.png'),
-      new cc.Sprite('#common_button_active.png'),
+      new cc.Sprite(image || '#common_button.png'),
+      new cc.Sprite(downImage || image || '#common_button_active.png'),
+      new cc.Sprite(downImage || image || '#common_button_active.png'),
       callback
     );
 
