@@ -48,6 +48,7 @@ AngryMob/.idea/
 LevelEditor/.idea/
 
 # Cocos libraries
+AngryMobGame/
 AngryMob/frameworks/
 AngryMob/tools/
 *.apk

@@ -3,6 +3,11 @@
 var LabUILayer = LabLayer.extend({
   RIGHT_LIMIT: -600,
 
+  ctor: function(labScene) {
+    this.labScene = labScene;
+    this._super();
+  },
+
   init: function() {
     this._super();
 
@@ -18,6 +23,7 @@ var LabUILayer = LabLayer.extend({
     this.monsterSection.removeFromParent(true);
     this.upgradeSection.removeFromParent(true);
     this.drawSections();
+    this.labScene.updateSoulCounter();
   },
 
   /**
@@ -55,7 +61,7 @@ var LabUILayer = LabLayer.extend({
     var dialog = new PurchaseDialog(function() {
       this.purchaseMonster(index)
     }.bind(this), monster);
-    this.parent.addChild(dialog);
+    this.labScene.addChild(dialog);
   },
 
   purchaseMonster: function(index) {
@@ -100,7 +106,7 @@ var LabUILayer = LabLayer.extend({
     var dialog = new PurchaseDialog(function() {
       this.purchaseUpgrade(index)
     }.bind(this), upgrade);
-    this.parent.addChild(dialog);
+    this.labScene.addChild(dialog);
   },
 
   purchaseUpgrade: function(index) {

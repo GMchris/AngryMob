@@ -13,7 +13,7 @@ var LabScene = cc.Scene.extend({
     this._super();
 
     this.backgroundLayer = new LabBackgroundLayer();
-    this.uiLayer = new LabUILayer();
+    this.uiLayer = new LabUILayer(this);
     this.foregroundLayer = new LabForegroundLayer();
 
     this.addChild(this.backgroundLayer);
@@ -21,6 +21,7 @@ var LabScene = cc.Scene.extend({
     this.addChild(this.foregroundLayer);
 
     this.createNavigationMenu();
+    this.createBottomMenu();
   },
 
   createNavigationMenu: function() {
@@ -37,6 +38,18 @@ var LabScene = cc.Scene.extend({
 
     this.showButtonAction = cc.sequence(cc.scaleTo(0.2, 1.2), cc.scaleTo(0.1, 1));
     this.showButtonAction.retain();
+  },
+
+  createBottomMenu: function() {
+    this.soulCounter = new SoulCounter();
+    this.soulCounter.setPosition(30, 90);
+    this.addChild(this.soulCounter);
+    this.updateSoulCounter();
+  },
+
+  updateSoulCounter: function() {
+    var souls = Memory.get('souls');
+    this.soulCounter.setLabelText(souls);
   },
 
   move: function(direction) {

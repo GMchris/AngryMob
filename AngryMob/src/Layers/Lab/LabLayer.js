@@ -4,7 +4,7 @@ var LabLayer = cc.Layer.extend({
   RIGHT_LIMIT: 0,
   LEFT_LIMIT: 0,
   MOVE_DURATION: 0.75,
-  EASE_AMOUNT: 2,
+  EASE_AMOUNT: 1.8,
   moveRightAnimation: null,
   moveLeftAnimation: null,
 
