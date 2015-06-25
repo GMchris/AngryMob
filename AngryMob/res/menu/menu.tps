@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.8.0</string>
+        <string>3.7.1</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/menu/menu.tps</string>
+        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/menu/menu.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -203,6 +203,7 @@
             <filename>liquid_soul_avatar.png</filename>
             <filename>lab_arrow_left.png</filename>
             <filename>lab_arrow_right.png</filename>
+            <filename>lab_extras.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

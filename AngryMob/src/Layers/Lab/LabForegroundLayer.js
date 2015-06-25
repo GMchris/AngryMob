@@ -4,30 +4,35 @@ var LabForegroundLayer = LabLayer.extend({
   RIGHT_LIMIT: -700,
   sideData: [
     {
-      name: 'top',
-      x: 0,
-      y: 1076
-    },
-    {
       name: 'bottom',
       x: 0,
       y: 0
     },
     {
       name: 'left',
-      x: 0,
-      y: 120
+      x: -40,
+      y: 80
     },
     {
       name: 'right',
-      x: 1230,
-      y: 120
+      x: 1240,
+      y: 80
     },
     {
       name: 'middle',
-      x: 554,
-      y: 120
-    }
+      x: 470,
+      y: 80
+    },
+    {
+      name: 'extras',
+        x: 40,
+        y: 70
+    },
+    {
+        name: 'top',
+        x: 0,
+        y: 1035
+    },
   ],
 
   init: function() {

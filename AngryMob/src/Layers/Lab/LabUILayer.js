@@ -96,7 +96,6 @@ var LabUILayer = LabLayer.extend({
     }, this);
 
     upgradeSection.setPosition(600, 0);
-    var actual = upgradeSection;
     this.upgradeSection = upgradeSection;
     this.addChild(this.upgradeSection);
   },
