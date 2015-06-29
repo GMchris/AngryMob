@@ -14,6 +14,8 @@ var MainMenuScene = cc.Scene.extend({
     this.backgroundLayer = new MenuBackgroundLayer();
     this.uiLayer = new MenuUILayer();
 
+    flurry.logEvent('Main menu', null);
+
     this.addChild(this.backgroundLayer);
     this.addChild(this.uiLayer);
   }

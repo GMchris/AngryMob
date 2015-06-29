@@ -6,8 +6,11 @@ var res = {
     ui_plist: "res/ui/ui.plist",
     ui_png: "res/ui/ui.png",
 
-    menu_plist: "res/menu/menu.plist",
-    menu_png: "res/menu/menu.png",
+    main_menu_plist: "res/common/main_menu/main_menu.plist",
+    main_menu_png: "res/common/main_menu/main_menu.png",
+
+    lab_plist: "res/menu/lab.plist",
+    lab_png: "res/menu/lab.png",
 
     world_0_plist: "res/world_0/world_0.plist",
     world_0_png: "res/world_0/world_0.png",
@@ -15,7 +18,9 @@ var res = {
     soul_fire_particles: "res/common/particles/soul_particles.plist",
     canister_particles: "res/common/particles/canister_particles.plist",
     terrain_particles: "res/common/particles/terrain_particles.plist",
-    dust_particles: "res/common/particles/dust_particles.plist"
+    dust_particles: "res/common/particles/dust_particles.plist",
+    orange_potion_smoke_particles: "res/common/particles/orange_potion_smoke_particles.plist",
+    main_menu_fire_particles: "res/common/particles/main_menu_fire_particles.plist"
 };
 
 var g_resources = [];

@@ -19,6 +19,6 @@ var SoulCounter = cc.Sprite.extend({
   },
 
   setLabelText: function(labelString) {
-    this.label.setString(labelString);
+    this.label.setString(Math.round(labelString));
   }
 });

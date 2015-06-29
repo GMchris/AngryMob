@@ -1,17 +1,24 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var GameObjectsLayer = cc.Layer.extend({
+  SEGMENT_GAP: 5,
   batch: null,
   pBatch: null,
   particleSystems: null,
   overlay: null,
   clickIndicator: null,
   clickIndicatorScaleAction: null,
+  availableSegmentIndices: [],
+  unavailableSegmentIndices: [],
 
   init: function(gameScene) {
     this.winSize = Game.get('winSize');
     this.particleSystems = [];
     this.gameScene = gameScene;
+
+    for (var segmentIndex= 0; segmentIndex < G.SEGMENTS.length; segmentIndex++) {
+      this.availableSegmentIndices.push(segmentIndex);
+    }
 
     this.batch = new cc.SpriteBatchNode(res['world_' + gameScene.worldType + '_png'], 200);
 
@@ -262,10 +269,18 @@ var GameObjectsLayer = cc.Layer.extend({
    */
   getSegmentIndex: function() {
       var index;
-      var max = G.SEGMENTS.length - 1;
+      var max = this.availableSegmentIndices.length - 1;
 
-      index = Math.floor(Math.random()*(max+1));
+      index = this.availableSegmentIndices.splice([Math.floor(Math.random()*(max+1))], 1)[0];
 
+      this.unavailableSegmentIndices.push(index);
+
+      // Segments that haven't been used in five cycles are re-added to the options.
+      if (this.unavailableSegmentIndices.length > this.SEGMENT_GAP) {
+        this.availableSegmentIndices.push(this.unavailableSegmentIndices.shift());
+      }
+
+    console.log(index);
       return index;
   },
 

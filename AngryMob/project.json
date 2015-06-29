@@ -15,6 +15,7 @@
         "src/helpers/extensions.js",
         "src/helpers/colliders.js",
         "src/helpers/visual.js",
+        "src/helpers/flurry.js",
 
         "src/resource.js",
         "src/constants.js",
@@ -59,6 +60,8 @@
         "src/segments/segment_05.js",
         "src/segments/segment_06.js",
         "src/segments/segment_07.js",
-        "src/segments/segment_08.js"
+        "src/segments/segment_08.js",
+        "src/segments/segment_09.js",
+        "src/segments/segment_10.js"
     ]
 }

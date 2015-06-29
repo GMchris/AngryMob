@@ -242,7 +242,9 @@ var GameScene = cc.Scene.extend({
   },
 
   onSoulCollected: function(soul) {
-    this.currentSoulCount += G.SOUL_VALUES[soul.type];
+    // The value from the specific soul type is multiplied by the bonus from the purchased.
+    var soulValue = G.SOUL_VALUES[soul.type] * LabGenerator.getCurrentUpgrade(G.UPGRADES.LIQUID_SOUL);
+    this.currentSoulCount += soulValue;
     this.uiLayer.soulCounter.setLabelText(this.currentSoulCount);
     var soulShard = this.gameObjectsLayer.getSoulShard();
     soulShard.activate(soul.getPosition());

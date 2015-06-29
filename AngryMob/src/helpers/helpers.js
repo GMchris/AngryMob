@@ -33,3 +33,7 @@ function switchCase(operand, cases) {
 function isString(value) {
   return typeof value === 'string';
 }
+
+function cloneObject(object) {
+  return JSON.parse(JSON.stringify(object));
+}

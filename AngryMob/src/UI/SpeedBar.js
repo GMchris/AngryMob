@@ -103,9 +103,11 @@ var SpeedBar = cc.Sprite.extend({
     var nextPercentage = Game.get('lives') + 1 >= Game.get('maxLives') ? 1 :
       (Game.get('lives') + 1) * this.percentileSegment / 100;
 
-    var accAction = cc.scaleTo(G.REGAIN_SPEED_TIMEOUT, 1, nextPercentage);
+    // Depends on upgrades.
+    var bonusTimeout = LabGenerator.getCurrentUpgrade(G.UPGRADES.CUORE);
+
+    var accAction = cc.scaleTo(G.REGAIN_SPEED_TIMEOUT - bonusTimeout, 1, nextPercentage);
     this.gainLifeSequence = cc.sequence(accAction, this.gainLifeCB);
-    this.gainLifeSequence.retain();
     this.currentSpeedBar.runAction(this.gainLifeSequence);
   },
 

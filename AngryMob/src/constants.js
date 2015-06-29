@@ -3,6 +3,7 @@
 var G = {
   // Debug.
   COLLISION_BOXES: true,
+  FLURRY: false,
 
   // Common constants.
   HUNDRED_PERCENT: 100,
@@ -43,7 +44,7 @@ var G = {
   INITIAL_LAUNCH_DELAY: 2,
   INITIAL_SPEED: 11,
   SPEEDS: [3, 7, 9, 11, 11],
-  REGAIN_SPEED_TIMEOUT: 10,
+  REGAIN_SPEED_TIMEOUT: 12,
   SPEEDUP_TIMEOUT: 25,
 
   COMMON_SOUL_POOL_COUNT: 15,

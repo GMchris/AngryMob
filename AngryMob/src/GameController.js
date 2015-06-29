@@ -12,6 +12,7 @@ var Game = (function(){
     // Computed properties.
     computedSpeed: function() {
       var bonus = 0;
+      bonus -= LabGenerator.getCurrentUpgrade(G.UPGRADES.CHILLGULP);
       if (this.worldType === G.MONSTERS.FRANKENSTEIN) {
         bonus -= 2;
       }

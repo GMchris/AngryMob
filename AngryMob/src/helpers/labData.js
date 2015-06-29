@@ -35,7 +35,7 @@ var LabGenerator = (function(){
     {
       name: 'Chillgulp',
       prices: [1000, 2500, 5000],
-      effects: [0.5, 1, 1.5],
+      effects: [0, 0.5, 1, 1.5],
       description: 'Move slower and dodge obstacles easier with this icy cold potion!',
       image: '#chillgulp_avatar.png',
       state: G.NOT_OWNED,
@@ -44,8 +44,8 @@ var LabGenerator = (function(){
     {
       name: 'Liquid Soul',
       prices: [1000, 2500, 5000],
-      effects: [1.5, 2, 2.5],
-      description: 'Move slower and dodge obstacles easier with this icy cold potion!',
+      effects: [1, 1.5, 2, 2.5],
+      description: 'These souls have been liquefied to raise their value!',
       image: '#liquid_soul_avatar.png',
       state: G.NOT_OWNED,
       type: G.UPGRADE
@@ -53,8 +53,8 @@ var LabGenerator = (function(){
     {
       name: 'Cuore',
       prices: [1000, 2500, 5000],
-      effects: [1.5, 2, 2.5],
-      description: 'Speed up health regeneration.',
+      effects: [0, 1, 2, 3],
+      description: 'It\'s not a love potion, but it will speed up your health regen.',
       image: '#cuore_avatar.png',
       state: G.NOT_OWNED,
       type: G.UPGRADE
@@ -82,8 +82,13 @@ var LabGenerator = (function(){
     return upgrades;
   }
 
+  function getCurrentUpgrade(id) {
+    return getUpgrades()[id].effects[Memory.get('upgrades')[id]];
+  }
+
   return {
     getMonsters: getMonsters,
-    getUpgrades: getUpgrades
+    getUpgrades: getUpgrades,
+    getCurrentUpgrade: getCurrentUpgrade
   }
 })();

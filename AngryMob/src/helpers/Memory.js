@@ -18,10 +18,7 @@ var Memory = (function() {
       G.NOT_OWNED,
       G.NOT_OWNED,
       G.NOT_OWNED
-    ],
-    butthole: {
-      whole: 12
-    }
+    ]
   };
 
   /**
@@ -138,7 +135,7 @@ var Memory = (function() {
    * Sets default values to all memory items.
    */
   function createCleanMemory() {
-    memory = cc.clone(cleanMemory);
+    memory = cloneObject(cleanMemory);
 
     save();
   }

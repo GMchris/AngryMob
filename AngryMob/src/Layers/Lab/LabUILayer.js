@@ -34,7 +34,7 @@ var LabUILayer = LabLayer.extend({
     var monsterData = LabGenerator.getMonsters();
 
     monsterData.forEach(function(item, index) {
-      var monsterIcon = new Button('', cc.p(100 + (index * 150), 1050),
+      var monsterIcon = new Button('', cc.p(100 + (index * 150), 950),
         function() {
           this.selectMonster(index);
         }.bind(this), item.image);
@@ -76,7 +76,7 @@ var LabUILayer = LabLayer.extend({
     var upgradeData = LabGenerator.getUpgrades();
 
     upgradeData.forEach(function(item, index) {
-      var upgradeIcon = new Button('', cc.p(100 + (index * 150), 1050),
+      var upgradeIcon = new Button('', cc.p(100 + (index * 150), 950),
           function() {
             this.selectUpgrade(index);
           }.bind(this), item.image);
