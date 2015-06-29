@@ -3,14 +3,14 @@
 var res = {
     default_font: "res/fonts/Cartwheel.ttf",
 
-    ui_plist: "res/ui/ui.plist",
-    ui_png: "res/ui/ui.png",
+    ui_plist: "res/common/ui/ui.plist",
+    ui_png: "res/common/ui/ui.png",
 
     main_menu_plist: "res/common/main_menu/main_menu.plist",
     main_menu_png: "res/common/main_menu/main_menu.png",
 
-    lab_plist: "res/menu/lab.plist",
-    lab_png: "res/menu/lab.png",
+    lab_plist: "res/common/lab/lab.plist",
+    lab_png: "res/common/lab/lab.png",
 
     world_0_plist: "res/world_0/world_0.plist",
     world_0_png: "res/world_0/world_0.png",

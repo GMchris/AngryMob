@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.8.0</string>
+        <string>3.9.1</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/menu/menu.tps</string>
+        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/common/lab/lab.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -43,6 +43,8 @@
         <false/>
         <key>pvrCompressionQuality</key>
         <enum type="SettingsBase::PvrCompressionQuality">PVR_QUALITY_NORMAL</enum>
+        <key>atfCompressData</key>
+        <false/>
         <key>mipMapMinSize</key>
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
@@ -56,7 +58,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">FloydSteinberg</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -188,7 +190,6 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>lab_background.png</filename>
             <filename>lab_bottom.png</filename>
             <filename>lab_left.png</filename>
             <filename>lab_middle.png</filename>
@@ -198,12 +199,10 @@
             <filename>tick.png</filename>
             <filename>werewolf_avatar.png</filename>
             <filename>frankenstein_avatar.png</filename>
-            <filename>chillgulp_avatar.png</filename>
-            <filename>cuore_avatar.png</filename>
-            <filename>liquid_soul_avatar.png</filename>
             <filename>lab_arrow_left.png</filename>
             <filename>lab_arrow_right.png</filename>
             <filename>lab_extras.png</filename>
+            <filename>lab_background.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

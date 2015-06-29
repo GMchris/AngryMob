@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>chillgulp_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{125,175}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{125,175}}</string>
+                <key>sourceSize</key>
+                <string>{125,175}</string>
+            </dict>
             <key>click_indicator.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{75,75}}</string>
+                <string>{{129,2},{75,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +33,7 @@
             <key>common_button.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{79,2},{250,75}}</string>
+                <string>{{206,2},{250,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +46,7 @@
             <key>common_button_active.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{331,2},{250,75}}</string>
+                <string>{{458,2},{250,75}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +56,23 @@
                 <key>sourceSize</key>
                 <string>{250,75}</string>
             </dict>
+            <key>cuore_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{710,2},{125,175}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{125,175}}</string>
+                <key>sourceSize</key>
+                <string>{125,175}</string>
+            </dict>
             <key>dialog.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{583,2},{570,525}}</string>
+                <string>{{837,2},{570,525}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +85,7 @@
             <key>distance_counter.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1155,2},{255,72}}</string>
+                <string>{{1409,2},{255,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +98,7 @@
             <key>fullscreen_clear.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1412,2},{600,1136}}</string>
+                <string>{{2,529},{600,1136}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -82,10 +108,23 @@
                 <key>sourceSize</key>
                 <string>{600,1136}</string>
             </dict>
+            <key>liquid_soul_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{604,529},{125,175}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{125,175}}</string>
+                <key>sourceSize</key>
+                <string>{125,175}</string>
+            </dict>
             <key>soul_canister.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1140},{200,390}}</string>
+                <string>{{731,529},{200,390}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +137,7 @@
             <key>soul_counter.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{204,1140},{255,72}}</string>
+                <string>{{933,529},{255,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +150,7 @@
             <key>speed_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{461,1140},{30,300}}</string>
+                <string>{{1190,529},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +163,7 @@
             <key>speed_bar_container.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{493,1140},{56,360}}</string>
+                <string>{{1222,529},{56,360}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +176,7 @@
             <key>speed_bar_empty.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{551,1140},{30,300}}</string>
+                <string>{{1280,529},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -157,7 +196,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:09ed7188768904bd7e2095e77fbd5734:86d84cb5a589ce610d79f7242842be94:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
+            <string>$TexturePacker:SmartUpdate:e526a9c6a8e83ec78c4fee660c4abdfe:4cfee9657e46e3430ba0bd527f4fd1a8:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

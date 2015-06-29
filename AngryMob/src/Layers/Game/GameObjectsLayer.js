@@ -280,7 +280,6 @@ var GameObjectsLayer = cc.Layer.extend({
         this.availableSegmentIndices.push(this.unavailableSegmentIndices.shift());
       }
 
-    console.log(index);
       return index;
   },
 
