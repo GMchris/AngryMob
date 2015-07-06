@@ -10,6 +10,7 @@ var GameScene = cc.Scene.extend({
   playerBoundary: null,
   obstacles: null,
   souls: null,
+  powerups: null,
   started: false,
 
   // Stats.
@@ -198,6 +199,30 @@ var GameScene = cc.Scene.extend({
     this.gameObjectsLayer.onResume();
   },
 
+  // POWERUPS ################################################################
+
+  activateSpeedPowerup: function() {
+
+    var endSpeedCallback = cc.callFunc(function () {
+      Game.set('activePowerUp', null);
+      this.gameObjectsLayer.electricityParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    }, this);
+
+    var endInvulnerabilityCallback = cc.callFunc(function() {
+      this.player.isVulnerable = true;
+      this.player.runAction(cc.tintTo(0.5, 255, 255, 255));
+    }, this);
+
+    var speedUpSequence = cc.sequence(cc.delayTime(G.POWERUPS.SPEED.DURATION), endSpeedCallback,
+    cc.delayTime(1), endInvulnerabilityCallback);
+
+    this.player.isVulnerable = false;
+    this.player.color = cc.color(160, 200, 250, 255);
+    this.gameObjectsLayer.dustParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+
+    this.runAction(speedUpSequence);
+  },
+
   // EVENTS ##################################################################
 
   /**
@@ -251,19 +276,38 @@ var GameScene = cc.Scene.extend({
     soul.deactivate();
   },
 
+  onPowerupCollected: function(powerup) {
+    // Return if a powerup is already in effect.
+    if (typeof Game.get('activePowerUp') === 'number') {
+      return false;
+    }
+    Game.set('activePowerUp', powerup.type);
+    powerup.deactivate();
+
+    switch(powerup.type) {
+      case G.POWERUPS.SPEED.TYPE:
+        this.activateSpeedPowerup();
+        break;
+      case G.POWERUPS.MAGNET.TYPE:
+        break;
+      default:
+        break;
+    }
+  },
+
   // UPDATE METHODS #############################################################
 
   checkObstacleCollision: function() {
-    if (this.player.isVulnerable) {
-      for (var obstacleType = 0; obstacleType < G.OBSTACLE_COUNT ; obstacleType++ ) {
-        for (var poolIndex = 0; poolIndex < G.OBSTACLE_POOL_COUNT ; poolIndex++ ) {
-          var obstacle = this.obstacles[obstacleType][poolIndex];
-          if (obstacle.inUse) {
-            if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
-              this.gameObjectsLayer.onObstacleCollision(obstacle);
+    for (var obstacleType = 0; obstacleType < G.OBSTACLE_COUNT ; obstacleType++ ) {
+      for (var poolIndex = 0; poolIndex < G.OBSTACLE_POOL_COUNT ; poolIndex++ ) {
+        var obstacle = this.obstacles[obstacleType][poolIndex];
+        if (obstacle.inUse) {
+          if (cc.rectIntersectsRect(obstacle.computedCollider, this.player.computedCollider)) {
+            this.gameObjectsLayer.onObstacleCollision(obstacle);
+            if (this.player.isVulnerable) {
               this.loseLife();
-              return true;
             }
+            return true;
           }
         }
       }
@@ -284,11 +328,26 @@ var GameScene = cc.Scene.extend({
     }
   },
 
+  checkPowerupCollision: function() {
+    for (var powerupType = 0; powerupType < this.powerups.length; powerupType++) {
+      for (var powerupIdx = 0; powerupIdx < this.powerups[powerupType].length ; powerupIdx++) {
+        var powerup = this.powerups[powerupType][powerupIdx];
+        if (powerup.inUse) {
+          if (cc.rectIntersectsRect(powerup.computedCollider, this.player.computedCollider)) {
+            this.onPowerupCollected(powerup);
+            return true;
+          }
+        }
+      }
+    }
+  },
+
   update: function() {
     var state = Game.get('state');
     if (state === G.STATE.PLAYING || state === G.STATE.STARTING) {
       this.checkObstacleCollision();
       this.checkSoulCollision();
+      this.checkPowerupCollision();
     }
 
     if (state === G.STATE.PLAYING) {

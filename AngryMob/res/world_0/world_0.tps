@@ -215,6 +215,7 @@
             <filename>mob_front.png</filename>
             <filename>mob_back.png</filename>
             <filename>soul_shard.png</filename>
+            <filename>powerup_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

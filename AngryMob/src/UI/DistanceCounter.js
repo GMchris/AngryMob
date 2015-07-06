@@ -8,7 +8,7 @@ var DistanceCounter = cc.Sprite.extend({
   },
   init: function() {
     this.setAnchorPoint(1, 1);
-    this.setPosition(585, 1115);
+    this.setPosition(625, 1115);
 
     this.label = new cc.LabelTTF('0', G.DEFAULT_FONT, 45);
     this.label.strokeStyle = cc.color.BLACK;

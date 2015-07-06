@@ -20,7 +20,9 @@ var res = {
     terrain_particles: "res/common/particles/terrain_particles.plist",
     dust_particles: "res/common/particles/dust_particles.plist",
     orange_potion_smoke_particles: "res/common/particles/orange_potion_smoke_particles.plist",
-    main_menu_fire_particles: "res/common/particles/main_menu_fire_particles.plist"
+    main_menu_fire_particles: "res/common/particles/main_menu_fire_particles.plist",
+    magnet_particles: "res/common/particles/magnet_particles.plist",
+    electricity_particles: "res/common/particles/electricity_particles.plist"
 };
 
 var g_resources = [];

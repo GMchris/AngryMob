@@ -27,6 +27,7 @@ var GameObjectsLayer = cc.Layer.extend({
     this.instantiatePlayer();
     this.instantiateObstacles();
     this.instantiateSouls();
+    this.instantiatePowerups();
     this.instantiateEffects();
     this.instantiateMob();
     this.instantiatePauseOverlay();
@@ -88,6 +89,20 @@ var GameObjectsLayer = cc.Layer.extend({
      }
    },
 
+  instantiatePowerups: function() {
+    this.gameScene.powerups = [];
+
+    for (var typeIndex = 0; typeIndex < G.POWERUP_COUNT ; typeIndex++ ) {
+      this.gameScene.powerups[typeIndex] = [];
+      for (var poolIndex = 0; poolIndex < G.POWERUP_POOL_COUNT ; poolIndex++ ) {
+        this.gameScene.powerups[typeIndex][poolIndex] = new Powerup(typeIndex, this.gameScene);
+        this.batch.addChild(this.gameScene.powerups[typeIndex][poolIndex]);
+      }
+    }
+
+    this.gameScene.powerups[0][0].activate(200, 0);
+  },
+
   /**
    * Creates and adds effects.
    */
@@ -104,6 +119,15 @@ var GameObjectsLayer = cc.Layer.extend({
 
     this.dustParticleSystem = new cc.ParticleSystem(res.dust_particles);
     this.addChild(this.dustParticleSystem);
+
+    this.electricityParticleSystem = new cc.ParticleSystem(res.electricity_particles);
+    this.electricityParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    this.addChild(this.electricityParticleSystem);
+
+    this.magnetParticleSystem = new cc.ParticleSystem(res.magnet_particles);
+    this.magnetParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    this.magnetParticleSystem.positionType = 2;
+    this.addChild(this.magnetParticleSystem);
   },
 
   instantiateMob: function() {
@@ -136,6 +160,8 @@ var GameObjectsLayer = cc.Layer.extend({
     this.showOverlay(this.gameScene.player.getPosition());
     this.gameScene.player.pause();
     this.dustParticleSystem.pause();
+    this.terrainParticleSystem.pause();
+    this.electricityParticleSystem.pause();
     this.mob.pause();
   },
 
@@ -143,6 +169,8 @@ var GameObjectsLayer = cc.Layer.extend({
     this.hideOverlay();
     this.gameScene.player.resume();
     this.dustParticleSystem.resume();
+    this.terrainParticleSystem.resume();
+    this.electricityParticleSystem.resume();
     this.mob.resume();
   },
 
@@ -284,6 +312,13 @@ var GameObjectsLayer = cc.Layer.extend({
   },
 
   update: function() {
-    this.dustParticleSystem.setPosition(this.gameScene.player.getPosition());
+    var playerPosition = this.gameScene.player.getPosition();
+    if (Game.get('activePowerUp') === G.POWERUPS.SPEED.TYPE) {
+      this.electricityParticleSystem.setPosition(playerPosition);
+    } else {
+      this.dustParticleSystem.setPosition(playerPosition);
+    }
+
+    this.magnetParticleSystem.setPosition(playerPosition.x, playerPosition.y + 75);
   }
 });

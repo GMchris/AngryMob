@@ -25,7 +25,7 @@ var SpeedBar = cc.Sprite.extend({
   },
 
   init: function() {
-    this.setPosition(640, 700);
+    this.setPosition(680, 700);
     this.setContentSize(15, 150);
 
     this.generateDynamicBar();
@@ -50,9 +50,9 @@ var SpeedBar = cc.Sprite.extend({
     this.currentSpeedBar.setAnchorPoint(0, 0);
     this.currentSpeedBar.setPosition(13, 31);
 
-    this.showSpeedBarAction = cc.moveTo(0.4, 580, 700);
+    this.showSpeedBarAction = cc.moveTo(0.4, 620, 700);
     this.showSpeedBarAction.retain();
-    this.hideSpeedBarAction = cc.moveTo(0.4, 640, 700);
+    this.hideSpeedBarAction = cc.moveTo(0.4, 680, 700);
     this.hideSpeedBarAction.retain();
 
     var backgroundSprite = new cc.Sprite('#speed_bar_container.png');

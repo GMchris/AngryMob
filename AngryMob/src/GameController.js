@@ -8,9 +8,15 @@ var Game = (function(){
     lives: 0,
     speed : 0,
     additionalSpeed: 0,
+    activePowerUp: null,
 
     // Computed properties.
     computedSpeed: function() {
+
+      if (this.activePowerUp === G.POWERUPS.SPEED.TYPE) {
+        return 25;
+      }
+
       var bonus = 0;
       bonus -= LabGenerator.getCurrentUpgrade(G.UPGRADES.CHILLGULP);
       if (this.worldType === G.MONSTERS.FRANKENSTEIN) {

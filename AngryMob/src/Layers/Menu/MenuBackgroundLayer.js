@@ -26,10 +26,10 @@ var MenuBackgroundLayer = cc.Layer.extend({
   },
 
   drawTitle: function() {
-    this.titleAppearAnimation = cc.sequence(cc.delayTime(1), cc.scaleTo(0.3, 1.3), cc.scaleTo(0.2, 1));
+    this.titleAppearAnimation = cc.sequence(cc.delayTime(1), cc.scaleTo(0.3, 1.5), cc.scaleTo(0.2, 1.1), cc.scaleTo(0.1, 1.3));
 
     this.title = new cc.Sprite('#main_menu_title.png');
-    this.title.setPosition(300, 890);
+    this.title.setPosition(320, 890);
     this.title.setScale(0);
     this.addChild(this.title);
 
@@ -50,8 +50,9 @@ var MenuBackgroundLayer = cc.Layer.extend({
 
   drawTower: function() {
     this.tower = new cc.Sprite('#main_menu_tower.png');
-    this.tower.setPosition(180, 230);
+    this.tower.setPosition(200, 230);
     this.tower.setAnchorPoint(0, 0);
+    this.tower.setScale(1.1);
     this.addChild(this.tower);
 
     this.towerParticleSystemLeft = new cc.ParticleSystem(res.main_menu_fire_particles);
@@ -76,8 +77,9 @@ var MenuBackgroundLayer = cc.Layer.extend({
   drawTomb: function() {
     if (this.hasMonster(G.MONSTERS.MUMMY)) {
       this.tomb = new cc.Sprite('#main_menu_tomb.png');
-      this.tomb.setPosition(385, 225);
+      this.tomb.setPosition(425, 225);
       this.tomb.setAnchorPoint(0, 0);
+      this.tomb.setScale(1.1);
       this.addChild(this.tomb);
     }
   }

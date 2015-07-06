@@ -1,7 +1,7 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
 
 var LabForegroundLayer = LabLayer.extend({
-  RIGHT_LIMIT: -700,
+  RIGHT_LIMIT: -660,
   sideData: [
     {
       name: 'bottom',

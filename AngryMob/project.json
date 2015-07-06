@@ -27,6 +27,7 @@
         "src/Sprites/GameObjects/Monster.js",
         "src/Sprites/GameObjects/Obstacle.js",
         "src/Sprites/GameObjects/Soul.js",
+        "src/Sprites/GameObjects/Powerup.js",
         "src/Sprites/GameObjects/Mob.js",
         "src/Sprites/Effects/SoulShard.js",
         "src/Sprites/BackgroundSegment.js",
@@ -62,6 +63,8 @@
         "src/segments/segment_07.js",
         "src/segments/segment_08.js",
         "src/segments/segment_09.js",
-        "src/segments/segment_10.js"
+        "src/segments/segment_10.js",
+        "src/segments/segment_11.js",
+        "src/segments/segment_12.js"
     ]
 }

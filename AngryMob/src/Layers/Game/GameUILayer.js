@@ -54,7 +54,7 @@ var GameUILayer = cc.Layer.extend({
     this.endingSoulsLabel.lineWidth = 6;
     this.endingSoulsLabel.setScale(0);
 
-    this.menuButton = new Button('Menu', cc.p(100, 300), this.transitionToMainMenu);
+    this.menuButton = new Button('Menu', cc.p(180, 270), this.transitionToMainMenu);
 
     this.endGameMenu = new cc.Menu(this.menuButton);
     this.endGameMenu.setPosition(0, 0);

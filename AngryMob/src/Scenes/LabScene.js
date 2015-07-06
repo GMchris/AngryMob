@@ -26,7 +26,7 @@ var LabScene = cc.Scene.extend({
 
   createNavigationMenu: function() {
     this.navigateLeftButton = new Button('', cc.p(45, 550), function() {this.move('left')}.bind(this), '#lab_arrow_left.png');
-    this.navigateRightButton = new Button('', cc.p(560, 550), function() {this.move('right')}.bind(this), '#lab_arrow_right.png');
+    this.navigateRightButton = new Button('', cc.p(600, 550), function() {this.move('right')}.bind(this), '#lab_arrow_right.png');
 
     this.navigateLeftButton.setAnchorPoint(0.5, 0.5);
     this.navigateRightButton.setAnchorPoint(0.5, 0.5);

@@ -7,20 +7,20 @@
             <key>main_menu_grass.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{600,260}}</string>
+                <string>{{2,2},{640,260}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{600,260}}</string>
+                <string>{{0,0},{640,260}}</string>
                 <key>sourceSize</key>
-                <string>{600,260}</string>
+                <string>{640,260}</string>
             </dict>
             <key>main_menu_moon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{604,2},{190,190}}</string>
+                <string>{{644,2},{190,190}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,20 +33,20 @@
             <key>main_menu_sky.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,264},{600,1136}}</string>
+                <string>{{2,264},{640,1136}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{600,1136}}</string>
+                <string>{{0,0},{640,1136}}</string>
                 <key>sourceSize</key>
-                <string>{600,1136}</string>
+                <string>{640,1136}</string>
             </dict>
             <key>main_menu_title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{604,264},{325,240}}</string>
+                <string>{{644,264},{325,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -92,7 +92,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1a9c23bf140f92198716fa693ab304d2:c5b37bc755d9d75baa39e83242d26778:07e224c1f8d46211af51719135bf043a$</string>
+            <string>$TexturePacker:SmartUpdate:332923458023d400c115ad1650595e5e:c02e1d3b48d036313e0644031ee71109:07e224c1f8d46211af51719135bf043a$</string>
             <key>textureFileName</key>
             <string>main_menu.png</string>
         </dict>

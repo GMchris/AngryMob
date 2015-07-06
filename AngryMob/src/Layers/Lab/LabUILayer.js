@@ -54,6 +54,12 @@ var LabUILayer = LabLayer.extend({
 
     this.monsterSection = monsterSection;
     this.addChild(this.monsterSection);
+
+    this.moreMonstersMessage = new cc.LabelTTF('More monsters coming soon, thanks to you =)'
+        , G.DEFAULT_FONT, 30, cc.size(350, 200));
+    this.moreMonstersMessage.setPosition(320, 450);
+    this.moreMonstersMessage.textAlign = 1;
+    this.addChild(this.moreMonstersMessage);
   },
 
   selectMonster: function(index) {

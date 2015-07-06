@@ -24,6 +24,17 @@ var G = {
     CUORE: 2
   },
 
+  POWERUPS: {
+    SPEED: {
+      DURATION: 5,
+      TYPE: 0
+    },
+    MAGNET: {
+      DURATION: 5,
+      TYPE: 1
+    }
+  },
+
   // Lab.
   MONSTER: 0,
   UPGRADE: 1,
@@ -40,6 +51,9 @@ var G = {
 
   OBSTACLE_COUNT: 11,
   OBSTACLE_POOL_COUNT: 5,
+
+  POWERUP_COUNT: 1,
+  POWERUP_POOL_COUNT: 2,
 
   INITIAL_LAUNCH_DELAY: 2,
   INITIAL_SPEED: 11,
