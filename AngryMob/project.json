@@ -33,7 +33,8 @@
         "src/Sprites/BackgroundSegment.js",
 
         "src/UI/SpeedBar.js",
-        "src/UI/Button.js",
+        "src/UI/TextButton.js",
+        "src/UI/IconButton.js",
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
         "src/UI/Dialog.js",

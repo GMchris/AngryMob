@@ -26,7 +26,7 @@ var GameUILayer = cc.Layer.extend({
     this.distanceCounter = new DistanceCounter();
     this.soulCounter = new SoulCounter();
 
-    this.quitButton = new Button('Quit', cc.p(15, 15), this.confirmTransitionToMainMenu.bind(this));
+    this.quitButton = new TextButton('Quit', cc.p(15, 15), this.confirmTransitionToMainMenu.bind(this));
 
     this.menu = new cc.Menu(this.quitButton);
     this.menu.setPosition(0, 0);
@@ -54,7 +54,7 @@ var GameUILayer = cc.Layer.extend({
     this.endingSoulsLabel.lineWidth = 6;
     this.endingSoulsLabel.setScale(0);
 
-    this.menuButton = new Button('Menu', cc.p(180, 270), this.transitionToMainMenu);
+    this.menuButton = new TextButton('Menu', cc.p(180, 270), this.transitionToMainMenu);
 
     this.endGameMenu = new cc.Menu(this.menuButton);
     this.endGameMenu.setPosition(0, 0);

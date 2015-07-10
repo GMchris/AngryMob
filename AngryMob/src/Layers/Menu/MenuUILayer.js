@@ -8,8 +8,8 @@ var MenuUILayer = cc.Layer.extend({
   },
   init: function() {
 
-    this.playButton = new Button('Play', cc.p(35, 15), this.startGame);
-    this.labButton = new Button('Lab', cc.p(345, 15), this.openLab);
+    this.playButton = new TextButton('Play', cc.p(35, 15), this.startGame);
+    this.labButton = new TextButton('Lab', cc.p(345, 15), this.openLab);
 
     this.menu = new cc.Menu(this.playButton, this.labButton);
     this.menu.setPosition(0, 0);

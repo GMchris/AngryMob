@@ -316,10 +316,23 @@
                 <key>sourceSize</key>
                 <string>{100,96}</string>
             </dict>
+            <key>powerup_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{845,1479},{100,96}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,96}}</string>
+                <key>sourceSize</key>
+                <string>{100,96}</string>
+            </dict>
             <key>soul_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{845,1479},{70,100}}</string>
+                <string>{{947,1479},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +345,7 @@
             <key>soul_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{917,1479},{70,100}}</string>
+                <string>{{1019,1479},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +358,7 @@
             <key>soul_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{989,1479},{70,100}}</string>
+                <string>{{1091,1479},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +371,7 @@
             <key>soul_shard.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1061,1479},{30,30}}</string>
+                <string>{{1163,1479},{30,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -378,7 +391,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:212f38eb0b779ff089a906179f55bca0:a4b4f3bb66faaad158a19d182e6a77c0:d4b9aa1647877a4021211d68cd955404$</string>
+            <string>$TexturePacker:SmartUpdate:79d62929055f3c2922e7e204e29d5cb0:6d0f972ff6bab26226c38a7ca57645c5:d4b9aa1647877a4021211d68cd955404$</string>
             <key>textureFileName</key>
             <string>world_0.png</string>
         </dict>

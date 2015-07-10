@@ -70,6 +70,7 @@ var MenuBackgroundLayer = cc.Layer.extend({
       this.moon = new cc.Sprite('#main_menu_moon.png');
       this.moon.setPosition(40, 910);
       this.moon.setAnchorPoint(0, 0);
+      this.moon.setScale(1.1);
       this.addChild(this.moon);
     }
   },

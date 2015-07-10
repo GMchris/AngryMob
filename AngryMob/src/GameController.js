@@ -7,6 +7,7 @@ var Game = (function(){
     maxLives: 0,
     lives: 0,
     speed : 0,
+    pull: 0,
     additionalSpeed: 0,
     activePowerUp: null,
 
@@ -27,6 +28,16 @@ var Game = (function(){
 
     atMaxLives: function() {
       return this.lives >= this.maxLives;
+    },
+
+    computedPull: function() {
+      var bonus = 0;
+
+      if (this.activePowerUp === G.POWERUPS.MAGNET.TYPE) {
+        bonus += 4;
+      }
+
+      return this.pull + bonus;
     }
   };
 

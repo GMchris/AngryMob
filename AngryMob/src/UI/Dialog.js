@@ -39,8 +39,8 @@ var Dialog = cc.Layer.extend({
     this.dialogWindow.setPosition(this.winSize.width/2, this.winSize.height/2);
     this.dialogWindow.scale = 0;
 
-    this.confirmButton = new Button(this.CONFIRM_STRING, cc.p(35, 0), this.confirmCallback);
-    this.cancelButton = new Button(this.CANCEL_STRING, cc.p(295, 0), this.close.bind(this));
+    this.confirmButton = new TextButton(this.CONFIRM_STRING, cc.p(35, 0), this.confirmCallback);
+    this.cancelButton = new TextButton(this.CANCEL_STRING, cc.p(295, 0), this.close.bind(this));
 
     this.dialogMenu = new cc.Menu(this.confirmButton, this.cancelButton);
     this.dialogMenu.setPosition(0, 35);

@@ -25,8 +25,8 @@ var LabScene = cc.Scene.extend({
   },
 
   createNavigationMenu: function() {
-    this.navigateLeftButton = new Button('', cc.p(45, 550), function() {this.move('left')}.bind(this), '#lab_arrow_left.png');
-    this.navigateRightButton = new Button('', cc.p(600, 550), function() {this.move('right')}.bind(this), '#lab_arrow_right.png');
+    this.navigateLeftButton = new IconButton(cc.p(45, 550), function() {this.move('left')}.bind(this), '#lab_arrow_left.png');
+    this.navigateRightButton = new IconButton(cc.p(600, 550), function() {this.move('right')}.bind(this), '#lab_arrow_right.png');
 
     this.navigateLeftButton.setAnchorPoint(0.5, 0.5);
     this.navigateRightButton.setAnchorPoint(0.5, 0.5);
@@ -47,7 +47,7 @@ var LabScene = cc.Scene.extend({
     this.addChild(this.soulCounter);
     this.updateSoulCounter();
 
-    this.backButton = new Button('Back', cc.p(325, 15), this.navigateToMainMenu.bind(this));
+    this.backButton = new TextButton('Back', cc.p(325, 15), this.navigateToMainMenu.bind(this));
     this.bottomMenu = new cc.Menu(this.backButton);
     this.bottomMenu.setPosition(0, 0);
     this.addChild(this.bottomMenu);

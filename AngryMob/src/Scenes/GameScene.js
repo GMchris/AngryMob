@@ -202,10 +202,18 @@ var GameScene = cc.Scene.extend({
   // POWERUPS ################################################################
 
   activateSpeedPowerup: function() {
+    this.player.isVulnerable = false;
+    this.player.color = cc.color(160, 200, 250, 255);
+    this.gameObjectsLayer.dustParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    this.gameObjectsLayer.dustParticleSystem.stopSystem();
+
+    this.gameObjectsLayer.electricityParticleSystem.resetSystem();
 
     var endSpeedCallback = cc.callFunc(function () {
       Game.set('activePowerUp', null);
       this.gameObjectsLayer.electricityParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+      this.gameObjectsLayer.electricityParticleSystem.stopSystem();
+      this.gameObjectsLayer.dustParticleSystem.resetSystem();
     }, this);
 
     var endInvulnerabilityCallback = cc.callFunc(function() {
@@ -214,13 +222,21 @@ var GameScene = cc.Scene.extend({
     }, this);
 
     var speedUpSequence = cc.sequence(cc.delayTime(G.POWERUPS.SPEED.DURATION), endSpeedCallback,
-    cc.delayTime(1), endInvulnerabilityCallback);
-
-    this.player.isVulnerable = false;
-    this.player.color = cc.color(160, 200, 250, 255);
-    this.gameObjectsLayer.dustParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+        cc.delayTime(1), endInvulnerabilityCallback);
 
     this.runAction(speedUpSequence);
+  },
+
+  activateMagnetPowerup: function() {
+    this.gameObjectsLayer.magnetParticleSystem.resetSystem();
+
+    var endMagnetCallback = cc.callFunc(function () {
+      Game.set('activePowerUp', null);
+      this.gameObjectsLayer.magnetParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+      this.gameObjectsLayer.magnetParticleSystem.stopSystem();
+    }, this);
+
+    this.runAction(cc.sequence(cc.delayTime(G.POWERUPS.MAGNET.DURATION), endMagnetCallback));
   },
 
   // EVENTS ##################################################################
@@ -289,6 +305,7 @@ var GameScene = cc.Scene.extend({
         this.activateSpeedPowerup();
         break;
       case G.POWERUPS.MAGNET.TYPE:
+        this.activateMagnetPowerup();
         break;
       default:
         break;
@@ -319,6 +336,12 @@ var GameScene = cc.Scene.extend({
       for (var soulIdx = 0; soulIdx < this.souls[soulType].length ; soulIdx++) {
         var soul = this.souls[soulType][soulIdx];
         if (soul.inUse) {
+          // Should the soul be pulled towards the player.
+          if (Game.get('computedPull')) {
+
+          }
+
+          // Is there a collision.
           if (cc.rectIntersectsRect(soul.computedCollider, this.player.computedCollider)) {
             this.onSoulCollected(soul);
             return true;

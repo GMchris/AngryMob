@@ -100,7 +100,7 @@ var GameObjectsLayer = cc.Layer.extend({
       }
     }
 
-    this.gameScene.powerups[0][0].activate(200, 0);
+    this.gameScene.powerups[1][0].activate(200, 0);
   },
 
   /**
@@ -122,11 +122,13 @@ var GameObjectsLayer = cc.Layer.extend({
 
     this.electricityParticleSystem = new cc.ParticleSystem(res.electricity_particles);
     this.electricityParticleSystem.setPosition(G.OFFSCREEN_POSITION);
+    this.electricityParticleSystem.stopSystem();
     this.addChild(this.electricityParticleSystem);
 
     this.magnetParticleSystem = new cc.ParticleSystem(res.magnet_particles);
     this.magnetParticleSystem.setPosition(G.OFFSCREEN_POSITION);
     this.magnetParticleSystem.positionType = 2;
+    this.magnetParticleSystem.stopSystem();
     this.addChild(this.magnetParticleSystem);
   },
 
@@ -162,6 +164,7 @@ var GameObjectsLayer = cc.Layer.extend({
     this.dustParticleSystem.pause();
     this.terrainParticleSystem.pause();
     this.electricityParticleSystem.pause();
+    this.magnetParticleSystem.pause();
     this.mob.pause();
   },
 
@@ -171,6 +174,7 @@ var GameObjectsLayer = cc.Layer.extend({
     this.dustParticleSystem.resume();
     this.terrainParticleSystem.resume();
     this.electricityParticleSystem.resume();
+    this.magnetParticleSystem.resume();
     this.mob.resume();
   },
 
@@ -216,7 +220,7 @@ var GameObjectsLayer = cc.Layer.extend({
               return pool[i];
           }
       }
-      // If no items from that pool are free, creata a new one.
+      // If no items from that pool are free, create a new one.
       var obstacle = new Obstacle(type);
 
       pool.push(obstacle);
@@ -238,13 +242,30 @@ var GameObjectsLayer = cc.Layer.extend({
               return pool[i];
           }
       }
-      // If no items from that pool are free, creata a new one.
+      // If no items from that pool are free, create a new one.
       var soul = new Soul(type, this.gameScene);
 
       pool.push(soul);
       this.batch.addChild(soul);
 
       return soul;
+  },
+
+  getPowerup: function(type) {
+    var pool = this.gameScene.powerups[type];
+
+    for (var i = 0; i< pool.length ; i++) {
+      if (!pool[i].inUse) {
+        return pool[i];
+      }
+    }
+    // If no items from that pool are free, create a new one.
+    var powerup = new Powerup(type, this.gameScene);
+
+    pool.push(powerup);
+    this.batch.addChild(powerup);
+
+    return powerup;
   },
 
   getSoulShard: function() {
@@ -272,10 +293,11 @@ var GameObjectsLayer = cc.Layer.extend({
       var segmentData = G.SEGMENTS[this.getSegmentIndex()];
       var obstacles = segmentData.obstacles;
       var souls = segmentData.souls;
+      var powerups = segmentData.powerups;
 
       if (obstacles) {
-          for (var i = 0; i < obstacles.length; i++) {
-              var oItem = obstacles[i];
+          for (var obstacleIndex = 0; obstacleIndex < obstacles.length; obstacleIndex++) {
+              var oItem = obstacles[obstacleIndex];
               var obstacle = this.getObstacle(oItem.type);
               obstacle.activate(oItem.x, oItem.y);
               obstacle.flippedX = oItem.flipped;
@@ -283,17 +305,24 @@ var GameObjectsLayer = cc.Layer.extend({
       }
 
       if (souls) {
-          for (var i = 0; i < souls.length; i++) {
-              var sItem = souls[i];
+          for (var soulIndex = 0; soulIndex < souls.length; soulIndex++) {
+              var sItem = souls[soulIndex];
               var soul = this.getSoul(sItem.type);
               soul.activate(sItem.x, sItem.y);
           }
+      }
+
+      if (powerups) {
+        for (var powerupIndex = 0; powerupIndex < powerups.length; powerupIndex++) {
+          var pItem = powerups[i];
+          var powerup = this.getPowerup(pItem.type);
+          powerup.activate(pItem.x, pItem.y);
+        }
       }
   },
 
   /**
    * Gets an appropriate index for a segment.
-   * TODO: Make it so the same segment cant appear more than once every five segments.
    */
   getSegmentIndex: function() {
       var index;
@@ -319,6 +348,8 @@ var GameObjectsLayer = cc.Layer.extend({
       this.dustParticleSystem.setPosition(playerPosition);
     }
 
-    this.magnetParticleSystem.setPosition(playerPosition.x, playerPosition.y + 75);
+    if (Game.get('activePowerUp') === G.POWERUPS.MAGNET.TYPE) {
+      this.magnetParticleSystem.setPosition(playerPosition.x, playerPosition.y + 75);
+    }
   }
 });
