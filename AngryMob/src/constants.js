@@ -30,7 +30,7 @@ var G = {
       TYPE: 0
     },
     MAGNET: {
-      DURATION: 5,
+      DURATION: 10,
       TYPE: 1
     }
   },
@@ -71,6 +71,7 @@ var G = {
   SOUL_SHARD_COUNT: 15,
 
   SOUL_COUNTER_POSITION: cc.p(40, 1100),
+  PULL_RADIUS: 300,
 
   // Level data,
   SEGMENTS: [],

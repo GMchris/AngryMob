@@ -20,7 +20,7 @@ var GameObjectsLayer = cc.Layer.extend({
       this.availableSegmentIndices.push(segmentIndex);
     }
 
-    this.batch = new cc.SpriteBatchNode(res['world_' + gameScene.worldType + '_png'], 200);
+    this.batch = new cc.SpriteBatchNode(res['world_' + 1 + '_png'], 200);
 
     this.addChild(this.batch);
 

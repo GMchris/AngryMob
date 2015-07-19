@@ -51,7 +51,7 @@ G.SEGMENTS.push({
       "flipped":false
     },
     {
-      "x":300,
+      "x":320,
       "y":50,
       "type":8,
       "flipped":false

@@ -73,24 +73,24 @@ Math.pointInCircle = function(point, circle) {
  * @param destination
  * @param speed
  * @param target
- * @returns {Point}
  */
 Math.moveBetweenPoints = function(start, destination, speed, target) {
-  var tx = targetX - x,
-      ty = targetY - y,
+  var tx = destination.x - start.x,
+      ty = destination.y - start.y,
       dist = Math.sqrt(tx*tx+ty*ty),
       rad = Math.atan2(ty,tx),
       angle = rad/Math.PI * 180;
 
-  velX = (tx/dist)*thrust;
-  velY = (ty/dist)*thrust;
+  var velX = (tx/dist)*speed;
+  var velY = (ty/dist)*speed;
 
   if (target) {
-    target.x += velocityX;
-    target.y += velocityY;
+    target.x += velX;
+    target.y += velY;
+    return false;
   }
 
-  return new Point(start.x + velocityX, start.y + velocityY);
+  return new Point(start.x + velX, start.y + velY);
 };
 
 /**

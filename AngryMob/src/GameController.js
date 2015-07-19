@@ -34,7 +34,7 @@ var Game = (function(){
       var bonus = 0;
 
       if (this.activePowerUp === G.POWERUPS.MAGNET.TYPE) {
-        bonus += 4;
+        bonus += 10;
       }
 
       return this.pull + bonus;

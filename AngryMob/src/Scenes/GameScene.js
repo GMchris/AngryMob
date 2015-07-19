@@ -338,7 +338,12 @@ var GameScene = cc.Scene.extend({
         if (soul.inUse) {
           // Should the soul be pulled towards the player.
           if (Game.get('computedPull')) {
+            var circle = this.player.getPosition();
+            circle.radius = G.PULL_RADIUS;
 
+            if (Math.pointInCircle(soul.getPosition(), circle)) {
+                Math.moveBetweenPoints(soul.getPosition(), this.player.getPosition(), Game.get('computedPull'), soul);
+            }
           }
 
           // Is there a collision.

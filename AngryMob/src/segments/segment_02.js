@@ -28,7 +28,7 @@ G.SEGMENTS.push({
   },
   {
     type: 8,
-    x: 300,
+    x: 320,
     y: 700,
     flipped: false
   },
