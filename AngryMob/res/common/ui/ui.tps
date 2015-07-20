@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.9.1</string>
+        <string>3.8.0</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/common/ui/ui.tps</string>
+        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/common/ui/ui.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -43,8 +43,6 @@
         <false/>
         <key>pvrCompressionQuality</key>
         <enum type="SettingsBase::PvrCompressionQuality">PVR_QUALITY_NORMAL</enum>
-        <key>atfCompressData</key>
-        <false/>
         <key>mipMapMinSize</key>
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
@@ -204,6 +202,7 @@
             <filename>cuore_avatar.png</filename>
             <filename>liquid_soul_avatar.png</filename>
             <filename>chillgulp_avatar.png</filename>
+            <filename>speed_separator.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

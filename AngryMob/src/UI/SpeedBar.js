@@ -30,6 +30,7 @@ var SpeedBar = cc.Sprite.extend({
 
     this.generateDynamicBar();
     this.generateParticleSystem();
+    this.generateSeparators();
 
     this.scheduleUpdate();
   },
@@ -69,6 +70,16 @@ var SpeedBar = cc.Sprite.extend({
     this.particleSystemPulseAction.retain();
 
     this.addChild(this.particleSystem);
+  },
+
+  generateSeparators: function() {
+    var separatorLower = new cc.Sprite('#speed_separator.png');
+    separatorLower.setPosition(0, -50);
+    this.addChild(separatorLower);
+
+    var separatorUpper = new cc.Sprite('#speed_separator.png');
+    separatorUpper.setPosition(0, 50);
+    this.addChild(separatorUpper);
   },
 
   /**

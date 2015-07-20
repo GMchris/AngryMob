@@ -186,6 +186,19 @@
                 <key>sourceSize</key>
                 <string>{30,300}</string>
             </dict>
+            <key>speed_separator.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1312,529},{30,3}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{30,3}}</string>
+                <key>sourceSize</key>
+                <string>{30,3}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -196,7 +209,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e526a9c6a8e83ec78c4fee660c4abdfe:4cfee9657e46e3430ba0bd527f4fd1a8:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
+            <string>$TexturePacker:SmartUpdate:199fd3f7ec7759d100f9242ec4d560fc:68b29a7c6cfbfef4ea576556e86e690d:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

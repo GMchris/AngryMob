@@ -18,6 +18,11 @@ var Memory = (function() {
       G.NOT_OWNED,
       G.NOT_OWNED,
       G.NOT_OWNED
+    ],
+    powerups: [
+      G.OWNED,
+      G.OWNED,
+      G.NOT_OWNED
     ]
   };
 

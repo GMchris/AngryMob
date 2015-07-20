@@ -391,7 +391,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7afcfd58c3fc47af6585094cd4d53406:33ba887a4c8a3dc7c61be942e7687d3a:04addab56ad99a5e5d594b65e3ee9e4b$</string>
+            <string>$TexturePacker:SmartUpdate:2e20ccd4996bc745464952814e9cc80f:f48c1786fbd15bfca7ea2ba42f1fb30b:04addab56ad99a5e5d594b65e3ee9e4b$</string>
             <key>textureFileName</key>
             <string>world_2.png</string>
         </dict>

@@ -10,6 +10,7 @@ var GameObjectsLayer = cc.Layer.extend({
   clickIndicatorScaleAction: null,
   availableSegmentIndices: [],
   unavailableSegmentIndices: [],
+  availablePowerups: [],
 
   init: function(gameScene) {
     this.winSize = Game.get('winSize');
@@ -90,6 +91,16 @@ var GameObjectsLayer = cc.Layer.extend({
    },
 
   instantiatePowerups: function() {
+
+    // Creates an array of only the powersup the player can use.
+    var powerupMemory = Memory.get('powerups');
+
+    for (var powerupMemIndex = 0; powerupMemIndex < powerupMemory; powerupMemIndex++) {
+      if (powerupMemory[powerupMemIndex] === G.OWNED) {
+        this.availablePowerups.push(powerupMemIndex);
+      }
+    }
+
     this.gameScene.powerups = [];
 
     for (var typeIndex = 0; typeIndex < G.POWERUP_COUNT ; typeIndex++ ) {
@@ -100,7 +111,7 @@ var GameObjectsLayer = cc.Layer.extend({
       }
     }
 
-    this.gameScene.powerups[1][0].activate(200, 0);
+    this.gameScene.powerups[0][0].activate(200, 0);
   },
 
   /**
@@ -338,6 +349,12 @@ var GameObjectsLayer = cc.Layer.extend({
       }
 
       return index;
+  },
+
+  getPowerupType: function() {
+    var index = Math.randomBetween(0, this.availablePowerups.length);
+
+    return this.availablePowerups[index];
   },
 
   update: function() {
