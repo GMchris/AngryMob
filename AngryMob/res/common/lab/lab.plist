@@ -4,49 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>frankenstein_avatar.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{415,2},{125,125}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{125,125}}</string>
-                <key>sourceSize</key>
-                <string>{125,125}</string>
-            </dict>
-            <key>lab_arrow_left.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{69,2},{65,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{65,150}}</string>
-                <key>sourceSize</key>
-                <string>{65,150}</string>
-            </dict>
-            <key>lab_arrow_right.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{65,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{65,150}}</string>
-                <key>sourceSize</key>
-                <string>{65,150}</string>
-            </dict>
             <key>lab_background.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{924,2},{960,1136}}</string>
+                <string>{{573,2},{960,1136}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +20,7 @@
             <key>lab_bottom.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1534},{1300,110}}</string>
+                <string>{{2,1412},{1300,110}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +46,7 @@
             <key>lab_left.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{226,2},{90,980}}</string>
+                <string>{{2,2},{90,980}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +59,7 @@
             <key>lab_middle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{542,2},{380,1065}}</string>
+                <string>{{191,2},{380,1065}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +72,7 @@
             <key>lab_right.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{318,2},{95,1015}}</string>
+                <string>{{94,2},{95,1015}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +85,7 @@
             <key>lab_top.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1412},{1300,120}}</string>
+                <string>{{2,1524},{1300,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -133,45 +94,6 @@
                 <string>{{0,0},{1300,120}}</string>
                 <key>sourceSize</key>
                 <string>{1300,120}</string>
-            </dict>
-            <key>mummy_avatar.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{415,2},{125,125}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{125,125}}</string>
-                <key>sourceSize</key>
-                <string>{125,125}</string>
-            </dict>
-            <key>tick.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{136,2},{88,68}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{88,68}}</string>
-                <key>sourceSize</key>
-                <string>{88,68}</string>
-            </dict>
-            <key>werewolf_avatar.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{415,2},{125,125}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{125,125}}</string>
-                <key>sourceSize</key>
-                <string>{125,125}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -183,7 +105,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0308b019e91dfd0ded55a05da5c3924d:d5eef28ce465cf469c79121326015155:b0d1241bacadc9555d6007dac5e78d83$</string>
+            <string>$TexturePacker:SmartUpdate:89540ea498159c5a0fbf82c836905627:84a803bf55800b04ac140adcd94e3345:b0d1241bacadc9555d6007dac5e78d83$</string>
             <key>textureFileName</key>
             <string>lab.png</string>
         </dict>

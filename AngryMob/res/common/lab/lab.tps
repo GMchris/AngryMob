@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.9.1</string>
+        <string>3.9.2</string>
         <key>fileName</key>
         <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/common/lab/lab.tps</string>
         <key>autoSDSettings</key>
@@ -195,12 +195,6 @@
             <filename>lab_middle.png</filename>
             <filename>lab_right.png</filename>
             <filename>lab_top.png</filename>
-            <filename>mummy_avatar.png</filename>
-            <filename>tick.png</filename>
-            <filename>werewolf_avatar.png</filename>
-            <filename>frankenstein_avatar.png</filename>
-            <filename>lab_arrow_left.png</filename>
-            <filename>lab_arrow_right.png</filename>
             <filename>lab_extras.png</filename>
             <filename>lab_background.png</filename>
         </array>
