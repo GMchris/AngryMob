@@ -28,7 +28,5 @@ var IconButton = cc.MenuItemSprite.extend({
 
   init: function() {
     this.setAnchorPoint(0, 0);
-
-
   }
 });

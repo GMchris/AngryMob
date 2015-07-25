@@ -51,6 +51,32 @@ html {
     transform: scaleX(-1);
 }
 
+.powerup-wrapper {
+    position: absolute;
+    top: 488px;
+    height: 69px;
+}
+
+.powerup-header {
+    width: 300px;
+}
+
+.powerup-setting {
+    width: 300px !important;
+    position: absolute;
+    left: 300px;
+    top: 0;
+    bottom: 0;
+    padding: 4px;
+}
+
+.powerup {
+   position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('images/powerup_0.png') no-repeat;
+}
+
 .settings {
     position: absolute;
     top: 0;
@@ -69,7 +95,7 @@ html {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 200px;
+    bottom: 269px;
 }
 
 .wrapper {

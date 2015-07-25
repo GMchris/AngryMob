@@ -3,6 +3,7 @@
 App.SettingsController = Ember.Controller.extend({
   obstacles: [],
   souls: [],
+  powerup: null,
   json: '',
 
   actions: {
@@ -31,10 +32,22 @@ App.SettingsController = Ember.Controller.extend({
       this.obstacles.removeObject(item);
     },
 
+    addPowerup: function() {
+      this.set('powerup', {
+          x: 0,
+          y: 0
+      })
+    },
+
+    removePowerup: function() {
+        this.set('powerup', null);
+    },
+
     compile: function() {
       var json = {
           souls: this.get('souls'),
-          obstacles: this.get('obstacles')
+          obstacles: this.get('obstacles'),
+          powerup: this.get('powerup')
       };
 
       json = Ember.copy(json, true);
@@ -53,6 +66,7 @@ App.SettingsController = Ember.Controller.extend({
 
         this.set('souls', json.souls || []);
         this.set('obstacles', json.obstacles || []);
+        this.set('powerups', json.powerups || []);
     }
   }
 });

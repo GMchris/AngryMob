@@ -45,6 +45,22 @@
         "</div>" +
       "</div>" +
     "</div>" +
+     "<div class='powerup-wrapper'>" +
+     "<div class='powerup-header header' {{action 'addPowerup'}}>+powerup</div>" +
+     "{{#if powerup}}" +
+     "<div class='settings-item powerup-setting'>" +
+        "<table>" +
+          "<tr>" +
+            "<td>X: {{input type='number' value=powerup.x}}</td>" +
+            "<td>Y: {{input type='number' value=powerup.y}}</td>" +
+          "</tr>" +
+          "<tr>" +
+            "<td colspan='2'><button class='remove-button'{{action 'removePowerup'}}>REMOVE</button></td>" +
+          "</tr>" +
+        "</table>" +
+     "</div>" +
+      "{{/if}}" +
+    "</div>" +
     "<div class='json-area'>" +
       "{{input type='text' value=json}}" +
       "<div class='buttons'>" +
