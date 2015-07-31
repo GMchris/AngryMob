@@ -16,7 +16,20 @@ var Monster = cc.Sprite.extend({
     this.setAnchorPoint(0.5, 0);
     this.setPosition(300, 200);
     this.winSize = Game.get('winSize');
-    this.collider = ColliderGenerator.get('monster');
+    console.log();
+
+    var colliderTag = '';
+
+    switch(Game.get('worldType')) {
+      case G.MONSTERS.WEREWOLF:
+        colliderTag = 'monster_big';
+        break;
+      default:
+        colliderTag = 'monster';
+        break;
+    }
+
+    this.collider = ColliderGenerator.get(colliderTag);
     this.computedCollider = cc.rect(0, 0, this.collider.width, this.collider.height);
 
     this.initiateActions();

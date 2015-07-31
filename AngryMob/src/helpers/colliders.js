@@ -19,6 +19,7 @@ var ColliderGenerator = (function(){
   ];
 
   map['monster'] = cc.rect(15, 0, 45, 35);
+  map['monster_big'] = cc.rect(40, 0, 45, 35);
   map['soul'] = cc.rect(0, 0, 60, 30);
   map['powerup'] = cc.rect(0, 0, 100, 60);
 

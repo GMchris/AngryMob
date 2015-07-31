@@ -19,5 +19,5 @@ function pregame() {
     cc.spriteFrameCache.addSpriteFrames(res.ui_plist, res.ui_png);
     cc.spriteFrameCache.addSpriteFrames(res.main_menu_plist, res.main_menu_png);
     cc.spriteFrameCache.addSpriteFrames(res.lab_plist, res.lab_png);
-    cc.spriteFrameCache.addSpriteFrames(res.world_2_plist, res.world_2_png);
+    cc.spriteFrameCache.addSpriteFrames(res.world_1_plist, res.world_1_png);
 }
