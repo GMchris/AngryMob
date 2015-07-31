@@ -1,6 +1,6 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov.
 
-var TextDialog = Dialog.extend({
+var TextDialog = ConfirmDialog.extend({
   CONFIRM_STRING: 'Yup',
   CANCEL_STRING: 'Nope',
   text: null,

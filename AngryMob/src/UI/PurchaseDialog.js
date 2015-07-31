@@ -1,6 +1,6 @@
 // AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov.
 
-var PurchaseDialog = Dialog.extend({
+var PurchaseDialog = ConfirmDialog.extend({
   CONFIRM_STRING: 'Buy',
   CANCEL_STRING: 'Cancel',
   item: null,
@@ -17,7 +17,7 @@ var PurchaseDialog = Dialog.extend({
 
   init: function() {
     this._super();
-
+    console.log('dicklet');
     this.dialogImage = new cc.Sprite(this.item.image);
     this.dialogImage.setAnchorPoint(0, 1);
     this.dialogImage.setScale(1.3);

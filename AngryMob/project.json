@@ -38,8 +38,10 @@
         "src/UI/SoulCounter.js",
         "src/UI/DistanceCounter.js",
         "src/UI/Dialog.js",
+        "src/UI/ConfirmDialog.js",
         "src/UI/TextDialog.js",
         "src/UI/PurchaseDialog.js",
+        "src/UI/RosterDialog.js",
 
         "src/Layers/Game/GameObjectsLayer.js",
         "src/Layers/Game/BackgroundLayer.js",
