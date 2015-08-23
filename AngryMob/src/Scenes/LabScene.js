@@ -47,7 +47,7 @@ var LabScene = cc.Scene.extend({
     this.addChild(this.soulCounter);
     this.updateSoulCounter();
 
-    this.backButton = new TextButton('Back', cc.p(325, 15), this.navigateToMainMenu.bind(this));
+    this.backButton = new TextButton('Back', cc.p(345, 15), this.navigateToMainMenu.bind(this));
     this.bottomMenu = new cc.Menu(this.backButton);
     this.bottomMenu.setPosition(0, 0);
     this.addChild(this.bottomMenu);

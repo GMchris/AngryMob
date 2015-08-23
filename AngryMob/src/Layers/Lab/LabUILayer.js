@@ -32,11 +32,17 @@ var LabUILayer = LabLayer.extend({
   generateMonsters: function() {
     var monsterSection = new cc.Menu();
     var monsterData = LabGenerator.getMonsters();
+    var yOffset = 0;
+    var xOffset = 0;
 
     monsterData.forEach(function(item, index) {
-      var monsterIcon = new IconButton(cc.p(100 + (index * 150), 950),
+      if (index !== 0 && index % 3 === 0) {
+          yOffset++;
+          xOffset = 0;
+      }
+      var monsterIcon = new IconButton(cc.p(100 + (xOffset * 150), 950 - (yOffset * 150)),
         function() {
-          this.selectMonster(index);
+          this.selectMonster(item.id);
         }.bind(this), item.image);
 
       monsterIcon.setAnchorPoint(0, 1);
@@ -48,6 +54,7 @@ var LabUILayer = LabLayer.extend({
       }
 
       monsterSection.addChild(monsterIcon);
+      xOffset++;
     }, this);
 
     monsterSection.setPosition(0, 0);
@@ -62,10 +69,10 @@ var LabUILayer = LabLayer.extend({
     this.addChild(this.moreMonstersMessage);
   },
 
-  selectMonster: function(index) {
-    var monster = LabGenerator.getMonsters()[index];
+  selectMonster: function(id) {
+    var monster = LabGenerator.getMonsters()[id];
     var dialog = new PurchaseDialog(function() {
-      this.purchaseMonster(index)
+      this.purchaseMonster(id)
     }.bind(this), monster);
     this.labScene.addChild(dialog);
   },
@@ -82,7 +89,7 @@ var LabUILayer = LabLayer.extend({
     var upgradeData = LabGenerator.getUpgrades();
 
     upgradeData.forEach(function(item, index) {
-      var upgradeIcon = new IconButton(cc.p(100 + (index * 150), 950),
+      var upgradeIcon = new IconButton(cc.p(120 + (index * 150), 950),
           function() {
             this.selectUpgrade(index);
           }.bind(this), item.image);

@@ -17,7 +17,7 @@ var PurchaseDialog = ConfirmDialog.extend({
 
   init: function() {
     this._super();
-    console.log('dicklet');
+
     this.dialogImage = new cc.Sprite(this.item.image);
     this.dialogImage.setAnchorPoint(0, 1);
     this.dialogImage.setScale(1.3);

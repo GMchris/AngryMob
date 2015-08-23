@@ -211,6 +211,7 @@
             <filename>mummy_avatar.png</filename>
             <filename>tick.png</filename>
             <filename>werewolf_avatar.png</filename>
+            <filename>lich_avatar.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

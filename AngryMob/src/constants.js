@@ -14,7 +14,8 @@ var G = {
   MONSTERS: {
     FRANKENSTEIN: 0,
     WEREWOLF: 1,
-    MUMMY: 2
+    MUMMY: 2,
+    LICH: 3
   },
 
   // Upgrade constants.

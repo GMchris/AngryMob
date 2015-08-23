@@ -17,10 +17,23 @@
                 <key>sourceSize</key>
                 <string>{640,260}</string>
             </dict>
+            <key>main_menu_lich_tower.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{644,2},{185,400}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{185,400}}</string>
+                <key>sourceSize</key>
+                <string>{185,400}</string>
+            </dict>
             <key>main_menu_moon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{644,2},{190,190}}</string>
+                <string>{{831,2},{190,190}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +46,7 @@
             <key>main_menu_sky.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,264},{640,1136}}</string>
+                <string>{{2,404},{640,1136}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>main_menu_title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{644,264},{325,240}}</string>
+                <string>{{644,404},{325,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>main_menu_tomb.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1402},{185,250}}</string>
+                <string>{{2,1542},{185,250}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +85,7 @@
             <key>main_menu_tower.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{189,1402},{250,470}}</string>
+                <string>{{189,1542},{250,470}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -92,7 +105,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:332923458023d400c115ad1650595e5e:c02e1d3b48d036313e0644031ee71109:07e224c1f8d46211af51719135bf043a$</string>
+            <string>$TexturePacker:SmartUpdate:20703f3b51214e02b61a3cef2a4d59a5:46b5dbb05318ffebca7d23dae1be8ffb:07e224c1f8d46211af51719135bf043a$</string>
             <key>textureFileName</key>
             <string>main_menu.png</string>
         </dict>

@@ -6,6 +6,7 @@ var MenuBackgroundLayer = cc.Layer.extend({
   tower: null,
   moon: null,
   tomb: null,
+  lichTower: null,
   ctor: function() {
     this._super();
 
@@ -14,6 +15,7 @@ var MenuBackgroundLayer = cc.Layer.extend({
 
   init: function() {
     this.drawSky();
+    this.drawLichTower();
     this.drawGrass();
     this.drawTomb();
     this.drawTower();
@@ -26,7 +28,7 @@ var MenuBackgroundLayer = cc.Layer.extend({
   },
 
   drawTitle: function() {
-    this.titleAppearAnimation = cc.sequence(cc.delayTime(1), cc.scaleTo(0.3, 1.5), cc.scaleTo(0.2, 1.1), cc.scaleTo(0.1, 1.3));
+    this.titleAppearAnimation = cc.sequence(cc.delayTime(1), cc.scaleTo(0.3, 1.3), cc.scaleTo(0.2, 0.8), cc.scaleTo(0.2, 1));
 
     this.title = new cc.Sprite('#main_menu_title.png');
     this.title.setPosition(320, 890);
@@ -83,5 +85,15 @@ var MenuBackgroundLayer = cc.Layer.extend({
       this.tomb.setScale(1.1);
       this.addChild(this.tomb);
     }
+  },
+
+  drawLichTower: function() {
+      if (this.hasMonster(G.MONSTERS.LICH)) {
+          this.lichTower = new cc.Sprite('#main_menu_lich_tower.png');
+          this.lichTower.setPosition(60, 200);
+          this.lichTower.setAnchorPoint(0, 0);
+          this.lichTower.setScale(1.1);
+          this.addChild(this.lichTower);
+      }
   }
 });

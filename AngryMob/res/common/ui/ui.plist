@@ -147,10 +147,23 @@
                 <key>sourceSize</key>
                 <string>{85,200}</string>
             </dict>
+            <key>lich_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{778,529},{125,125}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{125,125}}</string>
+                <key>sourceSize</key>
+                <string>{125,125}</string>
+            </dict>
             <key>liquid_soul_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{778,529},{125,175}}</string>
+                <string>{{905,529},{125,175}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>mummy_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{905,529},{125,125}}</string>
+                <string>{{1032,529},{125,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>soul_canister.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1032,529},{200,390}}</string>
+                <string>{{1159,529},{200,390}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>soul_counter.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1234,529},{255,72}}</string>
+                <string>{{1361,529},{255,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +215,7 @@
             <key>speed_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1491,529},{30,300}}</string>
+                <string>{{1618,529},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +228,7 @@
             <key>speed_bar_container.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1523,529},{56,360}}</string>
+                <string>{{1650,529},{56,360}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +241,7 @@
             <key>speed_bar_empty.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1581,529},{30,300}}</string>
+                <string>{{1708,529},{30,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +254,7 @@
             <key>speed_separator.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1613,529},{30,3}}</string>
+                <string>{{1740,529},{30,3}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +267,7 @@
             <key>tick.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1645,529},{88,68}}</string>
+                <string>{{1772,529},{88,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +280,7 @@
             <key>werewolf_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1735,529},{125,125}}</string>
+                <string>{{1862,529},{125,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -287,7 +300,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7fcc924125ef7df1876adf93a902391f:7b075bbcf51e381fe9b5ed028cccb31e:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
+            <string>$TexturePacker:SmartUpdate:ef1f906bef5e7eab4cc512e7bdf0979e:517d6310573ff651ac2fc805a913a0e6:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

@@ -73,13 +73,14 @@ var SpeedBar = cc.Sprite.extend({
   },
 
   generateSeparators: function() {
-    var separatorLower = new cc.Sprite('#speed_separator.png');
-    separatorLower.setPosition(0, -50);
-    this.addChild(separatorLower);
+    var lives = Game.get('maxLives') - 1;
+    var segmentSize = 200 / lives;
 
-    var separatorUpper = new cc.Sprite('#speed_separator.png');
-    separatorUpper.setPosition(0, 50);
-    this.addChild(separatorUpper);
+    for (var i = 0, separator; i < lives; i++) {
+        separator = new cc.Sprite('#speed_separator.png');
+        separator.setPosition(0, 50 - (i * segmentSize));
+        this.addChild(separator);
+    }
   },
 
   /**
@@ -116,6 +117,9 @@ var SpeedBar = cc.Sprite.extend({
 
     // Depends on upgrades.
     var bonusTimeout = LabGenerator.getCurrentUpgrade(G.UPGRADES.CUORE);
+    if (Game.get('worldType') === G.MONSTERS.WEREWOLF) {
+        bonusTimeout += 3;
+    }
 
     var accAction = cc.scaleTo(G.REGAIN_SPEED_TIMEOUT - bonusTimeout, 1, nextPercentage);
     this.gainLifeSequence = cc.sequence(accAction, this.gainLifeCB);

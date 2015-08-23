@@ -6,26 +6,38 @@ var LabGenerator = (function(){
 
   var monsters = [
     {
+      id: G.MONSTERS.FRANKENSTEIN,
       name: 'Frankie',
       price: 10,
-      description: 'Sprints slower making it easier to avoid obstacles',
+      description: 'Sprints slower making it easier to avoid obstacles. Really nice guy.',
       image: '#frankenstein_avatar.png',
       state: G.NOT_OWNED,
       type: G.MONSTER
     },
     {
+      id: G.MONSTERS.WEREWOLF,
       name: 'Fluffy',
       price: 10000,
-      description: 'Takes an extra hit to go down',
+      description: 'Regenerates his speed faster. Still wears braces.',
       image: '#werewolf_avatar.png',
       state: G.NOT_OWNED,
       type: G.MONSTER
     },
     {
+      id: G.MONSTERS.MUMMY,
       name: 'Bandages',
       price: 12000,
-      description: 'Just a cool guy TBH',
+      description: 'Can withstand an extra hit. Can\'t talk to girls.',
       image: '#mummy_avatar.png',
+      state: G.NOT_OWNED,
+      type: G.MONSTER
+    },
+    {
+      id: G.MONSTERS.LICH,
+      name: 'Brittlebones',
+      price: 15000,
+      description: 'Attracts souls to himself. But can\'t make friends easily.',
+      image: '#lich_avatar.png',
       state: G.NOT_OWNED,
       type: G.MONSTER
     }

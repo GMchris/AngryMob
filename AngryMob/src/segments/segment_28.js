@@ -1,0 +1,1 @@
+G.SEGMENTS.push({"souls":[{"x":270,"y":10,"type":0},{"x":280,"y":120,"type":0},{"x":270,"y":240,"type":0},{"x":270,"y":800,"type":0},{"x":280,"y":910,"type":0},{"x":270,"y":1020,"type":0}],"obstacles":[{"x":170,"y":380,"type":5,"flipped":false},{"x":200,"y":650,"type":0,"flipped":false}],"powerup":{"x":250,"y":500}});

@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.8.0</string>
+        <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Users/Kristian/Desktop/AngryMob/AngryMob/res/common/main_menu/main_menu.tps</string>
+        <string>C:/Users/Kristian/Desktop/GitHub/AngryMob/AngryMob/res/common/main_menu/main_menu.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -43,6 +43,8 @@
         <false/>
         <key>pvrCompressionQuality</key>
         <enum type="SettingsBase::PvrCompressionQuality">PVR_QUALITY_NORMAL</enum>
+        <key>atfCompressData</key>
+        <false/>
         <key>mipMapMinSize</key>
         <uint>32768</uint>
         <key>etc1CompressionQuality</key>
@@ -194,6 +196,7 @@
             <filename>main_menu_sky.png</filename>
             <filename>main_menu_title.png</filename>
             <filename>main_menu_tomb.png</filename>
+            <filename>main_menu_lich_tower.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

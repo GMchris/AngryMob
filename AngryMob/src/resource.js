@@ -21,6 +21,9 @@ var res = {
     world_2_plist: "res/world_2/world_2.plist",
     world_2_png: "res/world_2/world_2.png",
 
+    world_3_plist: "res/world_3/world_3.plist",
+    world_3_png: "res/world_3/world_3.png",
+
     soul_fire_particles: "res/common/particles/soul_particles.plist",
     canister_particles: "res/common/particles/canister_particles.plist",
     terrain_particles: "res/common/particles/terrain_particles.plist",

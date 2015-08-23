@@ -61,7 +61,9 @@ var GameScene = cc.Scene.extend({
    * Sets general properties in the scene.
    */
   runGeneralSetup: function() {
-    Game.set('maxLives', 3);
+    // Werewolf gets an extra life.
+    Game.set('maxLives', this.worldType === G.MONSTERS.MUMMY ? 4 : 3);
+    Game.set('pull', this.worldType === G.MONSTERS.LICH ? 2 : 0);
     Game.set('lives', Game.get('maxLives'));
     Game.set('worldType', this.worldType);
     this.setSpeed();
@@ -157,12 +159,13 @@ var GameScene = cc.Scene.extend({
    */
   upscaleSpeed: function() {
     if (Game.get('state') === G.STATE.PLAYING) {
-      Game.increment('additionalSpeed');
+        Game.increment('additionalSpeed');
     }
   },
 
   /**
-   * Adds the current speed and spawns a new segment when a certain distance is reached.
+   * Adds the current speed and spawns a new segment
+   * when a certain distance is reached.
    */
 
   iterateDistance: function() {
