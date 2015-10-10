@@ -42,7 +42,7 @@ var PurchaseDialog = ConfirmDialog.extend({
     this.dialogPrice.strokeStyle = cc.color.BLACK;
     this.dialogPrice.lineWidth = 3;
 
-    this.soulIcon = new cc.Sprite('#soul_0.png');
+    this.soulIcon = new cc.Sprite('#soul_icon.png');
     this.soulIcon.setPosition(460, 170);
 
     this.dialogWindow.addChild(this.dialogImage);
@@ -50,6 +50,7 @@ var PurchaseDialog = ConfirmDialog.extend({
     this.dialogWindow.addChild(this.dialogDescription);
     this.dialogWindow.addChild(this.dialogPrice);
     this.dialogWindow.addChild(this.soulIcon);
+
 
     if (this.cantAfford()) {
       this.confirmButton.enabled = false;

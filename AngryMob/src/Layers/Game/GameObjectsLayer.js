@@ -95,7 +95,7 @@ var GameObjectsLayer = cc.Layer.extend({
     // Creates an array of only the powersup the player can use.
     var powerupMemory = Memory.get('powerups');
 
-    for (var powerupMemIndex = 0; powerupMemIndex < powerupMemory; powerupMemIndex++) {
+    for (var powerupMemIndex = 0; powerupMemIndex < powerupMemory.length; powerupMemIndex++) {
       if (powerupMemory[powerupMemIndex] === G.OWNED) {
         this.availablePowerups.push(powerupMemIndex);
       }
@@ -110,8 +110,6 @@ var GameObjectsLayer = cc.Layer.extend({
         this.batch.addChild(this.gameScene.powerups[typeIndex][poolIndex]);
       }
     }
-
-    this.gameScene.powerups[0][0].activate(200, 0);
   },
 
   /**
@@ -304,7 +302,7 @@ var GameObjectsLayer = cc.Layer.extend({
       var segmentData = G.SEGMENTS[this.getSegmentIndex()];
       var obstacles = segmentData.obstacles;
       var souls = segmentData.souls;
-      var powerups = segmentData.powerups;
+      var powerup = segmentData.powerup;
 
       if (obstacles) {
           for (var obstacleIndex = 0; obstacleIndex < obstacles.length; obstacleIndex++) {
@@ -323,12 +321,9 @@ var GameObjectsLayer = cc.Layer.extend({
           }
       }
 
-      if (powerups) {
-        for (var powerupIndex = 0; powerupIndex < powerups.length; powerupIndex++) {
-          var pItem = powerups[i];
-          var powerup = this.getPowerup(pItem.type);
-          powerup.activate(pItem.x, pItem.y);
-        }
+      if (powerup) {
+          var powerupItem = this.getPowerup(this.getPowerupType());
+          powerupItem.activate(powerup.x, powerup.y);
       }
   },
 
@@ -352,7 +347,7 @@ var GameObjectsLayer = cc.Layer.extend({
   },
 
   getPowerupType: function() {
-    var index = Math.randomBetween(0, this.availablePowerups.length);
+    var index = Math.randomBetween(0, this.availablePowerups.length - 1);
 
     return this.availablePowerups[index];
   },

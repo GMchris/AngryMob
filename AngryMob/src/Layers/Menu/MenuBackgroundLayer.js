@@ -28,7 +28,7 @@ var MenuBackgroundLayer = cc.Layer.extend({
   },
 
   drawTitle: function() {
-    this.titleAppearAnimation = cc.sequence(cc.delayTime(1), cc.scaleTo(0.3, 1.3), cc.scaleTo(0.2, 0.8), cc.scaleTo(0.2, 1));
+    this.titleAppearAnimation = cc.sequence(cc.scaleTo(0.3, 1.3), cc.scaleTo(0.2, 0.8), cc.scaleTo(0.2, 1));
 
     this.title = new cc.Sprite('#main_menu_title.png');
     this.title.setPosition(320, 890);

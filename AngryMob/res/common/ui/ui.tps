@@ -212,6 +212,7 @@
             <filename>tick.png</filename>
             <filename>werewolf_avatar.png</filename>
             <filename>lich_avatar.png</filename>
+            <filename>soul_icon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

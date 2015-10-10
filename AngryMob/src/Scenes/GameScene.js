@@ -32,9 +32,10 @@ var GameScene = cc.Scene.extend({
   },
 
   init: function() {
-
+      G.SEGMENTS = G.SEGMENTS.slice(13);
     // The order of the methods being called here is important. Some use properties set by others.
     this.runGeneralSetup();
+    this.preloadAssets();
     this.initializeActions();
     this.instantiateLayers();
 
@@ -57,6 +58,10 @@ var GameScene = cc.Scene.extend({
     this.pauseGame();
   },
 
+  onExit: function() {
+      cc.spriteFrameCache.removeSpriteFramesFromFile(res['world_' + this.worldType + '_plist']);
+  },
+
   /**
    * Sets general properties in the scene.
    */
@@ -71,6 +76,10 @@ var GameScene = cc.Scene.extend({
     this.currentDistanceTravelled = 0;
     this.currentSegmentDistanceTravelled = 0;
     this.currentSoulCount = 0;
+  },
+
+  preloadAssets: function() {
+      cc.spriteFrameCache.addSpriteFrames(res['world_' + this.worldType + '_plist'], res['world_' + this.worldType + '_png']);
   },
 
   /**
