@@ -36,6 +36,13 @@ var GameUILayer = cc.Layer.extend({
     this.addChild(this.distanceCounter);
     this.addChild(this.soulCounter);
     this.addChild(this.menu);
+
+    var keyboardListener = cc.EventListener.create({
+      event: cc.EventListener.KEYBOARD,
+      onKeyReleased: stopGame
+    });
+
+    cc.eventManager.addListener(keyboardListener, this);
   },
 
   generateGameEndContent: function() {
@@ -50,8 +57,7 @@ var GameUILayer = cc.Layer.extend({
     this.endingSoulsLabel = new cc.LabelTTF(Memory.get('souls').toString(), G.DEFAULT_FONT, 90);
     this.endingSoulsLabel.setPosition(300, 460);
     this.endingSoulsLabel.verticalAlign = 1;
-    this.endingSoulsLabel.strokeStyle = cc.color.BLACK;
-    this.endingSoulsLabel.lineWidth = 6;
+    this.endingSoulsLabel.enableStroke(cc.color.BLACK, 5.0, true);
     this.endingSoulsLabel.setScale(0);
 
     this.menuButton = new TextButton('Menu', cc.p(180, 270), this.transitionToMainMenu);

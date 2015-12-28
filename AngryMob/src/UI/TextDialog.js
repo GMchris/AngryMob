@@ -16,8 +16,7 @@ var TextDialog = ConfirmDialog.extend({
     this.dialogLabel = new cc.LabelTTF(this.text, G.DEFAULT_FONT, 45, cc.size(500, 400));
     this.dialogLabel.setPosition(280, 270);
     this.dialogLabel.textAlign = 1;
-    this.dialogLabel.strokeStyle = cc.color.BLACK;
-    this.dialogLabel.lineWidth = 3;
+    this.dialogLabel.enableStroke(cc.color.BLACK, 5.0, true);
 
     this.dialogWindow.addChild(this.dialogLabel);
   }

@@ -54,3 +54,4 @@ AngryMob/tools/
 *.apk
 *.apk
 .idea
+/AngryMob/manifest.webapp

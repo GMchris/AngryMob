@@ -9,12 +9,19 @@ var MenuUILayer = cc.Layer.extend({
   },
   init: function() {
 
-    this.playButton = new TextButton('Play', cc.p(35, 15), this.openCharacterRoster.bind(this));
-    this.labButton = new TextButton('Lab', cc.p(345, 15), this.openLab);
+    this.playButton = new TextButton('Play', cc.p(15, 15), this.openCharacterRoster.bind(this));
+    this.labButton = new TextButton('Lab', cc.p(365, 15), this.openLab);
 
     this.menu = new cc.Menu(this.playButton, this.labButton);
     this.menu.setPosition(0, 0);
     this.addChild(this.menu);
+
+    var keyboardListener = cc.EventListener.create({
+      event: cc.EventListener.KEYBOARD,
+      onKeyReleased: stopGame
+    });
+
+    cc.eventManager.addListener(keyboardListener, this);
   },
 
   openCharacterRoster: function() {

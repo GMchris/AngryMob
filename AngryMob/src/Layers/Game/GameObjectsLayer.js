@@ -158,11 +158,13 @@ var GameObjectsLayer = cc.Layer.extend({
     this.overlay.opacity = 0;
     this.addChild(this.overlay);
 
-    this.clickIndicator = cc.Sprite.create('#click_indicator.png');
+    this.clickIndicator = new cc.Sprite('#click_indicator.png');
+
     this.addChild(this.clickIndicator);
 
     this.overlayFadeInAction = cc.fadeTo(0.2, 120);
     this.clickIndicatorScaleAction = cc.scaleTo(0.1, 1);
+
     this.overlayFadeInAction.retain();
     this.clickIndicatorScaleAction.retain();
   },
@@ -299,7 +301,8 @@ var GameObjectsLayer = cc.Layer.extend({
    * Positions game objects from the pool to the screen based on a configuration object.
    */
   generateSegment: function() {
-      var segmentData = G.SEGMENTS[this.getSegmentIndex()];
+      var idx = this.getSegmentIndex();
+      var segmentData = G.SEGMENTS[idx];
       var obstacles = segmentData.obstacles;
       var souls = segmentData.souls;
       var powerup = segmentData.powerup;

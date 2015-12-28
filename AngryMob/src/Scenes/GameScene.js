@@ -32,7 +32,6 @@ var GameScene = cc.Scene.extend({
   },
 
   init: function() {
-      G.SEGMENTS = G.SEGMENTS.slice(13);
     // The order of the methods being called here is important. Some use properties set by others.
     this.runGeneralSetup();
     this.preloadAssets();
@@ -60,6 +59,7 @@ var GameScene = cc.Scene.extend({
 
   onExit: function() {
       cc.spriteFrameCache.removeSpriteFramesFromFile(res['world_' + this.worldType + '_plist']);
+    this._super();
   },
 
   /**
@@ -71,6 +71,7 @@ var GameScene = cc.Scene.extend({
     Game.set('pull', this.worldType === G.MONSTERS.LICH ? 2 : 0);
     Game.set('lives', Game.get('maxLives'));
     Game.set('worldType', this.worldType);
+    Game.set('activePowerUp', null);
     this.setSpeed();
     this.started = false;
     this.currentDistanceTravelled = 0;

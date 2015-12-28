@@ -46,6 +46,24 @@ var Dialog = cc.Layer.extend({
     this.hideAnimation.retain();
 
     this.show();
+
+
+    var keyboardListener = cc.EventListener.create({
+      event: cc.EventListener.KEYBOARD,
+      onKeyReleased: this.onKeyReleased.bind(this)
+    });
+
+    cc.eventManager.addListener(keyboardListener, this);
+
+    Game.increment('openDialogs');
+  },
+
+  onKeyReleased: function(keyCode, ev) {
+      if(keyCode == cc.KEY.backspace || keyCode == 6){
+        setTimeout(function() {
+          this.close();
+        }.bind(this), 10);
+      }
   },
 
   show: function() {
@@ -53,6 +71,7 @@ var Dialog = cc.Layer.extend({
   },
 
   close: function() {
+    Game.decrement('openDialogs');
     this.dialogWindow.runAction(this.hideAnimation);
   },
 

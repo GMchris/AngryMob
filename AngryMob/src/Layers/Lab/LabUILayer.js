@@ -12,6 +12,13 @@ var LabUILayer = LabLayer.extend({
     this._super();
 
     this.drawSections();
+
+    var keyboardListener = cc.EventListener.create({
+      event: cc.EventListener.KEYBOARD,
+      onKeyReleased: stopGame
+    });
+
+    cc.eventManager.addListener(keyboardListener, this);
   },
 
   drawSections: function() {

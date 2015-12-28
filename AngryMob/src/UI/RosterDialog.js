@@ -23,6 +23,7 @@ var RosterDialog = Dialog.extend({
         }
         var monsterIcon = new IconButton(cc.p(70 + (xOffset * 150), 450 - (yOffset * 150)),
             function() {
+                this.close();
                 this.parent.uiLayer.startGame(item.id);
             }.bind(this), item.image);
 

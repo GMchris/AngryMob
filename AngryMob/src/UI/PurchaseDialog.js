@@ -27,20 +27,17 @@ var PurchaseDialog = ConfirmDialog.extend({
     this.dialogTitle.setPosition(30, 410);
     this.dialogTitle.setAnchorPoint(0, 0);
     this.dialogTitle.textAlign = 1;
-    this.dialogTitle.strokeStyle = cc.color.BLACK;
-    this.dialogTitle.lineWidth = 3;
+    this.dialogTitle.enableStroke(cc.color.BLACK, 5.0, true);
 
     this.dialogDescription = new cc.LabelTTF(this.item.description, G.DEFAULT_FONT, 30, cc.size(270, 175));
     this.dialogDescription.setPosition(260, 230);
     this.dialogDescription.setAnchorPoint(0, 0);
-    this.dialogDescription.strokeStyle = cc.color.BLACK;
-    this.dialogDescription.lineWidth = 3;
+    this.dialogDescription.enableStroke(cc.color.BLACK, 5.0, true);
 
     this.dialogPrice = new cc.LabelTTF(this.item.price, G.DEFAULT_FONT, 50, cc.size(200, 80));
     this.dialogPrice.setPosition(300, 110);
     this.dialogPrice.setAnchorPoint(0, 0);
-    this.dialogPrice.strokeStyle = cc.color.BLACK;
-    this.dialogPrice.lineWidth = 3;
+    this.dialogPrice.enableStroke(cc.color.BLACK, 5.0, true);
 
     this.soulIcon = new cc.Sprite('#soul_icon.png');
     this.soulIcon.setPosition(460, 170);

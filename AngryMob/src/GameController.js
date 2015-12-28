@@ -10,6 +10,7 @@ var Game = (function(){
     pull: 0,
     additionalSpeed: 0,
     activePowerUp: null,
+    openDialogs: 0,
 
     // Computed properties.
     computedSpeed: function() {

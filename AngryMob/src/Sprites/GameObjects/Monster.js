@@ -16,7 +16,6 @@ var Monster = cc.Sprite.extend({
     this.setAnchorPoint(0.5, 0);
     this.setPosition(300, 200);
     this.winSize = Game.get('winSize');
-    console.log();
 
     var colliderTag = '';
 

@@ -88,25 +88,3 @@ var G = {
 if (cc.sys.platform === cc.sys.ANDROID) {
   G.DEFAULT_FONT = res.default_font;
 }
-
-//var pointsInstances = 0;
-//
-//cc.p = function(x, y){
-//  pointsInstances ++;
-//  if (x == undefined)
-//    return {x: 0, y: 0};
-//  if (y == undefined)
-//    return {x: x.x, y: x.y};
-//  return {x: x, y: y};
-//};
-//var createdPoints = 0;
-//var pointsLogInterval = setInterval(function(){
-//  logPoints();
-//},1000);
-//
-//function logPoints(){
-//  cc.log('------------------------------')
-//  cc.log('createdPoints: ' + (pointsInstances - createdPoints));
-//  createdPoints = pointsInstances;
-//  cc.log('pointsInstances: ' + pointsInstances);
-//}

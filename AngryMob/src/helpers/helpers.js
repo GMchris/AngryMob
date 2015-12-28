@@ -34,6 +34,14 @@ function isString(value) {
   return typeof value === 'string';
 }
 
+function stopGame(keyCode, ev) {
+  if(keyCode == cc.KEY.backspace || keyCode == 6){
+    if (!Game.get('openDialogs')) {
+        cc.director.end();
+    }
+  }
+}
+
 function cloneObject(object) {
   return JSON.parse(JSON.stringify(object));
 }
