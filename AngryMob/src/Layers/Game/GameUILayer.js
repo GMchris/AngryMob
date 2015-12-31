@@ -1,4 +1,4 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 var GameUILayer = cc.Layer.extend({
   CANISTER_SOUL_FRAGMENTS: 50,
@@ -39,7 +39,7 @@ var GameUILayer = cc.Layer.extend({
 
     var keyboardListener = cc.EventListener.create({
       event: cc.EventListener.KEYBOARD,
-      onKeyReleased: stopGame
+      onKeyReleased: this.buttonConfirmTransitionToMainMenu.bind(this)
     });
 
     cc.eventManager.addListener(keyboardListener, this);
@@ -153,6 +153,12 @@ var GameUILayer = cc.Layer.extend({
     this.particleSystem.stopSystem();
 
     this.endGameMenu.runAction(this.scaleUpButtonAction);
+  },
+
+  buttonConfirmTransitionToMainMenu: function(keycode) {
+    if(isBackButton(keycode) && !openDialogs()) {
+      this.confirmTransitionToMainMenu();
+    }
   },
 
   confirmTransitionToMainMenu: function() {

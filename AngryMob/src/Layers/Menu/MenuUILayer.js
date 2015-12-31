@@ -1,4 +1,4 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 var MenuUILayer = cc.Layer.extend({
   ctor: function(scene) {
@@ -18,10 +18,16 @@ var MenuUILayer = cc.Layer.extend({
 
     var keyboardListener = cc.EventListener.create({
       event: cc.EventListener.KEYBOARD,
-      onKeyReleased: stopGame
+      onKeyReleased: this.stopGame
     });
 
     cc.eventManager.addListener(keyboardListener, this);
+  },
+
+  stopGame: function(keycode) {
+    if (isBackButton(keycode) && !openDialogs()) {
+      cc.director.end();
+    }
   },
 
   openCharacterRoster: function() {

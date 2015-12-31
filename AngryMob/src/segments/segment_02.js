@@ -1,3 +1,3 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 G.SEGMENTS.push({"souls":[{"x":270,"y":50,"type":0},{"x":400,"y":250,"type":0},{"x":450,"y":520,"type":1},{"x":260,"y":460,"type":0},{"x":50,"y":500,"type":0},{"x":100,"y":720,"type":0},{"x":280,"y":800,"type":0},{"x":120,"y":980,"type":0}],"obstacles":[{"x":0,"y":50,"type":7,"flipped":false},{"x":320,"y":50,"type":8,"flipped":false},{"x":30,"y":250,"type":2,"flipped":false},{"x":300,"y":620,"type":2,"flipped":true},{"x":150,"y":610,"type":3,"flipped":false},{"x":-49,"y":340,"type":1,"flipped":false},{"x":300,"y":900,"type":3,"flipped":true},{"x":490,"y":330,"type":3,"flipped":true},{"x":-210,"y":840,"type":2,"flipped":true}],"powerup":null});

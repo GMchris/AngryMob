@@ -1,4 +1,4 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 var LabLayer = cc.Layer.extend({
   RIGHT_LIMIT: 0,

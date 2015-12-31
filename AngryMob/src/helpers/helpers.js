@@ -1,4 +1,4 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 /**
  * General reusable helper methods.
@@ -34,12 +34,12 @@ function isString(value) {
   return typeof value === 'string';
 }
 
-function stopGame(keyCode, ev) {
-  if(keyCode == cc.KEY.backspace || keyCode == 6){
-    if (!Game.get('openDialogs')) {
-        cc.director.end();
-    }
-  }
+function openDialogs() {
+    return Game.get('openDialogs');
+}
+
+function isBackButton(keyCode) {
+  return keyCode == cc.KEY.backspace || keyCode == 6;
 }
 
 function cloneObject(object) {

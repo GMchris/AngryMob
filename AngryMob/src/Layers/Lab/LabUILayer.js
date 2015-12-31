@@ -1,4 +1,4 @@
-// AngryMob Copyright (c) 2015 Todor Radkov and Kristian Ignatov
+// AngryMob Copyright (c) 2015 Kristian Ignatov
 
 var LabUILayer = LabLayer.extend({
   RIGHT_LIMIT: -600,
@@ -15,10 +15,16 @@ var LabUILayer = LabLayer.extend({
 
     var keyboardListener = cc.EventListener.create({
       event: cc.EventListener.KEYBOARD,
-      onKeyReleased: stopGame
+      onKeyReleased: this.navigateToMainMenu.bind(this)
     });
 
     cc.eventManager.addListener(keyboardListener, this);
+  },
+
+  navigateToMainMenu: function(keycode) {
+    if (isBackButton(keycode) && !openDialogs()) {
+      this.labScene.navigateToMainMenu();
+    }
   },
 
   drawSections: function() {
